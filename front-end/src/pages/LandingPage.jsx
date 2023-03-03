@@ -4,7 +4,8 @@ import Header from '../components/Header/Header'
 const LandingPage = () => {
   return (
       <div>
-          <Header />
+      <Header />
+      <div>Huraira</div>
           
     </div>
   )
