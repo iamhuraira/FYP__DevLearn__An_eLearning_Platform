@@ -18,11 +18,11 @@ const Footer = () => {
                 <div className="col">
                   <Link to='\'> <img src={logo} alt="" /></Link>
                     <div className='social-icons'>
-                        <a href={url.fb}><img src={fb} alt="" /></a>
+                        <a href={url.fb}><img src={fb} alt="facebook" /></a>
                 
-                        <a href={url.insta}><img src={insta} alt="" /></a>
+                        <a href={url.insta}><img src={insta} alt="instagram" /></a>
                 
-                        <a href={url.twitter}><img src={twitter} alt="" /></a>
+                        <a href={url.twitter}><img src={twitter} alt="twitter" /></a>
                     </div>
 
                 </div>
