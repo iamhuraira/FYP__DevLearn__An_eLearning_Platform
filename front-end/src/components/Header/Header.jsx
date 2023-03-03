@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../../assets/img/logo.png'
-import { Navigate, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 const Header = (props) => {
     const navigate = useNavigate();
     return (
@@ -15,7 +15,8 @@ const Header = (props) => {
               </div>
           </div>
 
-          <button onClick={() => navigate(props.login ? '/login' : '/signup')}>
+            <button
+                onClick={() => navigate(props.login ? '/login' : '/signup')}>
               {props.login ? 'Log In' : 'Sign In'}
           </button>
       </div>
