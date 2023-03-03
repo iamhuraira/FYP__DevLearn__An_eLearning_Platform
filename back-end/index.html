@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewpoint" content="width=device=width, initial-scale=1.0" />
+    <title>iChat -Realtime Node Socket.io chat App</title>
+    <!-- to connect client with server-->
+    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <!--defer: the script will load in background so when DOM is ready then the script runs or loads so that it can read DOM elements-->
+    <script defer src="js/client.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <img class="logo" src="logo.png" alt="" />
+      <h1>Welcome to iDiscuss Chat Application</h1>
+    </nav>
+    <div class="container">
+      <!--data coming from backend-->
+    </div>
+
+    <div class="send">
+      <form action="#" id="send-container">
+        <input type="text" name="messageInp" id="messageInp" />
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>
