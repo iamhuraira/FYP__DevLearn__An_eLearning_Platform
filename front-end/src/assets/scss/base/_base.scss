@@ -1,0 +1,173 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+u,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+figure,
+figcaption,
+footer,
+header,
+nav,
+output,
+section,
+time,
+mark,
+audio,
+video,
+input,
+textarea,
+select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* inherits the browser's font properties: font-size 16px */
+    font: inherit;
+    /*  specifies the vertical alignment of an inline element */
+    vertical-align: baseline;
+
+    box-sizing: border-box;
+
+    /*  specifies the height of line boxes within the element. */
+    //line-height: 1;
+
+    border-radius: 0;
+
+    /* no outline around anything */
+    outline: none;
+
+    /* inherit the color value of the parent */
+    color: inherit;
+}
+
+ol,
+ul {
+    /* no bullets in lists */
+    list-style: none;
+}
+
+a {
+    /* the color of the font for anchor tags is inherited */
+    color: inherit;
+    /* no underline */
+    text-decoration: none;
+}
+
+
+html {
+    @media screen and (min-width: 121.875em) {
+        //1950px
+        font-size: 75%; //1rem =12px
+    }
+
+    @media screen and (min-width: 131.25em) {
+        //2100px
+        font-size: 87.5%; //1rem =14px
+    }
+
+    @media screen and (min-width: 150em) {
+        //2400px
+        font-size: 93.75%; //1rem =15px
+    }
+
+    @media screen and (min-width: 168.75em) {
+        //2700px
+        font-size: 100%; //1rem =16px
+    }
+
+    @media screen and (min-width: 187.5em) {
+        //3000px
+        font-size: 112.5%; //1rem =18px
+    }
+
+    @media screen and (min-width: 206.25em) {
+        //3300px
+        font-size: 125%; //1rem =20px
+    }
+
+    @media screen and (min-width: 225em) {
+        //3600px
+        font-size: 137.5%; //1rem =22px
+    }
+
+    @media screen and (min-width: 237.5em) {
+        //3800px
+        font-size: 150%; //1rem =24px
+    }
+
+    @media screen and (min-width: 250em) {
+        //4000px
+        font-size: 157%; //1rem =24px
+    }
+
+
+
+    font-size: 62.5%; //1rem = 10px
+    //   font-size: 56.25%; //1rem =9px
+
+    @media screen and (max-width: 75em) {
+        //1200px
+        font-size: 56.25%; //1rem =9px
+    }
+
+    @media screen and (max-width: 53.125em) {
+        //850px
+        font-size: 50%;
+    }
+}
+
+body{
+    margin: 0 auto !important;
+        width: 100%;
+        max-width: 1920px;
+}
