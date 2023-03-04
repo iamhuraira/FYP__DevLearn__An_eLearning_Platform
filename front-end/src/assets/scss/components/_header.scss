@@ -1,0 +1,44 @@
+.header{
+    height: 100px;
+    margin: 0 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+
+    .logo{
+        display: flex;
+        gap: 45px;
+        align-items: center;
+        justify-items: center;
+        img{
+            height: 40px;
+            width: auto;
+        }
+        ul{
+            display: flex;
+            gap: 30px;
+            font-size: 2.8rem;
+            font-family: 'proxima nova';
+            
+            li{
+                cursor: pointer;
+            }
+        }
+    }
+    .p-btn{
+        height: 55px;
+        width: 131px;
+        border-radius: 10px;
+        background-color: #0C3A53;
+        font-size: 2.4rem;
+        color: #ffff;
+        font-weight: 400;
+        font-style: normal;
+        font-family: 'proxima nova';
+        cursor: pointer;
+
+}
+
+
+}

@@ -5,7 +5,7 @@ const LandingPage = () => {
   return (
       <div>
       <Header />
-      <div>Huraira</div>
+     
           
     </div>
   )
