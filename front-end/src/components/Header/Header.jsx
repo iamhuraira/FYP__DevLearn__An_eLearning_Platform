@@ -13,7 +13,7 @@ const Header = (props) => {
       <div className="logo">
         <img src={logo} alt="logo" />
 
-        <nav className='show' ref = {navref}>
+        <nav className='' ref = {navref}>
           
         <ul>
           <li > Courses</li>
@@ -26,8 +26,8 @@ const Header = (props) => {
       <div className='btns'>
         
       <button className='p-btn'
-        onClick={() => navigate(props.login ? '/login' : '/signup')}>
-        {props.login ? 'Log In' : 'Sign In'}
+        onClick={() => navigate(props.login ? '/Login' : '/SignUp')}>
+        {props.login ? 'Log In' : 'Sign Up'}
       </button>
       <button className=' btn-nav btn-bar' onClick={showNavBar}>
         <FaBars/>
