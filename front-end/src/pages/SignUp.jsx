@@ -9,8 +9,9 @@ const SignUp = () => {
       <div className='background'>
       
 
-          {!show && <div className="roleContainer ">
-            <div class="wrapper">
+        {!show && <div className="roleContainer ">
+          <div class="wrapper">
+          
               <input type="radio" name="role" id="student" checked />
                 <input type="radio" name="role" id="teacher" />
             <label for="student" class="option student" >
