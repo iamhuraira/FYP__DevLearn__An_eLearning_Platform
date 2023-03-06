@@ -1,0 +1,80 @@
+.wrapper {
+    display: inline-flex;
+    background: #fff;
+    height: 150px;
+    width: 600px;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+
+    .option {
+        background: #fff;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 0 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0 10px;
+        border: 2px solid lightgrey;
+        transition: all 0.3s ease;
+
+        .dot {
+            height: 40px;
+            width: 40px;
+            background: #d9d9d9;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        ::before {
+            position: absolute;
+            content: "";
+            top: 5px;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            background: #0C3A53;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(1.9);
+            transition: all 0.3s ease;
+        }
+
+        span {
+            font-size: 3.2rem;
+            color: #808080;
+            font-family: 'proxima nova';
+        }
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    #student:checked:checked~.student,
+    #teacher:checked:checked~.teacher {
+        border-color: #0C3A53;
+        background: #0C3A53;
+    }
+
+    #student:checked:checked~.student .dot,
+    #teacher:checked:checked~.teacher .dot {
+        background: #fff;
+    }
+
+    #student:checked:checked~.student .dot::before,
+    #teacher:checked:checked~.teacher .dot::before {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    #student:checked:checked~.student span,
+    #teacher:checked:checked~.teacher span {
+        color: #fff;
+    }
+}
