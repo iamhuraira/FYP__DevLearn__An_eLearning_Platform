@@ -1,3 +1,13 @@
+.background {
+    height: calc(100vh - 100px);
+    background-color: #0C3A53;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    // justify-items: center;
+
+}
+
 .wrapper {
     display: inline-flex;
     background: #fff;
@@ -8,6 +18,7 @@
     border-radius: 10px;
     padding: 30px 20px;
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 70px;
 
     .option {
         background: #fff;
@@ -76,5 +87,109 @@
     #student:checked:checked~.student span,
     #teacher:checked:checked~.teacher span {
         color: #fff;
+    }
+}
+
+
+
+
+// Form Container Styling 
+
+.formContainer {
+    display: inline-flex;
+    background: #fff;
+    height: 700px;
+    width: 600px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px 20px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 70px;
+    gap: 30px;
+
+
+    .heading {
+        font-family: 'proxima nova';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 4.8rem;
+        color: #444444;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin: 20px 0;
+
+        input {
+            width: 475px;
+            height: 70px;
+
+            border: 1px solid #0C3A53;
+            font-size: 2.4rem;
+            padding: 19px 30px;
+            border-radius: 10px;
+
+        }
+
+        input[type=submit] {
+            background-color: #0C3A53;
+            color: #fff;
+            font-weight: 600;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #0C3A53;
+            font-size: 3rem;
+        }
+    }
+
+    .checkbox {
+        margin: 0px 0;
+        display: flex;
+        align-items: center;
+
+        input {
+            width: 15px;
+            height: 15px;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+
+        span {
+            font-size: 1.6rem;
+            color: #787878;
+
+            .term {
+                color: #0C3A53;
+            }
+            .term:hover {
+                font-weight: 700;
+            }
+          
+        }
+
+    }
+    .text{
+        margin: 0px 0;
+            display: flex;
+            justify-content: center;
+          
+        
+            span {
+                text-align: center;
+                font-size: 2.2rem;
+                color: #787878;
+        
+                .login {
+                    color: #0C3A53;
+               
+                }
+                .login:hover{
+                  
+                  font-weight: 700;
+                }
+            }
     }
 }

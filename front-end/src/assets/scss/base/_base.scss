@@ -40,7 +40,6 @@ ol,
 ul,
 li,
 fieldset,
-form,
 label,
 legend,
 table,
@@ -72,7 +71,6 @@ select {
     padding: 0;
     border: 0;
     /* inherits the browser's font properties: font-size 16px */
-    font: inherit;
     /*  specifies the vertical alignment of an inline element */
     vertical-align: baseline;
 
