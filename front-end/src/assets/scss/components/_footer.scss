@@ -92,7 +92,7 @@ footer {
         text-align: center;
         gap: 10px;
 
-        .col{
+        .col {
             gap: 8px;
         }
 
@@ -102,7 +102,7 @@ footer {
         }
 
         .col:nth-of-type(3) {
-           display: none;
+            display: none;
         }
 
 
@@ -116,12 +116,13 @@ footer {
     font-weight: 400;
     font-size: 2.8rem;
     color: #787878;
-    
 
-        @media screen and (max-width: 450px) {
-            font-size: 2.3rem;
-        }
-                 @media screen and (max-width: 370px) {
-                     font-size: 1.8rem;
-                 }
+
+    @media screen and (max-width: 450px) {
+        font-size: 2.3rem;
+    }
+
+    @media screen and (max-width: 370px) {
+        font-size: 1.8rem;
+    }
 }
