@@ -1,0 +1,127 @@
+footer {
+    background: rgba(35, 186, 177, 0.05);
+    padding: 74px 150px;
+
+    @media screen and (max-width: 1450px) {
+        padding: 70px 75px;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 50px 50px;
+    }
+
+    @media screen and (max-width: 560px) {
+        padding: 25px 25px;
+    }
+
+
+}
+
+.footer-head {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 200px;
+    margin-bottom: 60px;
+
+    @media screen and (max-width: 1250px) {
+        margin-right: 60px;
+        margin-bottom: 30px;
+    }
+
+    @media screen and (max-width: 950px) {
+        margin-right: 10px;
+        margin-bottom: 30px;
+    }
+
+    .col {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .social-icons {
+            margin-top: 20px;
+
+            a:nth-of-type(2) {
+                margin: 0 25px;
+            }
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 3.2rem;
+            color: #444444;
+        }
+
+        span {
+            font-weight: 400;
+            font-size: 2.6rem;
+            color: #787878;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+        margin-right: 0px;
+
+
+        .col:nth-of-type(1) {
+            width: 100%;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+
+
+    }
+
+    @media screen and (max-width: 560px) {
+
+
+        .col:nth-of-type(1) {
+            transform: scale(0.7);
+            margin-bottom: 20px;
+        }
+
+
+
+    }
+
+    @media screen and (max-width: 450px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+
+        .col{
+            gap: 8px;
+        }
+
+        .col:nth-of-type(1) {
+            transform: scale(0.7);
+            margin-bottom: 0px;
+        }
+
+        .col:nth-of-type(3) {
+           display: none;
+        }
+
+
+
+    }
+}
+
+.footer-foot {
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 2.8rem;
+    color: #787878;
+    
+
+        @media screen and (max-width: 450px) {
+            font-size: 2.3rem;
+        }
+                 @media screen and (max-width: 370px) {
+                     font-size: 1.8rem;
+                 }
+}

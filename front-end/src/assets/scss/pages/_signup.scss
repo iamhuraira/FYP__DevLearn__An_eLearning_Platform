@@ -6,6 +6,35 @@
     // align-items: center;
     // justify-items: center;
 
+@media screen and (max-height: 768px) {
+       height: 105vh;
+    }
+}
+
+.roleContainer {
+
+    @media screen and (max-width: 768px) {
+        transform: scale(0.8);
+    }
+
+    @media screen and (max-width: 560px) {
+        transform: scale(0.65);
+        margin-top: -70px;
+    }
+
+    @media screen and (max-width: 425px) {
+        transform: scale(0.55);
+    }
+
+    @media screen and (max-width: 375px) {
+        transform: scale(0.47);
+        margin-top: -150px;
+    }
+
+    @media screen and (max-width: 320px) {
+        transform: scale(0.42);
+        margin-top: -250px;
+    }
 }
 
 .wrapper {
@@ -19,6 +48,11 @@
     padding: 30px 20px;
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
     margin-top: 70px;
+
+    @media screen and (max-width: 560px) {
+        margin-top: 0px;
+    }
+
 
     .option {
         background: #fff;
@@ -110,6 +144,31 @@
     margin-top: 70px;
     gap: 30px;
 
+    @media screen and (max-width: 768px) {
+        transform: scale(0.8);
+    }
+
+    @media screen and (max-width: 560px) {
+        transform: scale(0.7);
+        margin-top: -30px;
+      
+    }
+
+    @media screen and (max-width: 425px) {
+        transform: scale(0.65);
+            margin-top: -50px;
+    }
+
+    @media screen and (max-width: 375px) {
+        transform: scale(0.59);
+        margin-top: -100px;
+    }
+
+    @media screen and (max-width: 320px) {
+        transform: scale(0.5);
+        margin-top: -150px;
+    }
+
 
     .heading {
         font-family: 'proxima nova';
@@ -141,6 +200,7 @@
             margin-top: 25px;
             cursor: pointer;
         }
+
         input[type=submit]:hover {
             background-color: #0C3A53;
             font-size: 3rem;
@@ -148,7 +208,7 @@
     }
 
     .checkbox {
-        margin: 0px 0;
+        margin-top: -10px;
         display: flex;
         align-items: center;
 
@@ -166,32 +226,44 @@
             .term {
                 color: #0C3A53;
             }
+
             .term:hover {
                 font-weight: 700;
             }
-          
+
         }
 
     }
-    .text{
+
+    .text {
         margin: 0px 0;
-            display: flex;
-            justify-content: center;
-          
-        
-            span {
-                text-align: center;
-                font-size: 2.2rem;
-                color: #787878;
-        
-                .login {
-                    color: #0C3A53;
-               
-                }
-                .login:hover{
-                  
-                  font-weight: 700;
-                }
+        display: flex;
+        justify-content: center;
+
+
+        span {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #787878;
+
+            .login {
+                color: #0C3A53;
+
             }
+
+            .login:hover {
+
+                font-weight: 700;
+            }
+        }
     }
+}
+
+.error {
+    color: red !important;
+
+    input {
+        border: 2px solid red !important;
+    }
+
 }

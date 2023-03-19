@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import Header from '../components/Header/Header'
 // import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const SignUp = () => {
   // const navigate = useNavigate();
   // const [show, setShow] = useState(false);
   const [show, setShow] = useState(false);
+  const [validate, setValidate] = useState(false);
+  const [term, setTerm] = useState(false);
   const [user, setUser] = useState({
     name: '',
     email: '',
     password: '',
-    cPassword: '',
-    role: '',
-    term: false
+    cpassword: '',
+    role: 'student',
 
   });
   const handleInputs = (e) => {
@@ -24,6 +25,31 @@ const SignUp = () => {
     setUser({ ...user, [nameofinput]: value });
 
   }
+  const validateform = () => { 
+    const { name, email, password, cpassword, role } = user;
+
+      if(name === '' || email === '' || password === '' || cpassword === '' || role === ''){
+        alert('Please fill all the fields');
+        setValidate(false);
+        // return false;
+      }
+    if (password !== cpassword) {
+      // const child = document.getElementById('cpassword');
+      const parent = document.getElementById('cpassword').parentNode;
+      parent.classList.add('error');
+      // child.style.border = '1px solid red';
+      // child.style.color = 'red';
+      // alert('Password and Confirm Password should be same');
+      setValidate(false);
+      return false;
+    }
+    else { 
+      const parent = document.getElementById('cpassword').parentNode;
+      parent.classList.remove('error');
+    
+    }
+  }
+
  
   return (
     <div>
@@ -57,29 +83,29 @@ const SignUp = () => {
               <span>Sign Up</span>
             </div>
             <div className="form-group">
-              <input type="text" name="name" id="" placeholder='Name'
-                value={user.name} onChange={handleInputs} />
+              <input type="text" name="name" id="name" placeholder='Name'
+                value={user.name} onChange={handleInputs}  required/>
             </div>
             <div className="form-group">
-              <input type="email" name="email" id="" placeholder='Email'
-                value={user.email} onChange={handleInputs} />
+              <input type="email" name="email" id="email" placeholder='Email'
+                value={user.email} onChange={handleInputs}  required/>
 
             </div>
             <div className="form-group">
-              <input type="password" name="password" id="" placeholder='Password'
-                value={user.password} onChange={handleInputs} />
+              <input type="password" name="password" id="password" placeholder='Password'
+                value={user.password} onChange={handleInputs}  required/>
             </div>
             <div className="form-group">
-              <input type="password" name="cpassword" id="" placeholder='Confirm Password'
-                value={user.cPassword} onChange={handleInputs} />
+              <input type="password" name="cpassword" id="cpassword" placeholder='Confirm Password'
+                value={user.cpassword} onChange={handleInputs}  required/>
             </div>
             <div className="checkbox">
 
-              <input type="checkbox" name="term" id="term" value={!user.term} onClick={handleInputs} />
+              <input type="checkbox" name="term" id="term" value='' onClick={() => setTerm(!term)}  required/>
               <span>Creating your account and you accepting <Link to="/Terms" target="_blank"><span className="term" >Terms & Conditions</span></Link>.</span>
             </div>
             <div className="form-group">
-              <input type="submit" id="" value='Sign Up' />
+              <input type="submit" id="" value='Sign Up' onClick={validateform} />
             </div>
             <div className="text">
               <span>Already have an account? <Link to="/Login" ><span className="login" >Login</span></Link></span>
