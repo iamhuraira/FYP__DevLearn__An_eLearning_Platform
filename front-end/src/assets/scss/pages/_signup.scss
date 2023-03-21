@@ -130,9 +130,9 @@
 // Form Container Styling 
 
 .formContainer {
-    display: inline-flex;
+    display: flex;
     background: #fff;
-    height: 700px;
+    height: 740px;
     width: 600px;
     align-items: center;
     text-align: center;
@@ -177,6 +177,9 @@
         font-size: 4.8rem;
         color: #444444;
         margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .form-group {
@@ -260,10 +263,18 @@
 }
 
 .error {
-    color: red !important;
 
     input {
-        border: 2px solid red !important;
+        border: 3px solid red !important;
     }
 
+}
+
+
+.css-1c3trtb-MuiPaper-root-MuiAlert-root {
+    display: flex;
+    align-items: center;
+    .css-1pxa9xg-MuiAlert-message {
+            font-size: 20px;
+        }
 }

@@ -1,0 +1,34 @@
+{
+  "accounts": [
+    {
+      "name": "Abu Huraira",
+      "email": "iamhuraira429@gmail.com",
+      "password": "123",
+      "cpassword": "123",
+      "role": "teacher",
+      "id": 1
+    },
+    {
+      "name": "Abu Huraira",
+      "email": "hurii@gmail.com",
+      "password": "1234",
+      "cpassword": "1234",
+      "role": "teacher",
+      "id": 2
+    },
+    {
+      "name": "Abu Huraira",
+      "email": "iamhuraira429@gmail.com",
+      "password": "412345",
+      "cpassword": "412345",
+      "role": "teacher",
+      "id": 3
+    }
+  ],
+  "courses":[
+
+  ],
+  "quiz":[
+
+  ]
+}
