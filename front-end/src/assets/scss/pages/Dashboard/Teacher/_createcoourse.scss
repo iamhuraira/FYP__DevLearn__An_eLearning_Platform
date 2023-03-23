@@ -1,0 +1,248 @@
+.course-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(35, 186, 177, 0.05);
+
+    h2 {
+        font-size: 5rem;
+        font-weight: 700;
+        color: #0C3A53;
+        margin: 20px 0;
+    }
+}
+
+.course-info {
+    padding: 20px 30px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
+    background-color: white;
+    width: 900px;
+}
+
+.course-basic-info {
+    display: flex;
+    gap: 30px;
+
+    input {
+        width: 320px;
+        font-size: 1.8rem;
+    }
+
+    label {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #0C3A53;
+        background-color: white;
+        padding: 0 10px;
+    }
+
+}
+
+.course-image {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 728px;
+
+
+    .courselogo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 350px;
+        height: 100px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 10px 0 10px 10px;
+
+        button {
+            background-color: #0C3A53;
+            color: white;
+            height: 60px;
+            font-size: 1.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            padding: 0 20px;
+            border-radius: 7px;
+
+            &:hover {
+                background-color: white;
+                color: #0C3A53;
+                border: 2px solid #0C3A53;
+            }
+        }
+
+        .imgcourse {
+            padding: 10px 20px 10px 0;
+        }
+    }
+}
+
+.course-content-info {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+
+    input {
+        width: 202px;
+        font-size: 1.8rem;
+    }
+
+    label {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #0C3A53;
+        background-color: white;
+        padding: 0 10px;
+    }
+}
+
+.secttionBackground {
+    // width: 100%;
+
+    background-color: white;
+
+    margin-top: 20px;
+    border-radius: 10px;
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0C3A53;
+        text-align: center;
+    }
+
+    button {
+        background-color: #0C3A53;
+        color: white;
+        height: 40px;
+        font-size: 1.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        padding: 0 20px;
+        border-radius: 7px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        svg {
+            font-size: 2.8rem;
+            font-weight: bolder;
+        }
+
+
+        &:hover {
+            background-color: white;
+            color: #0C3A53;
+            border: 2px solid #0C3A53;
+        }
+    }
+}
+
+
+.courseSection {
+    background-color: white;
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
+    margin-top: 40px;
+    padding: 20px 30px;
+    width: 100%;
+    position: relative;
+
+    input {
+        width: 640px;
+        font-size: 1.8rem;
+    }
+
+    label {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #0C3A53;
+        background-color: white;
+        padding: 0 10px;
+    }
+
+    .course-btns {
+
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+
+        svg {
+            position: absolute;
+            top: -45px;
+            right: -15px;
+            filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.2));
+            background-color: red;
+            color: white;
+            height: 40px;
+            width: 40px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+
+
+
+
+
+            &:hover {
+                background-color: white;
+                color: red;
+                border: 2px solid red;
+            }
+        }
+
+
+    }
+}
+
+.sectionVideo {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    input {
+        width: 300px;
+    }
+
+    label {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #0C3A53;
+        background-color: white;
+        padding: 0 10px;
+    }
+
+    .del {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        color: red;
+    }
+
+
+
+}

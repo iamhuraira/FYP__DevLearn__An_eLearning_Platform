@@ -1,0 +1,17 @@
+.background-dashboard{
+    background: rgba(35, 186, 177, 0.05);
+    height: 300px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    h2{
+        font-weight: 700;
+            font-size: 8rem;
+            color: #444444;
+            span{
+                color: #23BAB1;
+            }
+    }
+}
