@@ -24,10 +24,20 @@
         margin-left: 20px;
         font-size: 3.4rem;
         cursor: pointer;
+
+        img{
+            height: 5.6rem;
+                width: 5.6rem;
+                border-radius: 50%;
+                border: 2px solid #0C3A53;
+                background-color: white;
+                // filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.8));
+        }
     }
 
     .dashboard-nav {
         position: relative;
+        z-index: 100;
 
         nav {
             // border: 1px lighter gray;

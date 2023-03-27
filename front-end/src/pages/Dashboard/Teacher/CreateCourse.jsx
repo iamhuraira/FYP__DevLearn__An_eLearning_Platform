@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import { MdDeleteForever } from 'react-icons/md';
 import { IoMdAdd } from 'react-icons/io';
 import Image from './Image';
+// import DynamicForm from './DynamicForm';
+// import { display } from '@mui/system';
 const CreateCourse = () => {
 
     const [course, setCourse] = React.useState({
@@ -34,14 +36,14 @@ const CreateCourse = () => {
     //  Dynamic Course Data Handle
 
     const videoTempalte = { videoName: '', videoLink: '' }
-    const sectionTemplate = { sectionName: '' }
+    const sectionTemplate = { sectionName: '', videoData: [videoTempalte] }
 
 
 
 
 
-    const [sectionData, setsectionData] = React.useState([sectionTemplate])
-    const [videoData, setvideoData] = React.useState([videoTempalte])
+    const [sectionData, setsectionData] = React.useState([])
+    // const [videoData, setvideoData] = React.useState([videoTempalte])
 
 
 
@@ -49,12 +51,23 @@ const CreateCourse = () => {
         setsectionData([...sectionData, sectionTemplate])
     }
     const addVideoData = (index) => {
+        console.log(index)
 
+        const newSectionData = [...sectionData]
+        newSectionData[index].videoData.push(videoTempalte)
+        setsectionData(newSectionData)
 
     }
     const removeSection = (index) => {
+        // console.log(index)
         const newSectionData = [...sectionData]
         newSectionData.splice(index, 1)
+        setsectionData(newSectionData)
+    }
+
+    const handleRemoveVideoData = (sectionIndex, videoIndex) => {
+        const newSectionData = [...sectionData]
+        newSectionData[sectionIndex].videoData.splice(videoIndex, 1)
         setsectionData(newSectionData)
     }
 
@@ -64,7 +77,8 @@ const CreateCourse = () => {
     return (
         <>
             <HeaderDashboard />
-            <div className="course-div">
+            {/* <DynamicForm /> */}
+            <div className="course-div" >
 
 
 
@@ -106,26 +120,29 @@ const CreateCourse = () => {
                             {
                                 sectionData.map((section, index) => (
                                     <div className="courseSection" key={index}>
-                                        <TextField id="outlined-basic" label="Section Heading"  variant="outlined" />
+                                        <TextField id="outlined-basic" label="Section Title" variant="outlined" />
 
                                         {/* Section Videos And Hedings */}
+                                        {sectionData[index].videoData.map((video, i) => (
+                                            <div className="sectionVideo" key={i}>
+                                                <TextField id="outlined-basic" label="Video Title" variant="outlined" />
+                                                <TextField id="outlined-basic" label="Video Link" variant="outlined" />
+                                                <div className='del'>
+                                                    {i == 0 ? '' : <MdDeleteForever onClick={() => handleRemoveVideoData(index, i)} />}
+                                                    {/* <MdDeleteForever  /> */}
+                                                </div>
 
-                                        <div className="sectionVideo" >
+                                            </div>
+                                        ))}
+
+                                        {/* <div className="sectionVideo" >
                                             <TextField id="outlined-basic" label="Video Heading"  variant="outlined" />
                                             <TextField id="outlined-basic" label="Video Link"  variant="outlined" />
-                                            {/* <div className='del'>
-                                                        <MdDeleteForever />
-                                                    </div> */}
+                                             <div className='del'>
+                                                      <MdDeleteForever />
+                                                 </div> 
 
-                                        </div>
-                                        <div className="sectionVideo" >
-                                            <TextField id="outlined-basic" label="Video Heading"  variant="outlined" />
-                                            <TextField id="outlined-basic" label="Video Link"  variant="outlined" />
-                                            {/* <div className='del'>
-                                                        <MdDeleteForever />
-                                                    </div> */}
-
-                                        </div>
+                                        </div> */}
 
 
 
@@ -135,8 +152,9 @@ const CreateCourse = () => {
 
 
                                         <div className='course-btns'>
-                                            {/* <button onClick={addVideoData}> <IoMdAdd />Add Video</button> */}
-                                            {index == 0 ? '' : <MdDeleteForever onClick={removeSection} />}
+                                            <button onClick={() => addVideoData(index)}> <IoMdAdd />Add Video</button>
+                                            <MdDeleteForever onClick={() => removeSection(index)} />
+                                            {/* {index == 0 ? '' : <MdDeleteForever onClick={removeSection} />} */}
                                         </div>
 
                                     </div>

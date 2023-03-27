@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 
 const HeaderDashboard = (props) => {
   const navigate = useNavigate();
+
+ 
+
   const [showLogout, setshowLogout] = useState(false)
   return (
     <div className='header'>
@@ -18,7 +21,10 @@ const HeaderDashboard = (props) => {
         <h2>Abu Huraira</h2>
         <div className='dashboard-nav'>
           <span className='user-icon' onClick={()=>{setshowLogout(!showLogout)}}>
-            <FaUser />
+            {
+              props.ProfileImg ? <img src={props.ProfileImg} alt="profile" /> : <FaUser />
+           }
+           
 
           </span>
           {showLogout && <nav >

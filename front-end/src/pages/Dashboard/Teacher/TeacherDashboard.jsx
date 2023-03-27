@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeaderDashboard from '../../../DashboardComponents/HeaderDashboard'
 import Welcome from '../../../DashboardComponents/Welcome'
 import { Link, useNavigate } from 'react-router-dom'
 
-const TeacherDashboard = () => {
+const TeacherDashboard = (props) => {
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (props.user === false) {
+      
+      navigate('/Login')
+    }
+  })
 
 
 
@@ -15,8 +22,7 @@ const TeacherDashboard = () => {
       <Welcome />
 
       <div className='teacher-btn'>
-          <button>View Profile</button>
-        <button>Update Profile</button>
+        <Link to='/dashboard/updateprofile'><button>View & Update Profile</button></Link>
         <Link to='/teacherdashboard/createcourse'><button >Create Course</button></Link>
 
         
