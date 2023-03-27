@@ -1,18 +1,20 @@
-import React from 'react'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
-import CourseCard from '../components/CourseCard/CourseCard'
+import React from "react";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import CourseCard from "../components/CourseCard/CourseCard";
+import Hero from "../components/Hero/Hero";
+import ChooseUs from "../components/ChooseUs/ChooseUs";
+
 
 const LandingPage = () => {
   return (
-      <>
+    <>
       <Header />
-      <CourseCard />
-     <Footer />
-     
-          
+      <Hero />
+      <ChooseUs />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;

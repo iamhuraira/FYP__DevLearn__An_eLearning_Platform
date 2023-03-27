@@ -1,0 +1,31 @@
+.mid-content {
+  display: flex;
+  margin: 100px 150px 100px 355px;
+  justify-content: space-between;
+  // margin-top: 100px;
+  // margin-right: 355px;
+  margin-left: (385px - 180px);
+  .right {
+    img {
+        width: 370px;
+        height: 310px;
+    }
+  }
+  .left-content-mid {
+    width: 598px;
+    p {
+      font-size: 2.4rem;
+      color: #787878;
+      font-family: "Inter";
+    }
+    h2 {
+      margin-top: 20px;
+      font-size: 5.2rem;
+      font-weight: 700px;
+      margin-bottom: 22px;
+      span {
+        color: #23bab1;
+      }
+    }
+  }
+}
