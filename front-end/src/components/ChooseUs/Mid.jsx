@@ -1,5 +1,5 @@
 import React from "react";
-import visual from "../../assets/img/LandingPageImg/visual.png";
+import visual from "../../assets/img/LandingPageImg/buckit.gif";
 
 const Mid = () => {
   return (

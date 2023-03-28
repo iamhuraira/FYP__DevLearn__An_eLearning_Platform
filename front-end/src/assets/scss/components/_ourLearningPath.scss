@@ -1,0 +1,28 @@
+.ourLearnP{
+    margin: 0 150px;
+    margin-bottom: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .headings{
+        text-align: center;
+        margin-bottom: 30px;
+        
+        h2{
+            font-size: 5.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #23bab1;
+
+            &:nth-of-type(2){
+                color: #0c3a53;
+            }
+        }
+    }
+    .SVGcards{
+        border: 10px solid #b4ddda;
+        padding: 50px;
+        border-radius: 30px;
+    }
+}

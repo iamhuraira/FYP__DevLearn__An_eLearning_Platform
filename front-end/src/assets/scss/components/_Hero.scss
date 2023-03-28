@@ -1,15 +1,15 @@
 .container {
-  margin: 100px 333px 100px 150px;
+  margin: 70px 150px;
   display: flex;
   justify-content: space-between;
 
   .left {
     margin-top: 30px;
-    margin-right: 178px;
+    width: 950px;
 
     h2 {
       font-size: 7rem;
-      font-weight: 700px;
+      // font-weight: 700px;
 
       span {
         color: #23bab1;
@@ -19,14 +19,12 @@
     p {
       margin-top: 28px;
       font-size: 2.8rem;
-      color:  #787878;
-      margin-right: 209px;
-      font-family: 'Inter';
+      color: #787878;
     }
 
     .p-btn {
       margin-top: 30px;
-    //   margin-right: 573px;
+      //   margin-right: 573px;
       height: 70px;
       width: 350px;
       border-radius: 10px;
@@ -35,7 +33,7 @@
       color: #ffff;
       font-weight: 400;
       font-style: normal;
-      font-family: "proxima nova";
+      
       cursor: pointer;
 
       h3 {
@@ -59,6 +57,18 @@
         width: 70px;
         font-size: 2rem;
       }
+    }
+  }
+
+  .right {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    img {
+      width: 700px;
+      height: 400px;
     }
   }
 }
