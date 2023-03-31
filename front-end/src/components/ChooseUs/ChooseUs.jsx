@@ -16,13 +16,6 @@ const ChooseUs = () => {
         <Mid />
         <Bottom />
       </div>
-      <div className="containerLp">
-        <h1> Popular Courses</h1>
-      </div>
-      <CourseCard />
-      <div className="containerLp">
-        <h1> What our Learners say </h1>
-      </div>
     </>
   );
 };

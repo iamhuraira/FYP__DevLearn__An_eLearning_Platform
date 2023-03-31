@@ -7,12 +7,12 @@ const TeacherDashboard = (props) => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (props.user === false) {
+  // useEffect(() => {
+  //   if (props.user === false) {
       
-      navigate('/Login')
-    }
-  })
+  //     navigate('/Login')
+  //   }
+  // })
 
 
 

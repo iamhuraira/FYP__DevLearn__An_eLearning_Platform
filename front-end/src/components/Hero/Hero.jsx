@@ -1,5 +1,5 @@
 import React from "react";
-import grow from "../../assets/img/LandingPageImg/grow.png";
+import heroGif from "../../assets/./img/./LandingPageImg/heo.gif"
 
 const Hero = () => {
   return (
@@ -7,13 +7,12 @@ const Hero = () => {
       <div className="left">
         <div className="content">
           <h2>
-            Grow your <br />
-            programming skills <br />
-            through <span>visualization</span> <br />
+            Grow your
+            programming skills 
+            through <span>visualization</span> 
           </h2>
           <p>
-            Learn programming, data structures & algorithms, and prepare for the
-            interview - all in one place
+            Learn programming, data structures & algorithms, and prepare for the interview - all in one place.
           </p>
           <button className="p-btn">
             <h3> Join Now! </h3>
@@ -21,7 +20,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="right">
-        <img src={grow} alt="programmer" />
+        <img src={heroGif} alt=""  />
       </div>
     </div>
   );
