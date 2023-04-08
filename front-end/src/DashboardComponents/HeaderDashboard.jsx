@@ -1,15 +1,16 @@
 import React, {  useState } from 'react'
 import logo from '../assets/img/logo.png'
 import { useNavigate } from 'react-router-dom'
-import { FaBars, FaTimes, FaUser, } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi'
-import { Link } from 'react-router-dom';
+
 
 const HeaderDashboard = (props) => {
   const navigate = useNavigate();
 
- 
-
+  const handleChangePassword = () => { 
+    navigate('/dashboard/changepassword')
+  }
   const [showLogout, setshowLogout] = useState(false)
   return (
     <div className='header'>
@@ -30,6 +31,7 @@ const HeaderDashboard = (props) => {
           {showLogout && <nav >
             <ul>
               <li className='name'>Abu Huraira</li>
+              <li className='changePassword' onClick={handleChangePassword}>Change Password</li>
               <li className='logout'>Logout <span><FiLogOut /> </span></li>
             </ul>
           </nav>}

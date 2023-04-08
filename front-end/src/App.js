@@ -10,11 +10,13 @@ import Terms from './pages/Terms';
 import TeacherDashboard from './pages/Dashboard/Teacher/TeacherDashboard';
 import CreateCourse from './pages/Dashboard/Teacher/CreateCourse';
 import UpdateProfile from './pages/Dashboard/UpdateProfile';
+import ChangePassword from './pages/Dashboard/ChangePassword';
+
 // import { useEffect, useState } from 'react';
 function App() {
 
-  const [user, setUser] = React.useState(false)
-  // const navigate = useNavigate();
+
+
 
   return (
 
@@ -35,13 +37,14 @@ function App() {
 
           
           {/* Teacher Routes */}
-          <Route path='/teacherdashboard' element={<TeacherDashboard  user={user}  />} />
+          <Route path='/teacherdashboard' element={<TeacherDashboard  />} />
           <Route path='/teacherdashboard/createcourse' element={<CreateCourse />} />
           
 
 
           {/* Common Routes */}
           <Route path='/dashboard/updateprofile' element={<UpdateProfile />} />
+          <Route path='/dashboard/changepassword' element={<ChangePassword />} />
 
         </Routes>
       </BrowserRouter>

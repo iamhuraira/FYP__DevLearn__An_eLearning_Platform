@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
  const baseurl = `${process.env.REACT_APP_BASE_URL}`
 console.log(baseurl)
+
 export const signupApi = createApi({
     reducerPath: 'signup',
     baseQuery: fetchBaseQuery({ baseUrl: baseurl}),
