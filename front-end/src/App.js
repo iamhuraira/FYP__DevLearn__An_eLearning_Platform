@@ -42,7 +42,7 @@ function App() {
 
 
           {/* Teacher Routes */}
-          <Route path='/teacherdashboard' element={<TeacherDashboard />} />
+          <Route path='/teacherdashboard' element={<TeacherDashboard  user={user}  />} />
           <Route path='/teacherdashboard/createcourse' element={<CreateCourse />} />
 
           {/* Admin Routes */}
@@ -56,9 +56,6 @@ function App() {
 
           {/* Common Routes  Dynamic Route */}
           <Route path='/dashboard/updateprofile' element={<UpdateProfile />} />
-          <Route path='/dashboard/changepassword' element={<ChangePassword />} />
-          <Route path='/coursedetails' element={<CoursePage />} />
-
 
         </Routes>
       </BrowserRouter>
