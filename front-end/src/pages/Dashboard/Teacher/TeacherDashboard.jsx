@@ -5,6 +5,16 @@ import { Link } from 'react-router-dom'
 
 const TeacherDashboard = (props) => {
 
+  const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   if (props.user === false) {
+      
+  //     navigate('/Login')
+  //   }
+  // })
+
+
 
   return (
     <>
@@ -17,8 +27,9 @@ const TeacherDashboard = (props) => {
         <Link to='#'><button>View Course</button></Link>
         <Link to='/dashboard/changepassword'><button>Change Password</button></Link>
 
-
-
+        
+        
+          <button>View Courses</button>
       </div>
 
     </>

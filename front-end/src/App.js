@@ -57,8 +57,6 @@ function App() {
           {/* Common Routes  Dynamic Route */}
           <Route path='/dashboard/updateprofile' element={<UpdateProfile />} />
           <Route path='/dashboard/changepassword' element={<ChangePassword />} />
-          <Route path='/coursedetails' element={<CoursePage />} />
-
 
         </Routes>
       </BrowserRouter>
