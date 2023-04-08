@@ -115,7 +115,8 @@
   .right {
     width: 50%;
     display: flex;
-    // justify-content: end;
+    justify-content:flex-end;
+    align-items: center;
 
     img {
       width: 700px;

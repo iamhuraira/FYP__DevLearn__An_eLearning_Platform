@@ -1,6 +1,8 @@
+// eslint-disable-next-line
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header/Header'
 import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line
 import { Link, Navigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 
@@ -11,6 +13,7 @@ const SignUp = () => {
   // const [show, setShow] = useState(false);
   const [show, setShow] = useState(false);
   const [term, setTerm] = useState(false);
+  // eslint-disable-next-line
   const [getSignup, response] = useGetSignupMutation();
   const [user, setUser] = useState({
     name: '',
@@ -35,13 +38,12 @@ const SignUp = () => {
 
   }
   const signup = () => {
-    // alert('signup called before validation');
+
+    // const { cpassword, ...Newuser } = user;
+    // console.log(Newuser);
     getSignup(user);
     navigate('/login');
-    // if (validate) {
-    //   alert('success! Validation is true sign up called');
-    //   // getSignup(user)
-    // }
+   
     
     
     

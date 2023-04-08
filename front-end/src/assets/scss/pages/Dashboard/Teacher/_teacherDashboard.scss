@@ -1,10 +1,11 @@
 .teacher-btn{
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: space-between;
     margin: 70px 200px;
 
     button{
-        // width: 250px;
+        min-width: 330px;
         height: 80px;
         background-color: #0C3A53;
         color: white;
@@ -19,7 +20,7 @@
             border: 2px solid #0C3A53;
             color: #0C3A53;
             // font-size: 3rem;
-            font-weight: 900;
+            // font-weight: 900;
         }
     }
 }
