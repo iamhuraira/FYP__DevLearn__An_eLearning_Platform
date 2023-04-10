@@ -155,8 +155,8 @@ const CreateCourse = () => {
 
 
     const handleCourseSubmit =  () => { 
-        // console.log(sectionData)
-        alert('Course Created Successfully')
+        console.log(sectionData)
+        // alert('Course Created Successfully')
     }
 
 

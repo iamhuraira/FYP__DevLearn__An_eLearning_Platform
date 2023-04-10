@@ -6,7 +6,8 @@ console.log(baseurl)
 
 export const signupApi = createApi({
     reducerPath: 'signup',
-    baseQuery: fetchBaseQuery({ baseUrl: baseurl}),
+    baseQuery: fetchBaseQuery({ baseUrl: baseurl }),
+    
 
     endpoints: (builder) => ({
         getSignup: builder.mutation({
