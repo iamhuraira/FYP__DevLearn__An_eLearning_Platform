@@ -11,6 +11,7 @@ import TeacherDashboard from './pages/Dashboard/Teacher/TeacherDashboard';
 import CreateCourse from './pages/Dashboard/Teacher/CreateCourse';
 import UpdateProfile from './pages/Dashboard/UpdateProfile';
 import ChangePassword from './pages/Dashboard/ChangePassword';
+import CoursePage from './pages/CoursePage';
 
 // import { useEffect, useState } from 'react';
 function App() {
@@ -42,11 +43,13 @@ function App() {
           
 
 
-          {/* Common Routes */}
+          {/* Common Routes  Dynamic Route */}   
           <Route path='/dashboard/updateprofile' element={<UpdateProfile />} />
           <Route path='/dashboard/changepassword' element={<ChangePassword />} />
+          <Route path='/coursedetails' element={<CoursePage />} />
 
-        </Routes>
+
+       </Routes>
       </BrowserRouter>
     </div>
   );
