@@ -4,7 +4,7 @@
   "description": "fyp",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "index.js",
     "start:prod": "set NODE_ENV=production&&nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
