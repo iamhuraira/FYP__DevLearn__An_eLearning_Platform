@@ -1,0 +1,8 @@
+{
+  "env": {
+    "BRANCH": "ahmar_backend"
+  },
+  "scripts": {
+    "vercel-deploy": "if [ \"$BRANCH\" != \"master\" ]; then echo \"Cannot deploy from $BRANCH branch\"; exit 1; fi"
+  }
+}
