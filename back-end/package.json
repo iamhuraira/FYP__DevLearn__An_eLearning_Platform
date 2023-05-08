@@ -1,0 +1,35 @@
+{
+  "name": "devlearn",
+  "version": "1.0.0",
+  "description": "fyp",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "start:prod": "set NODE_ENV=production&&nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamhuraira/FYP__DevLearn__An_eLearning_Platform.git"
+  },
+  "author": "Ahmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamhuraira/FYP__DevLearn__An_eLearning_Platform/issues"
+  },
+  "homepage": "https://github.com/iamhuraira/FYP__DevLearn__An_eLearning_Platform#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.1",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
