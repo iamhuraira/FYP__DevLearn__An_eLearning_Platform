@@ -60,7 +60,7 @@ function App() {
           <Route path='/coursedetails' element={<CoursePage />} />
 
 
-       </Routes>
+        </Routes>
       </BrowserRouter>
     </div>
   );

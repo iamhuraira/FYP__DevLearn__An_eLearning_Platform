@@ -17,8 +17,8 @@ const TeacherDashboard = (props) => {
         <Link to='#'><button>View Course</button></Link>
         <Link to='/dashboard/changepassword'><button>Change Password</button></Link>
 
-        
-        
+
+
       </div>
 
     </>
