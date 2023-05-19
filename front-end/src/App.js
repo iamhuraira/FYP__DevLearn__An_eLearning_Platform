@@ -12,6 +12,9 @@ import CreateCourse from './pages/Dashboard/Teacher/CreateCourse';
 import UpdateProfile from './pages/Dashboard/UpdateProfile';
 import ChangePassword from './pages/Dashboard/ChangePassword';
 import CoursePage from './pages/CoursePage';
+import AdminSignUp from './pages/AdminSignUp';
+import AdminDashboard from './pages/Dashboard/Admin/AdminDashboard';
+import StudentDashboard from './pages/Dashboard/Student/StudentDashboard';
 
 // import { useEffect, useState } from 'react';
 function App() {
@@ -29,27 +32,35 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/SignUp' element={<SignUp />} />
+          <Route path='/adminSignUp' element={<AdminSignUp />} />
           <Route path='/Terms' element={<Terms />} />
 
           {/* Dashboard Routes */}
-        
+
           {/* <Route path='/studentdashboard' element={<TeacherDashboard />} />
           <Route path='/admin' element={<TeacherDashboard />} /> */}
 
-          
+
           {/* Teacher Routes */}
-          <Route path='/teacherdashboard' element={<TeacherDashboard  />} />
+          <Route path='/teacherdashboard' element={<TeacherDashboard />} />
           <Route path='/teacherdashboard/createcourse' element={<CreateCourse />} />
-          
+
+          {/* Admin Routes */}
+          <Route path='/admindashboard' element={<AdminDashboard />} />
+
+          {/* Student Routes */}
+          <Route path='/studentdashboard' element={<StudentDashboard />} />
 
 
-          {/* Common Routes  Dynamic Route */}   
+
+
+          {/* Common Routes  Dynamic Route */}
           <Route path='/dashboard/updateprofile' element={<UpdateProfile />} />
           <Route path='/dashboard/changepassword' element={<ChangePassword />} />
           <Route path='/coursedetails' element={<CoursePage />} />
 
 
-       </Routes>
+        </Routes>
       </BrowserRouter>
     </div>
   );
