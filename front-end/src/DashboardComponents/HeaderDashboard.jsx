@@ -12,6 +12,9 @@ const HeaderDashboard = (props) => {
     navigate('/dashboard/changepassword')
   }
   const [showLogout, setshowLogout] = useState(false)
+
+  const name = props.name || 'Abu Huraira' ;
+
   return (
     <div className='header'>
       <div className="logo">
@@ -19,7 +22,7 @@ const HeaderDashboard = (props) => {
       </div>
       <div className='userinfo'>
 
-        <h2>Abu Huraira</h2>
+        <h2>{name}</h2>
         <div className='dashboard-nav'>
           <span className='user-icon' onClick={()=>{setshowLogout(!showLogout)}}>
             {
@@ -30,7 +33,7 @@ const HeaderDashboard = (props) => {
           </span>
           {showLogout && <nav >
             <ul>
-              <li className='name'>Abu Huraira</li>
+              <li className='name'>{name}</li>
               <li className='changePassword' onClick={handleChangePassword}>Change Password</li>
               <li className='logout'>Logout <span><FiLogOut /> </span></li>
             </ul>

@@ -6,27 +6,22 @@ import { Link } from 'react-router-dom'
 const TeacherDashboard = (props) => {
 
 
-
- 
-
-
-
   return (
-      <>
-      <HeaderDashboard />
+    <>
+      <HeaderDashboard name="Abu Huraira" />
       <Welcome />
 
       <div className='teacher-btn'>
         <Link to='/dashboard/updateprofile'><button>Update Profile</button></Link>
         <Link to='/teacherdashboard/createcourse'><button >Create Course</button></Link>
-          <button>View Courses</button>
+        <button>View Courses</button>
         <Link to='/dashboard/changepassword'><button>Change Password</button></Link>
 
-        
-        
+
+
       </div>
 
-      </>
+    </>
   )
 }
 
