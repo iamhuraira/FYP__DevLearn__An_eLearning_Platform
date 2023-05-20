@@ -33,8 +33,7 @@
       color: #ffff;
       font-weight: 400;
       font-style: normal;
-
-
+      
       cursor: pointer;
 
       h3 {
@@ -63,12 +62,15 @@
       // }
 
       @media screen and (max-width: 770px) {
+        background-color: #ffff;
+        color: #0c3a53;
         font-weight: bolder;
         font-size: 3rem;
       }
 
       @media screen and (max-width: 560px) {
         font-weight: bold;
+        color: #0c3a53;
         font-size: 2.5rem;
       }
 
