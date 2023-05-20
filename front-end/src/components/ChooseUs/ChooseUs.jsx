@@ -2,12 +2,11 @@ import React from "react";
 import Mid from "./Mid";
 import Top from "./Top";
 import Bottom from "./Bottom";
-import CourseCard from "../CourseCard/CourseCard";
 
 const ChooseUs = () => {
   return (
     <>
-      <div className="containerLp">
+      <div className="container-heading">
         <h1> Why learners choose us?</h1>
       </div>
       {/* content */}
