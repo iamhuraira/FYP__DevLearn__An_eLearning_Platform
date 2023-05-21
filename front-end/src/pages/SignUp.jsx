@@ -159,7 +159,7 @@ const SignUp = () => {
       <div className='background'>
 
 
-        {!show && <div className="roleContainer ">
+        {!show && <div className="roleContainer " style={{height:"80vh"}}>
           <div class="wrapper">
 
             <input type="radio" name="role" id="student" checked

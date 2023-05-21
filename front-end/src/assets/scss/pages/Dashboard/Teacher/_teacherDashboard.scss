@@ -1,11 +1,11 @@
-.teacher-btn{
+.teacher-btn {
     display: flex;
     // justify-content: space-around;
     justify-content: space-between;
     margin: 70px 200px;
 
-    button{
-        min-width: 330px;
+    button {
+        min-width: 280px;
         height: 80px;
         background-color: #0C3A53;
         color: white;
@@ -15,12 +15,80 @@
         cursor: pointer;
         font-weight: 700;
 
-        &:hover{
+        &:hover {
             background-color: white;
             border: 2px solid #0C3A53;
             color: #0C3A53;
             // font-size: 3rem;
             // font-weight: 900;
         }
+    }
+
+    @media screen and (max-width: 1600px) {
+        margin: 70px 100px;
+
+        button {
+            min-width: 200px;
+        }
+
+    }
+
+    @media screen and (max-width: 1300px) {
+        margin: 70px 50px;
+
+        button {
+            min-width: 200px;
+        }
+
+    }
+
+    @media screen and (max-width: 1024px) {
+        flex-wrap: wrap;
+
+        a {
+            width: 46%;
+
+
+            button {
+                min-width: 100%;
+                margin: 10px 0;
+
+            }
+        }
+
+    }
+
+    @media screen and (max-width: 768px) {
+        margin: 40px 20px;
+        justify-content: space-evenly;
+
+        a {
+
+
+            button {
+
+                width: 100%;
+                padding: 10px 15px;
+
+            }
+        }
+
+    }
+
+    @media screen and (max-width: 500px) {
+
+        a {
+            width: 80%;
+
+
+            button {
+                min-width: 100%;
+                width: 100%;
+                margin: 10px 0;
+                padding: 10px 15px;
+
+            }
+        }
+
     }
 }
