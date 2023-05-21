@@ -121,6 +121,43 @@ const CreateCourse = () => {
         setsectionData(newSectionData)
     }
 
+    
+    const [msg, setMsg] = useState('');
+    const [showAlert, setShowAlert] = useState(false);
+
+    const validateData = () => {
+        for (let i = 0; sectionData.length > i; i++) {
+            if (sectionData[i].sectionName === '') {
+                setMsg('Please fill all section name');
+                setShowAlert(true);
+                return false;
+            }
+            for (let j = 0; sectionData[i].videoData.length > j; j++) {
+                if (sectionData[i].videoData[j].videoName === '' || sectionData[i].videoData[j].videoLink === '') {
+                    setMsg('Please fill all video name and video link');
+                    setShowAlert(true);
+                    return false;
+                }
+            }
+            for (let k = 0; sectionData[i].quiz.length > k; k++) {
+                if (sectionData[i].quiz[k].Question === '' || sectionData[i].quiz[k].option1 === '' || sectionData[i].quiz[k].option2 === '' || sectionData[i].quiz[k].option3 === '' || sectionData[i].quiz[k].option4 === '' || sectionData[i].quiz[k].answer === '') {
+                    setMsg('Please fill all question and options');
+                    setShowAlert(true);
+                    return false;
+                }
+            }
+        }
+
+        setShowAlert(false);
+
+        handleCourseSubmit();
+    }
+
+
+    const handleCourseSubmit =  () => { 
+        console.log(sectionData)
+        // alert('Course Created Successfully')
+    }
 
 
 
