@@ -14,7 +14,7 @@ const TeacherDashboard = (props) => {
       <div className='teacher-btn'>
         <Link to='/dashboard/updateprofile'><button>Update Profile</button></Link>
         <Link to='/teacherdashboard/createcourse'><button >Create Course</button></Link>
-        <button>View Courses</button>
+        <Link to='#'><button>View Course</button></Link>
         <Link to='/dashboard/changepassword'><button>Change Password</button></Link>
 
 
