@@ -53,30 +53,19 @@
           font-size: 3rem;
         }
       }
-      // @media screen and (max-width: 904px){
-      //   width: 172px;
-      //   height: 48px;
-      //   h3 {
-      //     font-size: 2.7rem;
-      //   }
-      // }
 
       @media screen and (max-width: 770px) {
-        // background-color: #ffff;
-        // color: #0c3a53;
         font-weight: bolder;
         font-size: 3rem;
       }
 
       @media screen and (max-width: 560px) {
         font-weight: bold;
-        color: #0c3a53;
         font-size: 2.5rem;
       }
 
       @media screen and (max-width: 321px) {
-        width: 70px;
-        color: #0c3a53;
+       width: 60%;
         font-size: 2rem;
       }
     } //button-ends

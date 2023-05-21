@@ -11,8 +11,8 @@ const LandingPage = () => {
     <>
       <Header />
       <Hero />
-      <ChooseUs />
-      <OurLearningPath />
+      {/* <ChooseUs /> */}
+      {/* <OurLearningPath /> */}
       <Footer />
     </>
   );
