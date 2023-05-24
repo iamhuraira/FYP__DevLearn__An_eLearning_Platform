@@ -7,6 +7,8 @@ import { Link, Navigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 
 import { useGetSignupMutation } from '../Redux/api/signupSlice';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../Redux/slices/accountSlice';
 
 
 const SignUp = () => {
@@ -14,19 +16,46 @@ const SignUp = () => {
   const [show, setShow] = useState(false);
   const [term, setTerm] = useState(false);
   // eslint-disable-next-line
-  const [getSignup, response] = useGetSignupMutation();
+  const [getSignup, { data, isLoading, isSuccess }] = useGetSignupMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  console.log(isSuccess)
+  if (isSuccess) {
+    console.log(data)
+    const { token, data: userdata } = data;
+    const { user } = userdata;
+    // console.log(user)
+
+    dispatch(setUserData(user));
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    const { role } = user;
+    localStorage.setItem('role', role);
+
+    if (role === 'admin') {
+      navigate('/admindashboard');
+    }
+    else if (role === 'student') {
+      navigate('/studentdashboard');
+    } else if (role === 'teacher') {
+      navigate('/teacherdashboard');
+    }
+
+  }
+  // console.log(token)
+
   const [user, setUser] = useState({
     name: '',
     email: '',
     password: '',
     cpassword: '',
     role: 'student'
-    
+
   });
   const [message, setMessage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
-  const navigate = useNavigate();
- 
+
+
 
 
   const handleInputs = (e) => {
@@ -38,16 +67,13 @@ const SignUp = () => {
 
   }
   const signup = () => {
+    console.log(user)
+    getSignup(user)
 
-    // const { cpassword, ...Newuser } = user;
-    // console.log(Newuser);
-    getSignup(user);
-    navigate('/login');
-   
-    
-    
-    
   }
+
+
+
 
   const validateform = (e) => {
     e.preventDefault();
@@ -89,7 +115,7 @@ const SignUp = () => {
         parent.classList.remove('error');
 
       }
-     
+
 
 
 
@@ -106,7 +132,7 @@ const SignUp = () => {
       document.getElementById('cpassword').parentNode.classList.remove('error');
       setShowAlert(false);
     }
-    if (password.length < 5 && password.length > 10) { 
+    if (password.length < 5 && password.length > 10) {
       const parent = document.getElementById('password').parentNode;
       parent.classList.add('error');
       setMessage('Password must be 5 to 10 characters');
@@ -136,16 +162,16 @@ const SignUp = () => {
     }
 
 
-    if (term === false) { 
-     setMessage('Please accept Terms & Conditions');
+    if (term === false) {
+      setMessage('Please accept Terms & Conditions');
       setShowAlert(true);
       return false;
     }
 
     signup();
 
-    
-    
+
+
 
 
   }
@@ -159,18 +185,18 @@ const SignUp = () => {
       <div className='background'>
 
 
-        {!show && <div className="roleContainer " style={{height:"80vh"}}>
-          <div class="wrapper">
+        {!show && <div className="roleContainer " style={{ height: "80vh" }}>
+          <div className="wrapper">
 
             <input type="radio" name="role" id="student" checked
               value='student' onChange={handleInputs} onClick={() => setShow(true)} />
             <input type="radio" name="role" id="teacher"
               value='teacher' onChange={handleInputs} onClick={() => setShow(true)} />
-            <label for="student" class="option student" >
+            <label htmlFor="student" class="option student" >
               <div class="dot"></div>
               <span>Student</span>
             </label>
-            <label for="teacher" class="option teacher">
+            <label htmlFor="teacher" class="option teacher">
               <div class="dot"></div>
               <span>Teacher</span>
             </label>
@@ -196,24 +222,24 @@ const SignUp = () => {
             </div>
             <div className="form-group">
               <input type="text" name="name" id="name" placeholder='Name'
-                value={user.name} onChange={handleInputs}  />
+                value={user.name} onChange={handleInputs} />
             </div>
             <div className="form-group">
               <input type="email" name="email" id="email" placeholder='Email'
-                value={user.email} onChange={handleInputs}  />
+                value={user.email} onChange={handleInputs} />
 
             </div>
             <div className="form-group">
               <input type="password" name="password" id="password" placeholder='Password'
-                value={user.password} onChange={handleInputs}  />
+                value={user.password} onChange={handleInputs} />
             </div>
             <div className="form-group">
               <input type="password" name="cpassword" id="cpassword" placeholder='Confirm Password'
-                value={user.cpassword} onChange={handleInputs}  />
+                value={user.cpassword} onChange={handleInputs} />
             </div>
             <div className="checkbox">
 
-              <input type="checkbox" name="term" id="term" value='' onClick={() => setTerm(!term)}  />
+              <input type="checkbox" name="term" id="term" value='' onClick={() => setTerm(!term)} />
               <span>Creating your account and you accepting <Link to="/Terms" target="_blank"><span className="term" >Terms & Conditions</span></Link>.</span>
             </div>
             <div className="form-group">

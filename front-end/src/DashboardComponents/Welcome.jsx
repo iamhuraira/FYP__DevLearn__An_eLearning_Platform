@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Welcome = () => {
+const Welcome = ({name}) => {
     return (
       <div className='background-dashboard'>
             
-    <h2>Welcome! <span>Abu Huraira</span></h2>
+    <h2>Welcome! <br /> <span>{name}</span></h2>
       </div>
   )
 }

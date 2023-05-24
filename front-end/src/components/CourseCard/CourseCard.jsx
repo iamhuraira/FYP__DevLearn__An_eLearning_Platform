@@ -10,11 +10,18 @@ const CourseCard = () => {
                     <img src={py} alt="" srcset="" />
                 </div>
                 <h2>Programming for Everybody (Getting Started with Python)</h2>
+                <h3>
+                    Abu Huraira
+                </h3>
 
                 <p>
                     <span>Beginner </span>
                     <span>·</span>
                     <span> 3 Weeks </span>
+                   
+                </p>
+                <p>
+                    <span> 200+ Solved Examples </span>
                 </p>
 
             </div>

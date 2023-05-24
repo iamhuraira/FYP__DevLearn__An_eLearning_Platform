@@ -26,8 +26,8 @@ const Header = (props) => {
       <div className='btns'>
         
       <button className='p-btn'
-        onClick={() => navigate(props.login ? '/Login' : '/SignUp')}>
-        {props.login ? 'Log In' : 'Sign Up'}
+          onClick={() => navigate(props.signup ? '/SignUp': '/Login' )}>
+          {props.signup ? 'Sign Up' : 'Login'}
       </button>
       <button className=' btn-nav btn-bar' onClick={showNavBar}>
         <FaBars/>

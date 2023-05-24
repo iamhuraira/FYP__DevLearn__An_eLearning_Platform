@@ -3,7 +3,10 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hero/Hero";
 import ChooseUs from "../components/ChooseUs/ChooseUs";
+import CourseCard from "../components/CourseCard/CourseCard";
 import OurLearningPath from "../components/OurLearningPath/OurLearningPath";
+import CourseSlider from "../components/CourseSlider/CourseSlider";
+
 
 
 const LandingPage = () => {
@@ -11,8 +14,9 @@ const LandingPage = () => {
     <>
       <Header />
       <Hero />
-      {/* <ChooseUs /> */}
-      {/* <OurLearningPath /> */}
+      <ChooseUs />
+      <OurLearningPath />
+      <CourseSlider />
       <Footer />
     </>
   );

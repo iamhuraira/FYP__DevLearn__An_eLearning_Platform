@@ -2,14 +2,16 @@ import React from 'react'
 import HeaderDashboard from '../../../DashboardComponents/HeaderDashboard'
 import Welcome from '../../../DashboardComponents/Welcome'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const TeacherDashboard = (props) => {
 
-
+  const useDatar = useSelector(state => state.user.userData)
+  // console.log(useDatar)
   return (
     <>
-      <HeaderDashboard name="Abu Huraira" />
-      <Welcome />
+      <HeaderDashboard user={useDatar} />
+      <Welcome name={useDatar.name}/>
 
       <div className='teacher-btn'>
         <Link to='/dashboard/updateprofile'><button>Update Profile</button></Link>

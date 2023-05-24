@@ -42,7 +42,7 @@ const UpdateProfile = () => {
     const [country, setCountry] =   React.useState('');
     const [date, setDate] = React.useState();
 
-
+  
     const handleSaveImg = () => {
         // console.log('OnSaveClicked')
         setSaveImg([...saveImg, { imgCrop }])
@@ -74,9 +74,19 @@ const UpdateProfile = () => {
         profilePic : avatarPreviw,
     }
 
+    const img = new Image();
+    img.src = avatarPreviw;
+    img.onload = function () {
+        // Access the image dimensions
+        console.log("Image width:", img.width);
+        console.log("Image height:", img.height);
+        console.log("Image Name:", img);
+    };
+
     const HandleSubmit = () => { 
         // alert('Profile Updated', userProfile)
-        console.log(userProfile)
+        // console.log(userProfile)
+       
     }
   
     

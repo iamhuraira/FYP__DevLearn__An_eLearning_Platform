@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import { Link, Navigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 
-import { useGetSignupMutation } from '../Redux/api/signupSlice';
+import { useGetAdminSignupMutation, useGetSignupMutation } from '../Redux/api/signupSlice';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../Redux/slices/accountSlice';
 
 
 const AdminSignUp = () => {
     const [term, setTerm] = useState(false);
     // eslint-disable-next-line
-    const [getSignup, response] = useGetSignupMutation();
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -23,7 +24,6 @@ const AdminSignUp = () => {
     });
     const [message, setMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
-    const navigate = useNavigate();
 
 
 
@@ -35,13 +35,40 @@ const AdminSignUp = () => {
         setUser({ ...user, [nameofinput]: value });
 
     }
+    const [getSignup, { data, isLoading, isSuccess }] = useGetAdminSignupMutation();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    console.log(isSuccess)
+    if (isSuccess) {
+        console.log(data)
+        const { token, data: userdata } = data;
+        const { user } = userdata;
+        // console.log(user)
+
+        dispatch(setUserData(user));
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+
+        const { role } = user;
+        localStorage.setItem('role', role);
+
+        if (role === 'admin') {
+            navigate('/admindashboard');
+        }
+        else if (role === 'student') {
+            navigate('/studentdashboard');
+        } else if (role === 'teacher') {
+            navigate('/teacherdashboard');
+        }
+
+    }
     const signup = () => {
 
         // const { cpassword, ...Newuser } = user;
         // console.log(Newuser);
+         console.log(user);
         getSignup(user);
-        navigate('/login');
-
 
 
 
@@ -153,7 +180,7 @@ const AdminSignUp = () => {
 
     return (
         <div>
-            <Header login />
+            <Header signup />
             <div className='background'>
                 <div className="formContainer">
 

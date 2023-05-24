@@ -1,11 +1,126 @@
 .fun {
     width: 100%;
-    margin: 50px 150px;
+    margin: 50px 48px;
+
+    @media screen and (max-width: 1764px) {
+        margin: 50px 32px;
+    }
+
+    @media screen and (max-width: 1664px) {
+        margin: 50px 18px;
+    }
+
+    @media screen and (max-width: 1605px) {
+        margin: 0px 10px;
+    }
+    @media screen and (max-width: 1537px) {
+        margin: 0px 0px;
+    }
+
+    @media screen and (max-width: 1440px) {
+        margin: 0px 0px;
+    }
+
+    @media screen and (max-width: 1300px) {
+        margin: 0px -11px;
+    }
+
+    @media screen and (max-width: 1244px) {
+        margin: -50px -18px;
+    }
+
+    @media screen and (max-width: 1205px) {
+        margin: -50px -29px;
+    }
+
+    @media screen and (max-width: 1196px) {
+        margin: -50px -32px;
+    }
+
+    @media screen and (max-width: 1132px) {
+        margin: -70px -38px;
+    }
+
+    @media screen and (max-width: 1044px) {
+        margin: -70px -48px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        margin: -10px -14px;
+    }
+
+    @media screen and (max-width: 978px) {
+        margin: -23px -23px;
+    }
+
+    @media screen and (max-width: 912px) {
+        margin: -23px -33px;
+    }
+
+    @media screen and (max-width: 890px) {
+        margin: -50px -33px;
+    }
+
+    @media screen and (max-width: 840px) {
+        margin: -50px -45px;
+    }
+
+    @media screen and (max-width: 798px) {
+        margin: -50px -51px;
+    }
+
+    @media screen and (max-width: 780px) {
+        margin: -50px -2px;
+    }
+
+    @media screen and (max-width: 702px) {
+        margin: -50px -12px;
+    }
+
+    @media screen and (max-width: 638px) {
+        margin: -50px -26px;
+    }
+
+    @media screen and (max-width: 600px) {
+        margin: -50px -34px;
+    }
+
+    @media screen and (max-width: 586px) {
+        margin: -50px -40px;
+    }
+
+    @media screen and (max-width: 500px) {
+        margin: 0px 65px;
+    }
+
+    @media screen and (max-width: 475px) {
+        margin: 0px 49px;
+    }
+
+    @media screen and (max-width: 425px) {
+        margin: 0px 28px;
+    }
+
+    @media screen and (max-width: 400px) {
+        margin: 0px 16px;
+    }
+
+    @media screen and (max-width: 375px) {
+        margin: 0px 0px;
+    }
+
+    @media screen and (max-width: 350px) {
+        margin: -50px -13px;
+    }
+
+    @media screen and (max-width: 320px) {
+        margin: -50px -23px;
+    }
 }
 
 .backgroundCard {
     height: 450px;
-    width: 350px;
+    width: 320px;
     background-color: white;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
     border-radius: 10px;
@@ -13,7 +128,7 @@
     border: 1px solid gray;
 
     img {
-        width: 350px;
+        width: 320px;
         height: 175px;
         overflow: hidden;
         border-radius: 10px 10px 0 0;
@@ -44,21 +159,107 @@
         width: 245px;
         margin: 45px 0px 0px 35px;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 2.4rem;
+        color: #444444;
+    }
+
+    h3 {
+        width: 245px;
+        margin: 10px 0px 0px 40px;
+        font-weight: 400;
+        font-size: 2rem;
         color: #444444;
     }
 
     p {
         margin-left: 35px;
-        margin-top: 85px;
+        margin-top: 50px;
         font-weight: 400;
         font-size: 18px;
         color: #444444;
         gap: 10px;
 
         span:nth-of-type(2) {
-            font-size: 25px;
+            font-size: 2.5rem;
             font-weight: bolder;
         }
+
+        &:nth-of-type(2) {
+            margin-top: 5px;
+        }
+
+
+    }
+
+    @media screen and (max-width: 1605px) {
+
+        transform: scale(0.9);
+
+    }
+
+    @media screen and (max-width: 1440px) {
+
+        transform: scale(0.8);
+
+    }
+
+    @media screen and (max-width: 1300px) {
+
+        transform: scale(0.7);
+
+    }
+
+    @media screen and (max-width: 1132px) {
+
+        transform: scale(0.6);
+
+    }
+
+    @media screen and (max-width: 1024px) {
+
+        transform: scale(0.8);
+
+    }
+
+    @media screen and (max-width: 978px) {
+
+        transform: scale(0.7);
+
+    }
+
+    @media screen and (max-width: 890px) {
+
+        transform: scale(0.6);
+
+    }
+
+    @media screen and (max-width: 780px) {
+
+        transform: scale(0.7);
+
+    }
+
+    @media screen and (max-width: 586px) {
+
+        transform: scale(0.6);
+
+    }
+
+    @media screen and (max-width: 500px) {
+
+        transform: scale(0.9);
+
+    }
+
+    @media screen and (max-width: 400px) {
+
+        transform: scale(0.8);
+
+    }
+
+    @media screen and (max-width: 350px) {
+
+        transform: scale(0.7);
+
     }
 }

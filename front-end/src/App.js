@@ -15,6 +15,11 @@ import CoursePage from './pages/CoursePage';
 import AdminSignUp from './pages/AdminSignUp';
 import AdminDashboard from './pages/Dashboard/Admin/AdminDashboard';
 import StudentDashboard from './pages/Dashboard/Student/StudentDashboard';
+import Price from './pages/Price';
+import Courses from './pages/Courses';
+
+
+
 
 // import { useEffect, useState } from 'react';
 function App() {
@@ -34,6 +39,7 @@ function App() {
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/adminSignUp' element={<AdminSignUp />} />
           <Route path='/Terms' element={<Terms />} />
+          <Route path='/price' element={<Price />} />
 
           {/* Dashboard Routes */}
 
@@ -58,8 +64,8 @@ function App() {
           <Route path='/dashboard/updateprofile' element={<UpdateProfile />} />
           <Route path='/dashboard/changepassword' element={<ChangePassword />} />
           <Route path='/coursedetails' element={<CoursePage />} />
-
-
+          <Route path='/courses' element={<Courses />} />
+          
         </Routes>
       </BrowserRouter>
     </div>

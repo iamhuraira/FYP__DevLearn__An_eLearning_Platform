@@ -1,23 +1,15 @@
 import React from 'react'
 import HeaderDashboard from '../../../DashboardComponents/HeaderDashboard'
+import { useSelector } from 'react-redux'
+
 
 
 const AdminDashboard = () => {
-    const getAllUser = async () => {
-        const baseurl = `${process.env.REACT_APP_BASE_URL}`
-
-        console.log(baseurl)
-        const response = await fetch(baseurl);
-        // waits until the request completes...
-       
-        console.log(response);
-
-    }
+    const useDatar = useSelector(state => state.user.userData)
+   
     return (
         <>
-            <HeaderDashboard name="Abu Huraira" />
-
-            <button onClick={getAllUser}>Get All User</button>
+            <HeaderDashboard user={useDatar} />
         </>
     )
 }

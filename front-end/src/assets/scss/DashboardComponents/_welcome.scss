@@ -1,17 +1,50 @@
-.background-dashboard{
-    background: rgba(35, 186, 177, 0.05);
+.background-dashboard {
+    background-color: rgba(35, 186, 177, 0.05) !important;
+    // background-color: red;
     height: 300px;
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
 
-    h2{
+    h2 {
         font-weight: 700;
-            font-size: 8rem;
-            color: #444444;
-            span{
-                color: #23BAB1;
-            }
+        font-size: 8rem;
+        color: #444444;
+
+        span {
+            color: #23BAB1;
+        }
+
+        br {
+            display: none;
+        }
     }
+
+
+    @media screen and (max-width: 768px) {
+        height: 200px;
+
+        h2 {
+            font-size: 4rem;
+        }
+
+
+    }
+
+    @media screen and (max-width: 425px) {
+        h2 {
+            font-size: 6rem;
+
+            br {
+                display: unset !important;
+
+            }
+        }
+
+
+
+
+    }
+
 }
