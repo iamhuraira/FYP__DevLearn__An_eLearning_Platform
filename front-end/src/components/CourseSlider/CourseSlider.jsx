@@ -4,14 +4,18 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import arrowslide from '../../assets/img/arrow.png'
 
-const CourseSlider = () => {
+
+const CourseSlider = ({ title }) => {
+
+    const [logedIn, setLogedIn] = React.useState(true)
+  
     return (
         <>
             <div className='courseSliderSection'>
 
 
-                <div className='headingCourse'>
-                    <h1>Popular Courses</h1>
+                <div className={`headingCourse ${logedIn && "JCS"} `} >
+                    <h1>{title}</h1>
 
                 </div>
                 <Splide

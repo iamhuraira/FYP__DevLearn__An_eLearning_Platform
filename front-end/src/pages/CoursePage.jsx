@@ -26,9 +26,32 @@ const CoursePage = () => {
 
                 </div>
             </div>
+            <div className='basicDetail'>
+                <div className="basicDetailbox">
+                    <h2>42+</h2>
+                    <hr />
+                    <h3>
+                        Solved Example
+                    </h3>
+                </div>
+                <div className="basicDetailbox">
+                    <h2>20+</h2>
+                    <hr />
+                    <h3>
+                        Hours of video content
+                    </h3>
+                </div>
+                <div className="basicDetailbox">
+                    <h2>Easy</h2>
+                    <hr />
+                    <h3>
+                        Difficulty level
+                    </h3>
+                </div>
+            </div>
 
 
-            <Footer/>
+            <Footer />
 
 
 

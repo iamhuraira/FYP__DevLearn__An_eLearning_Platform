@@ -1,6 +1,4 @@
-// .courseWrapper {
-//     margin: 0 150px;
-// }
+
 .backgroundCourse {
     background: rgba(35, 186, 177, 0.05);
     padding: 0 150px;
@@ -78,5 +76,40 @@
                 clip-path: polygon(19% 0, 100% 0, 100% 100%, 0 100%);
             }
         }
+    }
+}
+
+.basicDetail{
+    width: 100%;
+   margin: 100px 0px; 
+   display: flex;
+   justify-content: space-evenly;
+    align-items: center;
+
+    .basicDetailbox{
+        width: 400px;
+       text-align: center;
+       border: 2px solid #707070;
+         border-radius: 10px;
+         padding: 20px 30px;
+         h2{
+            font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 6rem;
+                color: #23BAB1;
+         }
+         h3{
+            font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 3rem;
+                color: #444444;
+         }
+          hr{
+            color: #707070;
+            width: 70%;
+            margin: 15px auto;
+          }
     }
 }

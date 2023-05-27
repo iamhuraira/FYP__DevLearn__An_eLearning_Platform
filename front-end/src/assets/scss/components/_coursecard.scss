@@ -1,126 +1,46 @@
 .fun {
     width: 100%;
-    margin: 50px 48px;
+    padding: 20px 45px;
+    // margin: 50px 48px;
 
     @media screen and (max-width: 1764px) {
-        margin: 50px 32px;
-    }
+        padding: 20px 9%;
 
-    @media screen and (max-width: 1664px) {
-        margin: 50px 18px;
-    }
-
-    @media screen and (max-width: 1605px) {
-        margin: 0px 10px;
-    }
-    @media screen and (max-width: 1537px) {
-        margin: 0px 0px;
     }
 
     @media screen and (max-width: 1440px) {
-        margin: 0px 0px;
+        padding: 20px 5%;
     }
 
     @media screen and (max-width: 1300px) {
-        margin: 0px -11px;
-    }
-
-    @media screen and (max-width: 1244px) {
-        margin: -50px -18px;
-    }
-
-    @media screen and (max-width: 1205px) {
-        margin: -50px -29px;
-    }
-
-    @media screen and (max-width: 1196px) {
-        margin: -50px -32px;
-    }
-
-    @media screen and (max-width: 1132px) {
-        margin: -70px -38px;
-    }
-
-    @media screen and (max-width: 1044px) {
-        margin: -70px -48px;
+        padding: 20px 0%;
     }
 
     @media screen and (max-width: 1024px) {
-        margin: -10px -14px;
-    }
+        padding: 0px 0%;
 
-    @media screen and (max-width: 978px) {
-        margin: -23px -23px;
-    }
 
-    @media screen and (max-width: 912px) {
-        margin: -23px -33px;
-    }
-
-    @media screen and (max-width: 890px) {
-        margin: -50px -33px;
-    }
-
-    @media screen and (max-width: 840px) {
-        margin: -50px -45px;
-    }
-
-    @media screen and (max-width: 798px) {
-        margin: -50px -51px;
-    }
-
-    @media screen and (max-width: 780px) {
-        margin: -50px -2px;
-    }
-
-    @media screen and (max-width: 702px) {
-        margin: -50px -12px;
-    }
-
-    @media screen and (max-width: 638px) {
-        margin: -50px -26px;
-    }
-
-    @media screen and (max-width: 600px) {
-        margin: -50px -34px;
-    }
-
-    @media screen and (max-width: 586px) {
-        margin: -50px -40px;
     }
 
     @media screen and (max-width: 500px) {
-        margin: 0px 65px;
-    }
 
-    @media screen and (max-width: 475px) {
-        margin: 0px 49px;
-    }
+        padding: 20px 14%;
 
-    @media screen and (max-width: 425px) {
-        margin: 0px 28px;
     }
 
     @media screen and (max-width: 400px) {
-        margin: 0px 16px;
+
+        padding: 20px 6%;
+
     }
 
-    @media screen and (max-width: 375px) {
-        margin: 0px 0px;
-    }
-
-    @media screen and (max-width: 350px) {
-        margin: -50px -13px;
-    }
-
-    @media screen and (max-width: 320px) {
-        margin: -50px -23px;
-    }
 }
 
 .backgroundCard {
-    height: 450px;
-    width: 320px;
+    height: 440px;
+    width: 100%;
+    max-width: 320px;
+
     background-color: white;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
     border-radius: 10px;
@@ -128,10 +48,16 @@
     border: 1px solid gray;
 
     img {
-        width: 320px;
+        width: 100%;
         height: 175px;
         overflow: hidden;
         border-radius: 10px 10px 0 0;
+
+        @media screen and (max-width: 400px) {
+
+            height: 125px;
+
+        }
     }
 
     .courseLogo {
@@ -146,34 +72,113 @@
         filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
         position: absolute;
         top: 120px;
-        left: 35px;
+        left: 25px;
 
 
         img {
             height: 56px;
             width: 56px;
+
+        }
+
+        @media screen and (max-width: 400px) {
+
+            width: 80px;
+            height: 60px;
+            top: 95px;
+            left: 15px;
+
+            img {
+                height: 36px;
+                width: 36px;
+
+            }
+
         }
     }
 
     h2 {
-        width: 245px;
-        margin: 45px 0px 0px 35px;
+        width: 80%;
+        margin: 45px 0px 0px 25px;
         font-weight: 700;
         font-size: 2.4rem;
         color: #444444;
+
+        @media screen and (max-width: 1199px) {
+            width: 90%;
+            margin: 45px 0px 0px 25px;
+
+        }
+
+        @media screen and (max-width: 1024px) {
+            width: 80%;
+
+
+        }
+
+        @media screen and (max-width: 890px) {
+
+            margin: 45px 0px 0px 15px;
+
+        }
+
+        @media screen and (max-width: 500px) {
+
+            width: 80%;
+            margin: 45px 0px 0px 35px;
+
+        }
+
+        @media screen and (max-width: 400px) {
+            width: 90%;
+            margin: 45px 0px 0px 15px;
+
+        }
     }
 
     h3 {
-        width: 245px;
-        margin: 10px 0px 0px 40px;
+        width: 80%;
+        margin: 10px 0px 0px 30px;
         font-weight: 400;
         font-size: 2rem;
         color: #444444;
+
+        @media screen and (max-width: 1199px) {
+
+            width: 90%;
+            margin: 10px 0px 0px 25px;
+
+        }
+
+        @media screen and (max-width: 1024px) {
+            width: 80%;
+
+
+        }
+
+        @media screen and (max-width: 890px) {
+
+            margin: 10px 0px 0px 20px;
+
+        }
+
+        @media screen and (max-width: 500px) {
+
+            width: 80%;
+            margin: 10px 0px 0px 35px;
+
+        }
+
+        @media screen and (max-width: 400px) {
+            width: 90%;
+            margin: 10px 0px 0px 20px;
+
+        }
     }
 
     p {
-        margin-left: 35px;
-        margin-top: 50px;
+        margin-left: 25px;
+        margin-top: 30px;
         font-weight: 400;
         font-size: 18px;
         color: #444444;
@@ -188,12 +193,36 @@
             margin-top: 5px;
         }
 
+        @media screen and (max-width: 890px) {
+
+            margin: 30px 0px 0px 20px;
+
+        }
+
+        @media screen and (max-width: 768px) {
+
+            margin-left: 35px;
+            margin-top: 50px;
+
+        }
+
+        @media screen and (max-width: 500px) {
+            margin-left: 35px;
+            margin-top: 50px;
+
+        }
+
+        @media screen and (max-width: 400px) {
+
+            margin: 20px 0px 0px 20px;
+
+        }
 
     }
 
     @media screen and (max-width: 1605px) {
 
-        transform: scale(0.9);
+        // transform: scale(0.9);
 
     }
 
@@ -205,61 +234,62 @@
 
     @media screen and (max-width: 1300px) {
 
-        transform: scale(0.7);
+        transform: scale(0.8);
 
     }
 
+
     @media screen and (max-width: 1132px) {
 
-        transform: scale(0.6);
+        transform: scale(0.8);
 
     }
 
     @media screen and (max-width: 1024px) {
 
-        transform: scale(0.8);
+        transform: scale(0.9);
 
     }
 
     @media screen and (max-width: 978px) {
 
-        transform: scale(0.7);
+        transform: scale(0.8);
 
     }
 
     @media screen and (max-width: 890px) {
 
-        transform: scale(0.6);
+        transform: scale(0.8);
+
+    }
+
+    @media screen and (max-width: 800px) {
+
+        transform: scale(0.85);
 
     }
 
     @media screen and (max-width: 780px) {
 
-        transform: scale(0.7);
+        transform: scale(0.85);
 
     }
 
     @media screen and (max-width: 586px) {
 
-        transform: scale(0.6);
+        transform: scale0(.9);
 
     }
-
-    @media screen and (max-width: 500px) {
-
-        transform: scale(0.9);
-
-    }
+         @media screen and (max-width: 500px) {
+    
+             transform: scale(1);
+    
+         }
 
     @media screen and (max-width: 400px) {
+        height: 365px;
 
-        transform: scale(0.8);
-
-    }
-
-    @media screen and (max-width: 350px) {
-
-        transform: scale(0.7);
+        transform: scale(1);
 
     }
 }

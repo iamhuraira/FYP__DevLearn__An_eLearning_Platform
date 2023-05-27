@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link, Navigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 
-import { useGetAdminSignupMutation, useGetSignupMutation } from '../Redux/api/signupSlice';
+import { useGetAdminSignupMutation } from '../Redux/api/signupSlice';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../Redux/slices/accountSlice';
 
@@ -58,7 +58,7 @@ const AdminSignUp = () => {
         }
         else if (role === 'student') {
             navigate('/studentdashboard');
-        } else if (role === 'teacher') {
+        }else if (role === 'teacher') {
             navigate('/teacherdashboard');
         }
 

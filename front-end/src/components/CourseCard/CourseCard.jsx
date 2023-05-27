@@ -1,9 +1,14 @@
 import React from 'react'
 import courseimg from '../../assets/img/CourseImages/python.png'
 import py from '../../assets/img/CourseImages/py.png'
+import { useNavigate } from 'react-router-dom/dist'
 const CourseCard = () => {
+    const navigate = useNavigate()
+    const handleOpenPage = (id) => { 
+        navigate(`/coursedetails/${id}`)
+    }
     return (
-        <div className='fun'>
+        <div className='fun' onClick={()=>handleOpenPage(1)}>
             <div className="backgroundCard">
                 <img src={courseimg} alt="" />
                 <div className='courseLogo'>

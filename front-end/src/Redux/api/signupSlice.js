@@ -49,6 +49,14 @@ export const signupApi = createApi({
             invalidatesTags: ['accounts']
         }),
 
+        updateUserProfile: builder.mutation({
+            query: (body) => ({
+                url: 'api/v1/users/', // this is the url for the update profile
+                method: 'PATCH',
+                body
+            }),
+        }),
+
 
         getUserByID: builder.mutation({
             query: (id) => ({
@@ -59,4 +67,4 @@ export const signupApi = createApi({
 });
 
 
-export const { useGetSignupMutation, useGetLoginMutation, useGetAdminSignupMutation, useGetUserByIDMutation } = signupApi;
+export const { useGetSignupMutation, useGetLoginMutation, useGetAdminSignupMutation, useUpdateUserProfileMutation,  useGetUserByIDMutation } = signupApi;

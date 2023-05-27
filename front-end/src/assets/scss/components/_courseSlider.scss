@@ -1,7 +1,7 @@
 .courseSliderSection {
     margin-left: 120px;
     margin-right: 120px;
-    margin-bottom: 94px;
+    margin-bottom: 60px;
 
     @media screen and (max-width: 1450px) {
         margin: 0 75px;
@@ -18,12 +18,16 @@
     }
 
 }
+.JCS{
+    justify-content: flex-start !important;
+    margin-left: 50px;
+}
 
 .headingCourse {
     display: flex;
     justify-content: center;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 
     h1 {
         color: #0c3a53;
