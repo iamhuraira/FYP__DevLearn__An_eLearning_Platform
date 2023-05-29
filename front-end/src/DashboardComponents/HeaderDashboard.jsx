@@ -28,7 +28,10 @@ const HeaderDashboard = (props) => {
   const [showLogout, setshowLogout] = useState(false)
 
   const name = props.user.name || '';
-  const profileAvatar = props.user.profilePic ||  null;
+
+  const profileAvatar = props.user.profilePic || null;
+  
+  console.log(profileAvatar)
 
   return (
     <div className='header'>

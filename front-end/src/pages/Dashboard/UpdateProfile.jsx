@@ -11,9 +11,13 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Image from './Teacher/Image';
 import { MdOutlineDoubleArrow } from 'react-icons/md';
+import dayjs from 'dayjs';
+import { useUpdateUserProfileMutation } from '../../Redux/api/signupSlice';
+import { setUserData } from '../../Redux/slices/accountSlice';
+
 
 
 
@@ -21,8 +25,22 @@ import { MdOutlineDoubleArrow } from 'react-icons/md';
 
 const UpdateProfile = () => {
     const useDatar = useSelector(state => state.user.userData)
+    // const date = new Date("2014-12-23")
 
+    
+    const [getUpdateMe, { data, isSuccess }] = useUpdateUserProfileMutation()
+    const dispatch = useDispatch();
 
+    if (isSuccess) {
+        console.log(data)
+        const { data: userdata } = data;
+        const { user } = userdata;
+        // console.log(user)
+        dispatch(setUserData(user));
+        
+    }
+
+    // console.log(date)
 
     const [name, setName] = useState(useDatar.name || '');
     const [email, setEmail] = useState(useDatar.email || '');
@@ -69,6 +87,7 @@ const UpdateProfile = () => {
 
     const HandleSubmit = () => {
         // alert('Profile Updated', userProfile)
+        getUpdateMe(userProfile)
         console.log(userProfile)
 
     }
@@ -78,7 +97,7 @@ const UpdateProfile = () => {
 
     return (
         <>
-            <HeaderDashboard  user={useDatar} />
+            <HeaderDashboard user={useDatar} />
 
             <div className="course-div" >
                 {/* <form action=""> */}
@@ -89,7 +108,7 @@ const UpdateProfile = () => {
                         <div className='profile-pic'>
                             {/* <img src={img} alt="" srcset="" style={{ border: '2px solid red' }} /> */}
 
-                            <img src={avatarImg} alt="" srcset="" onClick={() => {
+                            <img src={useDatar?.user?.profilePic || avatarImg} alt="" srcset="" onClick={() => {
                                 courseLogoRef.current.click()
                             }} />
                             <input ref={courseLogoRef} type="file" hidden onChange={(e) => { setCourseLogo(e.target.files[0]) }} id='courseLogo' />
@@ -132,7 +151,7 @@ const UpdateProfile = () => {
                             </FormControl>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-                                <MobileDatePicker label="Date-of-Birth" onChange={(x) => setFechaDesde(x)} />
+                                <MobileDatePicker label={date && "Date-of-Birth"} defaultValue={dayjs(date)} onChange={(x) => setFechaDesde(x)}  />
                             </LocalizationProvider>
 
                             <TextField id="outlined-basic" label="Phone" name='phone' defaultValue={userProfile.phone} onChange={(e) => setPhone(e.target.value)} variant="outlined" />

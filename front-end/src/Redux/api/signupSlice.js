@@ -51,7 +51,7 @@ export const signupApi = createApi({
 
         updateUserProfile: builder.mutation({
             query: (body) => ({
-                url: 'api/v1/users/', // this is the url for the update profile
+                url: 'api/v1/users/updateMe', // this is the url for the update profile
                 method: 'PATCH',
                 body
             }),

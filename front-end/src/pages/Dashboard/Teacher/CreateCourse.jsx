@@ -272,7 +272,7 @@ const CreateCourse = () => {
 
                         <div className="course-content-info">
                             <TextField id="outlined-basic" label="Solved Example " name='solvedExample' variant="outlined" onChange={getdata} error={course.solvedExample === ''} />
-                            <TextField id="outlined-basic" label="Course Duration Weeks" name='courseDuration' variant="outlined" onChange={getdata} error={course.courseDuration === ''} />
+                            <TextField id="outlined-basic" label="Course Duration Hours" name='courseDuration' variant="outlined" onChange={getdata} error={course.courseDuration === ''} />
                             <FormControl className='difficultylevel'>
                                 <InputLabel id="demo-simple-select-label" error={course.deficulty === ''}>Difficulty Level</InputLabel>
                                 <Select
