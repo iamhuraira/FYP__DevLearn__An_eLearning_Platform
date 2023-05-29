@@ -68,29 +68,40 @@ const UpdateProfile = () => {
     const [courseLogo, setCourseLogo] = React.useState(null)
     const courseLogoRef = React.useRef(null)
 
-    const profilePic = courseLogo || avatarImg;
+    // const profilePic = courseLogo || avatarImg;
     // const profileImg = useDatar.profilePic !== avatarImg ? useDatar.profilePic : " ";
 
-    let userProfile = {
-        name,
-        userdescription,
-        gender,
-        country,
-        dob: date,
-        phone,
-        profilePic,
-    }
+    
+
+    // let userProfile = {
+    //     name,
+    //     userdescription,
+    //     gender,
+    //     country,
+    //     dob: date,
+    //     phone,
+    //     profilePic,
+    // }
 
 
+
+    console.log(useDatar.user.profilePic)
 
 
 
     const HandleSubmit = () => {
-        // alert('Profile Updated', userProfile)
-        getUpdateMe(userProfile)
-        console.log(userProfile)
-
-    }
+    let formdata = new FormData();
+    formdata.append("name", name);
+    formdata.append("userdescription", userdescription);
+    formdata.append("gender", gender);
+    formdata.append("country", country);
+    formdata.append("dob", date);
+    formdata.append("phone", phone);
+    formdata.append("profilePic", courseLogo);
+    // alert('Profile Updated', userProfile)
+    getUpdateMe(formdata);
+    console.log(formdata);
+  };
 
 
 
@@ -154,7 +165,7 @@ const UpdateProfile = () => {
                                 <MobileDatePicker label={date && "Date-of-Birth"} defaultValue={dayjs(date)} onChange={(x) => setFechaDesde(x)}  />
                             </LocalizationProvider>
 
-                            <TextField id="outlined-basic" label="Phone" name='phone' defaultValue={userProfile.phone} onChange={(e) => setPhone(e.target.value)} variant="outlined" />
+                            <TextField id="outlined-basic" label="Phone" name='phone' defaultValue={phone} onChange={(e) => setPhone(e.target.value)} variant="outlined" />
                             <FormControl >
                                 <InputLabel id="demo-simple-select-label">Country</InputLabel>
                                 <Select
