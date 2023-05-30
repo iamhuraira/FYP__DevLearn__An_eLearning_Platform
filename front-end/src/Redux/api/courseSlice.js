@@ -27,10 +27,10 @@ export const courseApi = createApi({
         };
       },
     }),
- 
-    getTeacherCources: builder.mutation({
+
+    getTeacherCources: builder.query({
       query: () => ({
-        url: "/api/v1/signup",
+        url: "api/v1/courses/viewTeacherCourses/",
         Method: "GET",
       }),
     }),
@@ -42,4 +42,4 @@ export const courseApi = createApi({
   }),
 });
 
-export const { useCreateCourseMutation, useGetTeacherCourcesMutation } = courseApi;
+export const { useCreateCourseMutation, useGetTeacherCourcesQuery } = courseApi;
