@@ -18,6 +18,15 @@ export const courseApi = createApi({
   }),
 
   endpoints: (builder) => ({
+    createCourse: builder.mutation({
+      query: (formData) => {
+        return {
+          url: "api/v1/courses/createCourse",
+          method: "POST",
+          body: formData,
+        };
+      },
+    }),
     // createCourse: builder.mutation({
     //   query: (formData) => {
     //     return {
@@ -48,4 +57,4 @@ export const courseApi = createApi({
   }),
 });
 
-export const {} = courseApi;
+export const { useCreateCourseMutation } = courseApi;

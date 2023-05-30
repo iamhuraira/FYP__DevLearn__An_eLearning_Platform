@@ -9,7 +9,8 @@ import Image from "./Image";
 import { Alert, FormControl, InputLabel, MenuItem } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useCreateCourseMutation } from "../../../Redux/api/signupSlice";
+import { useCreateCourseMutation } from "../../../Redux/api/courseSlice";
+// import { useCreateCourseMutation } from "../../../Redux/api/signupSlice";
 // import DynamicForm from './DynamicForm';
 // import { display } from '@mui/system';
 const CreateCourse = () => {

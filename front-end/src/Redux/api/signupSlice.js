@@ -54,15 +54,15 @@ export const signupApi = createApi({
         body,
       }),
     }),
-    createCourse: builder.mutation({
-      query: (formData) => {
-        return {
-          url: "api/v1/courses/createCourse",
-          method: "POST",
-          body: formData,
-        };
-      },
-    }),
+    // createCourse: builder.mutation({
+    //   query: (formData) => {
+    //     return {
+    //       url: "api/v1/courses/createCourse",
+    //       method: "POST",
+    //       body: formData,
+    //     };
+    //   },
+    // }),
 
     updateUserPassword: builder.mutation({
       query: (body) => ({
@@ -81,5 +81,5 @@ export const {
   useUpdateUserProfileMutation,
   useUpdateUserPasswordMutation,
 
-  useCreateCourseMutation,
+  // useCreateCourseMutation,
 } = signupApi;
