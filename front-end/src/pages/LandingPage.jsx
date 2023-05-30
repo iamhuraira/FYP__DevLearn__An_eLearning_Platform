@@ -16,7 +16,7 @@ const LandingPage = () => {
       <Hero />
       <ChooseUs />
       <OurLearningPath />
-      <CourseSlider title="Popular Courses" />
+      {/* <CourseSlider title="Popular Courses" /> */}
       <Footer />
     </>
   );

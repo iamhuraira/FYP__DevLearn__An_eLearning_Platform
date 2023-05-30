@@ -14,9 +14,9 @@ const Courses = () => {
     <div className='coursesPage'>
       {logedInUser ? <HeaderDashboard /> : <Header />}
       <OfferHeading />
-      <CourseSlider title="Popular Courses" />
+      {/* <CourseSlider title="Popular Courses" /> */}
 
-      <div className='allCourses'>
+      {/* <div className='allCourses'>
         <div className='courseLoop'>
 
           {
@@ -28,7 +28,7 @@ const Courses = () => {
             })
           }
         </div>
-      </div>
+      </div> */}
       <Footer />  
     </div>
   )
