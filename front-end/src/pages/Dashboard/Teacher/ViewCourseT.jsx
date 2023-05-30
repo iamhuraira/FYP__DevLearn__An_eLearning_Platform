@@ -5,11 +5,17 @@ import HeaderDashboard from "../../../DashboardComponents/HeaderDashboard";
 import { useGetTeacherCourcesQuery } from "../../../Redux/api/courseSlice";
 
 const ViewCourseT = () => {
-  const { data, isLoading, isFetching, isError } = useGetTeacherCourcesQuery();
+  const { data, isLoading, isFetching, isError } = useGetTeacherCourcesQuery({
+    refetchOnMountOrArgChange: true,
+  });
   // const { course } = data;
-  console.log(typeof data);
-  console.log(data.data.course);
-  const [courses, setCourses] = useState(data.data.course);
+  console.log(data);
+  const [courses, setCourses] = useState([]);
+  if (!isError) {
+    // console.log(data.course);
+    setCourses(data.data.course);
+  }
+
   const useDatar = useSelector((state) => state.user.userData);
   return (
     <div>

@@ -16,6 +16,7 @@ export const courseApi = createApi({
       return headers;
     },
   }),
+  refetchOnMountOrArgChange: 30,
 
   endpoints: (builder) => ({
     createCourse: builder.mutation({
