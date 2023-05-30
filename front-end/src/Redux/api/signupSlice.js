@@ -57,14 +57,15 @@ export const signupApi = createApi({
             }),
         }),
 
-
-        getUserByID: builder.mutation({
-            query: (id) => ({
-                url: `/api/v1/user/${id}`,
+        updateUserPassword: builder.mutation({
+            query: (body) => ({
+                url: `/api/v1/user/`, // this is the url for the update profile
+                method: 'PATCH',
+                body
             }),
         }),
     }),
 });
 
 
-export const { useGetSignupMutation, useGetLoginMutation, useGetAdminSignupMutation, useUpdateUserProfileMutation,  useGetUserByIDMutation } = signupApi;
+export const { useGetSignupMutation, useGetLoginMutation, useGetAdminSignupMutation, useUpdateUserProfileMutation,  useUpdateUserPasswordMutation } = signupApi;

@@ -48,8 +48,6 @@ const AdminSignUp = () => {
 
         dispatch(setUserData(user));
         localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-
         const { role } = user;
         localStorage.setItem('role', role);
 

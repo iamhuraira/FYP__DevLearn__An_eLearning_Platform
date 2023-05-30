@@ -6,10 +6,29 @@ console.log(baseurl)
 
 export const courseApi = createApi({
     reducerPath: 'courses',
-    baseQuery: fetchBaseQuery({ baseUrl: baseurl }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: baseurl,
+        prepareHeaders: (headers) => {
+            const token = localStorage.getItem("token")
+            // If we have a token set in local storage, let's assume that we should be passing it.
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`)
+            }
+            return headers
+        },
+    }),
 
 
     endpoints: (builder) => ({
+        createCourse: builder.mutation({
+            query: (body) => ({
+                url: '/api/v1/course',
+                method: 'POST',
+                body
+            }),
+        }),
+
+
         getAllCources: builder.mutation({
             query: () => ({
                 url: '/api/v1/signup',
@@ -21,15 +40,8 @@ export const courseApi = createApi({
                 url: `/api/v1/course/${id}`,
             }),
         }),
-        createCourse: builder.mutation({
-            query: (body) => ({
-                url: '/api/v1/course',
-                method: 'POST',
-                body
-            }),
-        }),
     }),
 });
 
 
-export const { useCreateCourseMutation, useGetAllCourcesMutation, useGetCourseByIdMutation } = courseApi;
+export const { useCreateCourseMutation } = courseApi;

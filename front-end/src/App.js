@@ -17,6 +17,7 @@ import AdminDashboard from './pages/Dashboard/Admin/AdminDashboard';
 import StudentDashboard from './pages/Dashboard/Student/StudentDashboard';
 import Price from './pages/Price';
 import Courses from './pages/Courses';
+import ViewCourseT from './pages/Dashboard/Teacher/ViewCourseT';
 
 
 
@@ -50,6 +51,7 @@ function App() {
           {/* Teacher Routes */}
           <Route path='/teacherdashboard' element={<TeacherDashboard />} />
           <Route path='/teacherdashboard/createcourse' element={<CreateCourse />} />
+          <Route path='/teacherdashboard/viewcourses' element={<ViewCourseT />} />
 
           {/* Admin Routes */}
           <Route path='/admindashboard' element={<AdminDashboard />} />

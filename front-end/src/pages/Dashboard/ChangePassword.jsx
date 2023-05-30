@@ -4,11 +4,16 @@ import TextField from '@mui/material/TextField';
 
 
 import { Alert } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { useUpdateUserPasswordMutation } from '../../Redux/api/signupSlice';
 
 
 
 
 const ChangePassword = () => {
+    
+    const [changePasswordUser, { data, isSuccess }] =   useUpdateUserPasswordMutation()
+
 
     const [changePassword, setChangePassword] = useState({
         oldPassword: '',
@@ -106,18 +111,23 @@ const ChangePassword = () => {
         }
 
 
-       
+        handleSubmit()
+    }
+
+    const handleSubmit = () => { 
+        // changePasswordUser(changePassword)
+        console.log(changePassword)
     }
 
 
 
 
-
+    const useDatar = useSelector(state => state.user.userData)
 
 
     return (
         <>
-            <HeaderDashboard />
+            <HeaderDashboard user={useDatar} />
 
             <div className="course-div" >
                 {/* <form action=""> */}

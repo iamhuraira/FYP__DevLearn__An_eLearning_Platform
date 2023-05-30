@@ -27,6 +27,7 @@
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "react-svg": "^16.1.7",
+    "redux-persist": "^6.0.0",
     "sass": "^1.58.3",
     "scss": "^0.2.4",
     "web-vitals-reporter": "^1.0.0"

@@ -25,10 +25,8 @@ const SignUp = () => {
     const { token, data: userdata } = data;
     const { user } = userdata;
     // console.log(user)
-
     dispatch(setUserData(user));
     localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
     const { role } = user;
     localStorage.setItem('role', role);
 

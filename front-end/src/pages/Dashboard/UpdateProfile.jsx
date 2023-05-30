@@ -31,7 +31,7 @@ const UpdateProfile = () => {
     const { user } = userdata;
 
     dispatch(setUserData(user));
-    localStorage.setItem("user", JSON.stringify(user));
+    // localStorage.setItem("user", JSON.stringify(user));
   }
 
   // console.log(date)
@@ -284,7 +284,7 @@ const UpdateProfile = () => {
 
   console.log(ImgUrl);
   console.log(useDatar.profilePic);
-  console.log(useDatar);
+  // console.log(useDatar);
 
   const HandleSubmit = () => {
     let formdata = new FormData();
@@ -296,8 +296,8 @@ const UpdateProfile = () => {
     formdata.append("phone", phone);
     formdata.append("profilePic", courseLogo || useDatar.profilePic);
     // alert('Profile Updated', userProfile)
-    getUpdateMe(formdata);
     console.log(formdata);
+    // getUpdateMe(formdata);
   };
 
   return (
