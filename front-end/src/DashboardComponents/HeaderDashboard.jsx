@@ -29,7 +29,7 @@ const HeaderDashboard = (props) => {
 
   const profileAvatar = props.user.profilePic || null;
 
-  console.log(profileAvatar);
+  // console.log(profileAvatar);
 
   return (
     <div className="header">

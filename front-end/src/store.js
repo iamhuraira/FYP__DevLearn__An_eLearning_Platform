@@ -7,26 +7,28 @@ import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
 
 const persistConfig = {
-    key: 'root',
-    version: 1,
-    storage
+  key: "root",
+  version: 1,
+  storage,
 };
 
 const reducer = combineReducers({
-    user: userReducer,
-    [signupApi.reducerPath]: signupApi.reducer,
-    [courseApi.reducerPath]: courseApi.reducer,
+  user: userReducer,
+  [signupApi.reducerPath]: signupApi.reducer,
+  [courseApi.reducerPath]: courseApi.reducer,
 });
 
 const persistedReducers = persistReducer(persistConfig, reducer);
 
 export const store = configureStore({
-    reducer: persistedReducers,
-    // reducer: {
-    //     // user: userReducer,
-    //     // [signupApi.reducerPath]: signupApi.reducer,
-    //     // [courseApi.reducerPath]: courseApi.reducer,
-    // },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(signupApi.middleware).concat(courseApi.middleware),
+  reducer: persistedReducers,
+  // reducer: {
+  //     // user: userReducer,
+  //     // [signupApi.reducerPath]: signupApi.reducer,
+  //     // [courseApi.reducerPath]: courseApi.reducer,
+  // },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware()
+      .concat(courseApi.middleware)
+      .concat(signupApi.middleware),
 });

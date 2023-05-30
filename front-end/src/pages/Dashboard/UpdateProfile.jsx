@@ -282,8 +282,8 @@ const UpdateProfile = () => {
 
   const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/users/${useDatar.profilePic}`;
 
-  console.log(ImgUrl);
-  console.log(useDatar.profilePic);
+  // console.log(ImgUrl);
+  // console.log(useDatar.profilePic);
   // console.log(useDatar);
 
   const HandleSubmit = () => {
@@ -297,7 +297,7 @@ const UpdateProfile = () => {
     formdata.append("profilePic", courseLogo || useDatar.profilePic);
     // alert('Profile Updated', userProfile)
     console.log(formdata);
-    // getUpdateMe(formdata);
+    getUpdateMe(formdata);
   };
 
   return (
