@@ -27,28 +27,13 @@ export const courseApi = createApi({
         };
       },
     }),
-    // createCourse: builder.mutation({
-    //   query: (formData) => {
-    //     return {
-    //       url: "api/v1/courses/createCourse",
-    //       method: "POST",
-    //       body: formData,
-    //     };
-    //   },
-    // }),
-    // createCourse: builder.mutation({
-    //   query: (body) => ({
-    //     url: "api/v1/courses/createCourse",
-    //     method: "POST",
-    //     body,
-    //   }),
-    // }),
-    // getAllCources: builder.mutation({
-    //   query: () => ({
-    //     url: "/api/v1/signup",
-    //   }),
-    //   invalidatesTags: ["accounts"],
-    // }),
+ 
+    getTeacherCources: builder.mutation({
+      query: () => ({
+        url: "/api/v1/signup",
+        Method: "GET",
+      }),
+    }),
     // getCourseById: builder.mutation({
     //   query: (id) => ({
     //     url: `/api/v1/course/${id}`,
@@ -57,4 +42,4 @@ export const courseApi = createApi({
   }),
 });
 
-export const { useCreateCourseMutation } = courseApi;
+export const { useCreateCourseMutation, useGetTeacherCourcesMutation } = courseApi;

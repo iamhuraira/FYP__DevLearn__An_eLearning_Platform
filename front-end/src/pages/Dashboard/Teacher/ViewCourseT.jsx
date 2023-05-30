@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CourseCard from "../../../components/CourseCard/CourseCard";
 import HeaderDashboard from "../../../DashboardComponents/HeaderDashboard";
+import { useGetTeacherCourcesMutation } from "../../../Redux/api/courseSlice";
 
 const ViewCourseT = () => {
+
+  const { data = [], isLoading, isFetching, isError } = useGetTeacherCourcesMutation();
+  console.log(data);
   const [courses, setCourses] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
   const useDatar = useSelector((state) => state.user.userData);
   return (
