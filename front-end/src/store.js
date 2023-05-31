@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { signupApi } from "./Redux/api/signupSlice";
+
 import { courseApi } from "./Redux/api/courseSlice";
 import userReducer from "./Redux/slices/accountSlice";
 import storage from "redux-persist/lib/storage";
@@ -14,7 +14,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   user: userReducer,
-  [signupApi.reducerPath]: signupApi.reducer,
+  // [signupApi.reducerPath]: signupApi.reducer,
   [courseApi.reducerPath]: courseApi.reducer,
 });
 
@@ -30,5 +30,4 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(courseApi.middleware)
-      .concat(signupApi.middleware),
 });

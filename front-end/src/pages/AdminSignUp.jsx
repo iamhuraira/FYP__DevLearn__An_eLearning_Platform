@@ -5,10 +5,9 @@ import { useNavigate } from 'react-router-dom';
 // eslint-disable-next-line
 import { Link, Navigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
-
-import { useGetAdminSignupMutation } from '../Redux/api/signupSlice';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../Redux/slices/accountSlice';
+import { useGetAdminSignupMutation } from '../Redux/api/courseSlice';
 
 
 const AdminSignUp = () => {

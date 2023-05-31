@@ -8,7 +8,7 @@ const CourseCard = ({ course }) => {
     navigate(`/coursedetails/${id}`);
   };
 
-  console.log(course);
+  // console.log(course.teacher.name);
   const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
 
   return (
@@ -20,7 +20,7 @@ const CourseCard = ({ course }) => {
         </div>
         {/* <h2>Programming for Everybody (Getting Started with Python)</h2> */}
         <h2>{course.courseName}</h2>
-        <h3>Abu Huraira</h3>
+        <h3>{course.teacher.name}</h3>
 
         <p>
           <span>{course.difficultylevel} </span>

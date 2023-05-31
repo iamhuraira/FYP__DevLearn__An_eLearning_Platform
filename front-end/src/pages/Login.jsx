@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Header from "../components/Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
-import { useGetLoginMutation } from "../Redux/api/signupSlice";
+
 import { useDispatch } from "react-redux";
 import { setUserData } from "../Redux/slices/accountSlice";
+import { useGetLoginMutation } from "../Redux/api/courseSlice";
 
 const Login = () => {
   const [user, setUser] = useState({

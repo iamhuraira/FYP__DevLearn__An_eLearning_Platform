@@ -15,8 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Image from "./Teacher/Image";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import dayjs from "dayjs";
-import { useUpdateUserProfileMutation } from "../../Redux/api/signupSlice";
+
 import { setUserData } from "../../Redux/slices/accountSlice";
+import { useUpdateUserProfileMutation } from "../../Redux/api/courseSlice";
 
 const UpdateProfile = () => {
   const useDatar = useSelector((state) => state.user.userData);
@@ -398,7 +399,7 @@ const UpdateProfile = () => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <MobileDatePicker
                   label={date && "Date-of-Birth"}
-                  defaultValue={dayjs(date)}
+                  defaultValue={date &&  dayjs(date) }
                   onChange={(x) => setFechaDesde(x)}
                 />
               </LocalizationProvider>
