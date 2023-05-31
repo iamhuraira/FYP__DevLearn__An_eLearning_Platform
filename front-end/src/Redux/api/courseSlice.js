@@ -17,7 +17,7 @@ export const courseApi = createApi({
       return headers;
     },
   }),
-  refetchOnFocus: true,
+  // refetchOnFocus: true,
   refetchOnReconnect: true,
   // refetchOnMountOrArgChange: 30,
 
@@ -30,7 +30,7 @@ export const courseApi = createApi({
           body: formData,
         };
       },
-      invalidatesTags: ["Courses"],
+      // invalidatesTags: ["Courses"],
     }),
 
     getTeacherCources: builder.query({
@@ -40,8 +40,6 @@ export const courseApi = createApi({
       }),
       providesTags: ["Courses"],
     }),
-
-
   }),
 });
 
