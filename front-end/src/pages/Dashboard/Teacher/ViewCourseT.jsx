@@ -9,7 +9,7 @@ const ViewCourseT = () => {
     refetchOnMountOrArgChange: true,
   });
   // const { course } = data;
-  console.log(data);
+  // console.log(data);
   const [courses, setCourses] = useState([]);
   if (!isError) {
     // console.log(data.course);
