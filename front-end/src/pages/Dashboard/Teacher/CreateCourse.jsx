@@ -10,13 +10,14 @@ import { Alert, FormControl, InputLabel, MenuItem } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useCreateCourseMutation } from "../../../Redux/api/courseSlice";
+import CircularProgress from '@mui/material/CircularProgress';
 // import { useCreateCourseMutation } from "../../../Redux/api/signupSlice";
 // import DynamicForm from './DynamicForm';
 // import { display } from '@mui/system';
 const CreateCourse = () => {
   const navigate = useNavigate();
 
-  const [createCourseDB, { data, isSuccess }] = useCreateCourseMutation();
+  const [createCourseDB, { data, isLoading, isSuccess }] = useCreateCourseMutation();
 
   if (isSuccess) {
     console.log(data);
@@ -633,7 +634,10 @@ const CreateCourse = () => {
               onClick={handleCourseSubmit}
               className="submitButton"
             >
-              Submit Course <BsFillSendFill />{" "}
+             
+              {isLoading ? <CircularProgress disableShrink /> : <>Submit Course <BsFillSendFill /></>}
+                {/* <CircularProgress disableShrink /> */}
+              {/* Submit Course <BsFillSendFill /> */}
             </button>
           </div>
         </form>

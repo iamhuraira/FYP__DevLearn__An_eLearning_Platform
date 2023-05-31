@@ -18,12 +18,13 @@ import dayjs from "dayjs";
 
 import { setUserData } from "../../Redux/slices/accountSlice";
 import { useUpdateUserProfileMutation } from "../../Redux/api/courseSlice";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const UpdateProfile = () => {
   const useDatar = useSelector((state) => state.user.userData);
   // const date = new Date("2014-12-23")
 
-  const [getUpdateMe, { data, isSuccess }] = useUpdateUserProfileMutation();
+  const [getUpdateMe, { data, isLoading, isSuccess }] = useUpdateUserProfileMutation();
   const dispatch = useDispatch();
 
   if (isSuccess) {
@@ -435,7 +436,8 @@ const UpdateProfile = () => {
               </FormControl>
 
               <button style={{ width: "735px" }} onClick={HandleSubmit}>
-                Update Profile
+                {isLoading ? <CircularProgress disableShrink /> : "Update Profile"}
+                
               </button>
             </div>
           </div>

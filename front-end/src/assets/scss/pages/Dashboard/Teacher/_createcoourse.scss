@@ -165,7 +165,14 @@ svg {
         svg {
             font-size: 2.8rem;
             font-weight: bolder;
+            color: #fff !important;
+
+           
         }
+
+
+
+
 
 
         &:hover {
@@ -384,8 +391,17 @@ svg {
         color: #0C3A53;
         border: 2px solid #0C3A53;
         transform: scale(1.2);
+        svg{
+            color: #0C3A53 !important;
+        }
 
     }
+         svg {
+    
+             color: #fff !important;
+
+           
+         }
 }
 
 
@@ -394,6 +410,6 @@ svg {
 
 }
 
-.courselogo.error{
+.courselogo.error {
     border: 1px solid red !important;
 }

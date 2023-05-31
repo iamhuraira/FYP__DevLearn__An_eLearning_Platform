@@ -7,8 +7,8 @@
     // align-items: center;
     // justify-items: center;
 
-@media screen and (max-height: 768px) {
-       height: 105vh;
+    @media screen and (max-height: 768px) {
+        height: 105vh;
     }
 }
 
@@ -152,12 +152,12 @@
     @media screen and (max-width: 560px) {
         transform: scale(0.7);
         margin-top: -30px;
-      
+
     }
 
     @media screen and (max-width: 425px) {
         transform: scale(0.65);
-            margin-top: -50px;
+        margin-top: -50px;
     }
 
     @media screen and (max-width: 375px) {
@@ -208,6 +208,29 @@
         input[type=submit]:hover {
             background-color: #0C3A53;
             font-size: 3rem;
+        }
+
+        button {
+            width: 475px;
+            height: 70px;
+            border: 1px solid #0C3A53;
+            font-size: 2.4rem;
+            padding: 19px 30px;
+            border-radius: 10px;
+            background-color: #0C3A53;
+            color: #fff;
+            font-weight: 600;
+            margin-top: 25px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #0C3A53;
+                font-size: 3rem;
+            }
+
+            svg{
+                color: #fff;
+            }
         }
     }
 
@@ -275,7 +298,8 @@
 .css-1c3trtb-MuiPaper-root-MuiAlert-root {
     display: flex;
     align-items: center;
+
     .css-1pxa9xg-MuiAlert-message {
-            font-size: 20px;
-        }
+        font-size: 20px;
+    }
 }

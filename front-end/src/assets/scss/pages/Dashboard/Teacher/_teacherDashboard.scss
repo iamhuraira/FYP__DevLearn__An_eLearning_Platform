@@ -92,3 +92,17 @@
 
     }
 }
+
+
+._loading_overlay_overlay{
+    background-color: #0C3A53 !important;
+
+}
+._loading_overlay_content{
+    font-size: 4rem;
+}
+._loading_overlay_spinner{
+    svg{
+        font-size: 6rem;
+    }
+}

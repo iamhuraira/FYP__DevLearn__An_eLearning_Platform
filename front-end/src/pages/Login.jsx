@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
@@ -6,18 +6,34 @@ import { Alert } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../Redux/slices/accountSlice";
 import { useGetLoginMutation } from "../Redux/api/courseSlice";
+import CircularProgress from '@mui/material/CircularProgress';
+
+
 
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  const [getLogin, { data, isLoading, isSuccess }] = useGetLoginMutation();
+  const [message, setMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+
+  const [getLogin, { data, error, isError, isLoading, isSuccess }] = useGetLoginMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(isSuccess);
+
+
+  useEffect(() => {
+    if (isError) {
+      setMessage(error.data.message);
+      setShowAlert(true);
+    }
+  }, [isError]);
+
   if (isSuccess) {
+
+
     console.log(data);
     const { token, data: userdata } = data;
     const { user } = userdata;
@@ -36,12 +52,15 @@ const Login = () => {
       navigate("/teacherdashboard");
     }
   }
+  else {
+    // console.log("error")
+  }
 
   const login = () => {
     getLogin(user);
   };
-  const [message, setMessage] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
+  // const [message, setMessage] = useState("");
+  // const [showAlert, setShowAlert] = useState(false);
 
   const handleInputs = (e) => {
     // console.log(e);
@@ -134,7 +153,10 @@ const Login = () => {
               </Link>
             </div>
             <div className="form-group">
-              <input type="submit" id="" value="Login" onClick={validateform} />
+              <button type="submit" id="" value="Login" onClick={validateform} >
+                {isLoading ? <CircularProgress disableShrink /> : "Login"}
+                {/* <CircularProgress disableShrink /> */}
+              </button>
             </div>
             <div className="text">
               <span>
@@ -147,8 +169,8 @@ const Login = () => {
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

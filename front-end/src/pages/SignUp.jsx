@@ -10,6 +10,7 @@ import { Alert } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../Redux/slices/accountSlice';
 import { useGetSignupMutation } from '../Redux/api/courseSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const SignUp = () => {
@@ -17,12 +18,18 @@ const SignUp = () => {
   const [show, setShow] = useState(false);
   const [term, setTerm] = useState(false);
   // eslint-disable-next-line
-  const [getSignup, { data, isLoading, isSuccess }] = useGetSignupMutation();
+  const [getSignup, { data, error, isError, isLoading, isSuccess }] = useGetSignupMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(isSuccess)
+  console.log(error)
+    useEffect(() => {
+    if (isError) {
+      setMessage(error.data.message);
+      setShowAlert(true);
+    }
+   }, [isError]);
   if (isSuccess) {
-    console.log(data)
+    // console.log(data)
     const { token, data: userdata } = data;
     const { user } = userdata;
     // console.log(user)
@@ -242,7 +249,11 @@ const SignUp = () => {
               <span>Creating your account and you accepting <Link to="/Terms" target="_blank"><span className="term" >Terms & Conditions</span></Link>.</span>
             </div>
             <div className="form-group">
-              <input type="submit" id="" value='Sign Up' onClick={validateform} />
+              {/* <input type="submit" id="" value='Sign Up' onClick={validateform} /> */}
+              <button type="submit" id="" value="Sign Up" onClick={validateform} >
+                {isLoading ? <CircularProgress disableShrink /> : "Sign Up"}
+                {/* <CircularProgress disableShrink /> */}
+              </button>
             </div>
             <div className="text">
               <span>Already have an account? <Link to="/Login" ><span className="login" >Login</span></Link></span>
