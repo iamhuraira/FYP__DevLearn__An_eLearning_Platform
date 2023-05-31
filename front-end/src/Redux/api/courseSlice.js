@@ -5,6 +5,7 @@ console.log(baseurl);
 
 export const courseApi = createApi({
   reducerPath: "courses",
+  tagTypes: ["Courses"],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
     prepareHeaders: (headers) => {
@@ -16,7 +17,9 @@ export const courseApi = createApi({
       return headers;
     },
   }),
-  refetchOnMountOrArgChange: 30,
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
+  // refetchOnMountOrArgChange: 30,
 
   endpoints: (builder) => ({
     createCourse: builder.mutation({
@@ -27,6 +30,7 @@ export const courseApi = createApi({
           body: formData,
         };
       },
+      invalidatesTags: ["Courses"],
     }),
 
     getTeacherCources: builder.query({
@@ -34,12 +38,10 @@ export const courseApi = createApi({
         url: "api/v1/courses/viewTeacherCourses/",
         Method: "GET",
       }),
+      providesTags: ["Courses"],
     }),
-    // getCourseById: builder.mutation({
-    //   query: (id) => ({
-    //     url: `/api/v1/course/${id}`,
-    //   }),
-    // }),
+
+
   }),
 });
 
