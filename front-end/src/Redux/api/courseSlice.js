@@ -65,13 +65,13 @@ export const courseApi = createApi({
       invalidatesTags: ["Courses"],
     }),
 
-    // updateUserPassword: builder.mutation({
-    //   query: (body) => ({
-    //     url: `/api/v1/user/`, // this is the url for the update profile
-    //     method: "PATCH",
-    //     body,
-    //   }),
-    // }),
+    updateUserPassword: builder.mutation({
+      query: (body) => ({
+        url: `/api/v1/user/`, // this is the url for the update profile
+        method: "PATCH",
+        body,
+      }),
+    }),
 
 
     // Course Routes
@@ -97,4 +97,4 @@ export const courseApi = createApi({
   }),
 });
 
-export const { useGetAdminSignupMutation, useGetSignupMutation, useGetLoginMutation, useUpdateUserProfileMutation, useCreateCourseMutation, useGetTeacherCourcesQuery } = courseApi;
+export const { useGetAdminSignupMutation, useGetSignupMutation, useGetLoginMutation, useUpdateUserProfileMutation, useUpdateUserPasswordMutation, useCreateCourseMutation, useGetTeacherCourcesQuery } = courseApi;

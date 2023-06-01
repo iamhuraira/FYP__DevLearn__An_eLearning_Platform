@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import CourseCard from '../CourseCard/CourseCard'
 import { Splide, SplideSlide } from '@splidejs/react-splide';

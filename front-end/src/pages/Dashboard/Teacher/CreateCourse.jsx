@@ -631,7 +631,7 @@ const CreateCourse = () => {
           <div>
             <button
               type="submit"
-              onClick={handleCourseSubmit}
+              onClick={validateData}
               className="submitButton"
             >
              

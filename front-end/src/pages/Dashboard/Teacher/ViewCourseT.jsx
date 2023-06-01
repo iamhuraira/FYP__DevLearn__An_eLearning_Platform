@@ -10,7 +10,6 @@ const ViewCourseT = () => {
     data = [],
     isLoading,
     isFetching,
-    isError,
 
   } = useGetTeacherCourcesQuery();
 

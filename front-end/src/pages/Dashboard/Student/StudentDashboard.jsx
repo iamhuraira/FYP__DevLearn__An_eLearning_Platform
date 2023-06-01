@@ -3,7 +3,6 @@ import HeaderDashboard from '../../../DashboardComponents/HeaderDashboard'
 import Welcome from '../../../DashboardComponents/Welcome'
 import { useSelector } from 'react-redux'
 import Footer from '../../../components/Footer/Footer'
-import { Slider } from '@mui/material'
 import CourseSlider from '../../../components/CourseSlider/CourseSlider'
 
 const StudentDashboard = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header/Header'

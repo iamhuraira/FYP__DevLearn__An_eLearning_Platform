@@ -1,6 +1,6 @@
 import React from "react";
-import courseimg from "../../assets/img/CourseImages/python.png";
-import py from "../../assets/img/CourseImages/py.png";
+// import courseimg from "../../assets/img/CourseImages/python.png";
+// import py from "../../assets/img/CourseImages/py.png";
 import { useNavigate } from "react-router-dom/dist";
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();

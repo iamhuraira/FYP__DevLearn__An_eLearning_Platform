@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import HeaderDashboard from '../../DashboardComponents/HeaderDashboard'
 import TextField from '@mui/material/TextField';
@@ -5,7 +6,8 @@ import TextField from '@mui/material/TextField';
 
 import { Alert } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { useUpdateUserPasswordMutation } from '../../Redux/api/signupSlice';
+import { useUpdateUserPasswordMutation } from '../../Redux/api/courseSlice';
+
 
 
 

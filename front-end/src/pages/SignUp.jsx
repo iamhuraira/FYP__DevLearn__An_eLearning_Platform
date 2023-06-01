@@ -27,7 +27,8 @@ const SignUp = () => {
       setMessage(error.data.message);
       setShowAlert(true);
     }
-   }, [isError]);
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [ isError]);
   if (isSuccess) {
     // console.log(data)
     const { token, data: userdata } = data;
