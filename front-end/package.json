@@ -9,7 +9,6 @@
     "@mui/x-date-pickers": "^6.5.0",
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.3",
-    "@ronchalant/react-loading-overlay": "^1.1.0",
     "@splidejs/react-splide": "^0.7.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

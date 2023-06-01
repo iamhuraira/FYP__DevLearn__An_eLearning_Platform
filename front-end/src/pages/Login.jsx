@@ -26,6 +26,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isError) {
+      console.log(error);
       setMessage(error.data.message);
       setShowAlert(true);
     }

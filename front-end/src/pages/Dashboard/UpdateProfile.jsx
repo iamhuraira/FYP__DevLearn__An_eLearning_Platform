@@ -284,7 +284,7 @@ const UpdateProfile = () => {
 
   const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/users/${useDatar.profilePic}`;
 
-  // console.log(ImgUrl);
+  console.log(ImgUrl);
   // console.log(useDatar.profilePic);
   // console.log(useDatar);
 
