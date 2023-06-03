@@ -13,7 +13,7 @@ const TeacherDashboard = (props) => {
       <HeaderDashboard user={useDatar} />
       <Welcome name={useDatar.name}/>
 
-      <div className='teacher-btn'>
+      <div className='teacher-btn admin-btn'>
         <Link to='/dashboard/updateprofile'><button>Update Profile</button></Link>
         <Link to='/teacherdashboard/createcourse'><button >Create Course</button></Link>
         <Link to='/teacherdashboard/viewcourses'><button>View Course</button></Link>

@@ -27,7 +27,7 @@ const Login = () => {
   useEffect(() => {
     if (isError) {
       console.log(error);
-      setMessage(error.data.message);
+      setMessage(error.data?.message);
       setShowAlert(true);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps

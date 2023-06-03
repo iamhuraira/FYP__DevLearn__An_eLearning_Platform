@@ -8,10 +8,13 @@ const Header = (props) => {
   const showNavBar = () => {
     navref.current.classList.toggle('show')
   }
+  const ShowLandingPage = () => {
+    navigate("/");
+  }
   return (
     <div className='header'>
       <div className="logo">
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" onClick={ShowLandingPage} />
 
         <nav className='' ref = {navref}>
           

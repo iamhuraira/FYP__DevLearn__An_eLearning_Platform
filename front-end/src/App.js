@@ -18,6 +18,7 @@ import StudentDashboard from './pages/Dashboard/Student/StudentDashboard';
 import Price from './pages/Price';
 import Courses from './pages/Courses';
 import ViewCourseT from './pages/Dashboard/Teacher/ViewCourseT';
+import ViewRequests from './pages/Dashboard/Admin/ViewRequests';
 
 
 
@@ -55,6 +56,8 @@ function App() {
 
           {/* Admin Routes */}
           <Route path='/admindashboard' element={<AdminDashboard />} />
+          <Route path='/admin/viewrequests' element={<ViewRequests />} />
+
 
           {/* Student Routes */}
           <Route path='/studentdashboard' element={<StudentDashboard />} />

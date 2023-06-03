@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/img/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch } from "react-redux";
@@ -29,12 +29,17 @@ const HeaderDashboard = (props) => {
 
   const profileAvatar = props.user.profilePic || null;
 
+
+
   // console.log(profileAvatar);
+  const ShowLandingPage = () => { 
+    navigate("/");
+  }
 
   return (
     <div className="header">
-      <div className="logo">
-        <img src={logo} alt="logo" />
+      <div className="logo" >
+        <img src={logo} alt="logo" onClick={ShowLandingPage} />
       </div>
       <div className="userinfo">
         <h2>{name}</h2>
@@ -58,6 +63,12 @@ const HeaderDashboard = (props) => {
             <nav>
               <ul>
                 <li className="name">{name}</li>
+                <li className="Dashboard">
+                  {props.user.role === "admin" && <Link to="/admindashboard">Dashboard</Link>}
+                  {props.user.role === "teacher" && <Link to="/teacherdashboard">Dashboard</Link>}
+                  {props.user.role === "student" && <Link to="/studentdashboard">Dashboard</Link>}
+
+                </li>
                 <li className="changePassword" onClick={handleChangePassword}>
                   Change Password
                 </li>

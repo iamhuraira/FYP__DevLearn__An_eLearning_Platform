@@ -10,9 +10,16 @@ const CourseCard = ({ course }) => {
 
   // console.log(course.teacher.name);
   const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
-
+  const DifficultyColor = {
+    Beginner: "#00b300",
+    Hard: "#ffcc00",
+    Expert: "#ff0000",
+  }
+  const Dstyle = {
+    color: DifficultyColor[course.difficultylevel]
+ } 
   return (
-    <div className="fun" onClick={() => handleOpenPage(1)}>
+    <div className="fun" onClick={() => handleOpenPage(course._id)}>
       <div className="backgroundCard">
         <img src={`${ImgUrl}/${course.selectImage}`} alt="" />
         <div className="courseLogo">
@@ -23,7 +30,7 @@ const CourseCard = ({ course }) => {
         <h3>{course.teacher.name}</h3>
 
         <p>
-          <span>{course.difficultylevel} </span>
+          <span style={Dstyle}>{course.difficultylevel} </span>
           <span>·</span>
           <span> {course.courseDuration} Hours </span>
         </p>
