@@ -365,7 +365,10 @@ const CoursePage = () => {
                 }
 
             </div>
-
+            
+            <div className="teacherCard">
+                
+            </div>
 
             <Footer />
         </>
