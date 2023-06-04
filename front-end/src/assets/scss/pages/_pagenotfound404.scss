@@ -1,0 +1,66 @@
+.button-homePage {
+    background-color: #0C3A53;
+    color: white;
+    height: 70px;
+    font-size: 2.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid #0C3A53;
+    padding: 15px 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+    width: 240px;
+
+    &:hover {
+        background-color: white;
+        color: #0C3A53;
+        border: 2px solid #0C3A53;
+    }
+}
+
+.Success-Page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80dvh;
+    gap: 40px;
+    margin-top: 80px;
+
+    h2 {
+        font-size: 6rem;
+        font-weight: 700;
+        color: green;
+        margin-bottom: 20px;
+    }
+
+    svg {
+        font-size: 3rem;
+        color: green;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: 10px solid green;
+        margin-bottom: 30px;
+    }
+
+    button {
+        background-color: #0C3A53;
+        color: white;
+        height: 70px;
+        font-size: 2.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        border: 2px solid #0C3A53;
+        padding: 15px 20px;
+        border-radius: 7px;
+        margin-top: 20px;
+        width: 240px;
+
+        &:hover {
+            background-color: white;
+            color: #0C3A53;
+            border: 2px solid #0C3A53;
+        }
+    }
+}

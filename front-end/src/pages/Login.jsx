@@ -17,6 +17,8 @@ const Login = () => {
   });
   const [message, setMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const [getLogin, { data, error, isError, isLoading, isSuccess }] = useGetLoginMutation();
 
@@ -30,33 +32,45 @@ const Login = () => {
       setMessage(error.data?.message);
       setShowAlert(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
-  if (isSuccess) {
+  useEffect(() => {
+    if (isSuccess) {
+      if (data.status === "tokensuccess") {
+
+        // console.log(data);
+        setSuccessMsg(data.message);
+        setShowSuccess(true);
+
+        setTimeout(() => {
+          setSuccessMsg("");
+          setShowSuccess(false);
+        }, 8000);
+      }
+      if (data.status === "success") {
 
 
-    console.log(data);
-    const { token, data: userdata } = data;
-    const { user } = userdata;
-    // console.log(user)
 
-    dispatch(setUserData(user));
-    localStorage.setItem("token", token);
-    const { role } = user;
-    localStorage.setItem("role", role);
 
-    if (role === "admin") {
-      navigate("/admindashboard");
-    } else if (role === "student") {
-      navigate("/studentdashboard");
-    } else if (role === "teacher") {
-      navigate("/teacherdashboard");
+        const { token, data: userdata } = data;
+        const { user } = userdata;
+        dispatch(setUserData(user));
+        localStorage.setItem("token", token);
+        const { role } = user;
+        localStorage.setItem("role", role);
+
+        if (role === "admin") {
+          navigate("/admindashboard");
+        } else if (role === "student") {
+          navigate("/studentdashboard");
+        } else if (role === "teacher") {
+          navigate("/teacherdashboard");
+        }
+      }
     }
-  }
-  else {
-    // console.log("error")
-  }
+  }, [isSuccess]);
+
 
   const login = () => {
     getLogin(user);
@@ -128,6 +142,7 @@ const Login = () => {
                   {message}
                 </Alert>
               )}
+              {showSuccess && <Alert variant="filled" severity="success">{successMsg}</Alert>}
             </div>
             <div className="form-group">
               <input

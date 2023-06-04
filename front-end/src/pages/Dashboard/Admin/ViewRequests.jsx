@@ -3,20 +3,42 @@ import { useSelector } from 'react-redux'
 import HeaderDashboard from '../../../DashboardComponents/HeaderDashboard'
 import py from '../../../assets/img/CourseImages/py.png'
 import { useNavigate } from 'react-router-dom'
+import { useGetAdminCoursesQuery } from '../../../Redux/api/courseSlice'
 
 const ViewRequests = () => {
     const useDatar = useSelector(state => state.user.userData)
     const navigate = useNavigate()
-    const handleViewCourse = (id) => { 
+    const { data = [], isLoading, isFetching } = useGetAdminCoursesQuery()
+    const handleViewCourse = (id) => {
         navigate(`/coursedetails/${id}`);
     }
+    const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
     return (
         <div>
             <HeaderDashboard user={useDatar} />
             <div className='course-div viewRequest'>
 
-                <h1>Courses Needs Approvel</h1>
-                <div className='viewRequestsCard'>
+                <h1>Courses Needs Approval</h1>
+                {
+                    data.data?.map((course) => (
+                        <div className='viewRequestsCard'>
+                            <div className='course-info-logo'>
+
+                                <div className='admin-courseLogo'>
+                                    <img src={`${ImgUrl}/${course.selectLogo}`} alt="" />
+                                </div>
+                                <div className='admin-courseInfor'>
+                                    <h1>{course.courseName}</h1>
+                                    <h2>By: <span>{course.teacher.name}</span></h2>
+                                </div>
+                            </div>
+                            <button onClick={() => handleViewCourse(course._id)}>
+                                View Course
+                            </button>
+                        </div>
+                    ))
+                }
+                {/* <div className='viewRequestsCard'>
                     <div className='admin-courseLogo'>
                         <img src={py} alt="" />
                     </div>
@@ -51,7 +73,7 @@ const ViewRequests = () => {
                     <button>
                         View Course
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
     )

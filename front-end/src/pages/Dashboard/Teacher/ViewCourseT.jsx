@@ -14,41 +14,30 @@ const ViewCourseT = () => {
     isFetching,
 
   } = useGetTeacherCourcesQuery();
-console.log(data)
-
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(true);
-  }, []);
-
-
-
-
-
-  setTimeout(() => {
-    setLoading(false);
-  }, 3000);
-
+  console.log(data)
   const useDatar = useSelector((state) => state.user.userData);
+
+  const approvedCourse = data.data?.filter((item) => item.status === "approved");
+  const pendingCourse = data.data?.filter((item) => item.status === "pending");
+  const rejectedCourse = data.data?.filter((item) => item.status === "rejected");
+
 
   return (
     <div>
       <HeaderDashboard user={useDatar} />
       <div className="teacherCourses">
-          {/* <div className="allCourses">
-          <div className="courseLoop">
-            {data.data?.map((course) => {
-              return (
-                <div className="courseCard">
-                  <CourseCard course={course} />
-                </div>
-              );
-            })}
-          </div>
-        </div> */}
-          <CourseSlider title="Your Courses" data={data.data} />
-          <CourseSlider title="Pending Approvel" data={data.data} />
-          <CourseSlider title="Rejected" data={data.data} />
+        {
+          approvedCourse && approvedCourse.length > 0 && <CourseSlider title="Approved Courses" data={approvedCourse} />
+        }
+
+        {
+          pendingCourse && pendingCourse.length > 0 && <CourseSlider title="Pending Approval" data={pendingCourse} />
+
+        }
+        {
+          rejectedCourse && rejectedCourse.length > 0 && <CourseSlider title="Rejected Courses" data={rejectedCourse} />
+        }
+
       </div>
     </div>
   );

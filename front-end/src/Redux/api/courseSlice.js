@@ -5,7 +5,7 @@ console.log(baseurl);
 
 export const courseApi = createApi({
   reducerPath: "courses",
-  tagTypes: ["Courses"],
+  tagTypes: ["Courses", "adminCourse"],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
     prepareHeaders: (headers) => {
@@ -30,7 +30,7 @@ export const courseApi = createApi({
           body,
         };
       },
-      invalidatesTags: ["Courses"],
+   
      
     }),
     getAdminSignup: builder.mutation({
@@ -39,7 +39,7 @@ export const courseApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Courses"],
+     
     }),
 
 
@@ -53,12 +53,12 @@ export const courseApi = createApi({
           body,
         };
       },
-      invalidatesTags: ["Courses"],
+      invalidatesTags: ["Courses", "adminCourse"],
     }),
 
     updateUserProfile: builder.mutation({
       query: (body) => ({
-        url: "api/v1/users/updateMe", // this is the url for the update profile
+        url: "api/v1/users/updateMe", 
         method: "PATCH",
         body,
       }),
@@ -67,7 +67,7 @@ export const courseApi = createApi({
 
     updateUserPassword: builder.mutation({
       query: (body) => ({
-        url: `/api/v1/user/`, // this is the url for the update profile
+        url: `api/v1/users/updateMyPassword/`,
         method: "PATCH",
         body,
       }),
@@ -75,6 +75,12 @@ export const courseApi = createApi({
 
 
     // Course Routes
+    getAllCourses: builder.query({
+      query: () => ({
+        url: `api/v1/courses/viewAllCourses/`,
+        Method: "GET",
+      }),
+    }),
 
     createCourse: builder.mutation({
       query: (formData) => {
@@ -94,7 +100,33 @@ export const courseApi = createApi({
       }),
       providesTags: ["Courses"],
     }),
+    getCourseById: builder.query({
+      query: (id) => ({
+        url: `api/v1/courses/viewOneCourse/${id}`,
+        Method: "GET",
+      }),
+    }),
+    getAdminCourses: builder.query({
+      query: () => ({
+        url: `api/v1/courses/viewAdminCourses/`,
+        Method: "GET",
+      }),
+      // providesTags: ["adminCourse"],
+    }),
   }),
 });
 
-export const { useGetAdminSignupMutation, useGetSignupMutation, useGetLoginMutation, useUpdateUserProfileMutation, useUpdateUserPasswordMutation, useCreateCourseMutation, useGetTeacherCourcesQuery } = courseApi;
+export const {
+  useGetAdminSignupMutation,
+  useGetSignupMutation,
+  useGetLoginMutation,
+  useUpdateUserProfileMutation,
+  useUpdateUserPasswordMutation,
+
+  useCreateCourseMutation,
+  useGetTeacherCourcesQuery,
+  useGetCourseByIdQuery,
+  useGetAllCoursesQuery,
+  useGetAdminCoursesQuery
+
+} = courseApi;

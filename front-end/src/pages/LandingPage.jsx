@@ -9,12 +9,18 @@ import OurLearningPath from "../components/OurLearningPath/OurLearningPath";
 import CourseSlider from "../components/CourseSlider/CourseSlider";
 import HeaderDashboard from "../DashboardComponents/HeaderDashboard";
 import { useSelector } from "react-redux";
+import { useGetAllCoursesQuery } from "../Redux/api/courseSlice";
+
 
 
 
 const LandingPage = () => {
   const useDatar = useSelector(state => state.user.userData)
   const auth = localStorage.getItem('token')
+
+  const { data = [], isLoading, isFetching } = useGetAllCoursesQuery()
+  // console.log(data)
+
  
   return (
     <>
@@ -23,7 +29,7 @@ const LandingPage = () => {
       <Hero />
       <ChooseUs />
       <OurLearningPath />
-      {/* <CourseSlider title="Popular Courses" /> */}
+      <CourseSlider title="Available Courses" data={data.data} />
       <Footer />
     </>
   );

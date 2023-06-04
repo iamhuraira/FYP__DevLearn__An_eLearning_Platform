@@ -12,6 +12,8 @@ import { ImCross } from 'react-icons/im';
 import { useSelector } from 'react-redux'
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
+import { useGetCourseByIdQuery } from '../Redux/api/courseSlice'
+import { useParams } from 'react-router-dom'
 
 const { Panel } = Collapse;
 
@@ -27,11 +29,16 @@ const CoursePage = () => {
 
     const [logedInUser, setLogedInUser] = useState(false)
 
+    const param = useParams()
+    // console.log(param.id)
+
+    const { data = [], isLoading, isFetching } = useGetCourseByIdQuery(param.id)
+    console.log(data)
+
     const panelStyle = {
         marginBottom: 15,
         marginLeft: 'auto',
         marginRight: 'auto',
-        // eslint-disable-next-line no-undef
         background: 'rgba(35, 186, 177, 0.05)',
         borderRadius: 10,
         border: 'none',
@@ -70,7 +77,7 @@ const CoursePage = () => {
 
     const [iFromeSrc, setiFromeSrc] = useState('')
     const chnageUrl = (url) => {
-        const iFromeSrc = `https://www.youtube.com/embed/${url}`
+        const iFromeSrc = `https://www.youtube.com/embed/${url}?rel=0&autoplay=1`
         setiFromeSrc(iFromeSrc)
         setVideoPopup(true)
 
@@ -110,20 +117,39 @@ const CoursePage = () => {
 
     const SubmitQuiz = () => {
         // setQuizPopup(false)
-        const result = quiz.map((item, i) => {
+        let result = quiz.map((item, i) => {
             if (item.answer === quizAnswer[i]) {
                 return true
             } else {
                 return false
             }
         })
-        console.log(result)
-    }
 
+        let count = 0;
+        for (let i = 0; i < result.length; i++) {
+            if (result[i] === true) {
+                count++
+            }
+        }
+        count === 2 ? setQuizResult('Pass') : setQuizResult('Fail')
+
+        // setQuizResult(count);
+        console.log(result)
+        setQuizAnswer([]);
+        result = [];
+        console.log(quizAnswer)
+    }
+    const handleCloseQuizPopup = () => {
+        setQuizPopup(false)
+        setQuizResult('')
+        setQuizAnswer([]);
+
+    }
+    const auth = localStorage.getItem('token')
     return (
         <>
             {(videoPopup || quizPopup) && <div className='overLay'></div>}
-            {logedInUser ? <HeaderDashboard user={useDatar} /> : <Header />}
+            {auth ? <HeaderDashboard user={useDatar} /> : <Header />}
 
 
             <div className="backgroundCourse">
@@ -186,7 +212,7 @@ const CoursePage = () => {
                                     {
                                         videoPopup && <div className='viderPopup'>
                                             <GrClose onClick={() => setVideoPopup(false)} />
-                                            <iframe src={iFromeSrc} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=true; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                                            <iframe src={iFromeSrc} title="YouTube video player" frameborder="0" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                                         </div>
                                     }
                                 </div>
@@ -201,7 +227,7 @@ const CoursePage = () => {
                                 </button>
                                 {
                                     quizPopup && <div className='quizPopup'>
-                                        <GrClose onClick={() => setQuizPopup(false)} />
+                                        <GrClose onClick={handleCloseQuizPopup} />
                                         {
                                             quizResult === '' && (<>
                                                 <div>
@@ -235,7 +261,7 @@ const CoursePage = () => {
                                                 </div>
                                                 {
                                                     quiz.map((question, index) => (
-                                                        <div className='question'>
+                                                        <div className='question' key={index}>
                                                             <h3>{`${index + 1}. ${question.question}`}</h3>
                                                             <div class="options">
                                                                 <ul class="list">
@@ -273,10 +299,10 @@ const CoursePage = () => {
                                             )
                                         }
                                         {
-                                            quizResult === 'true' && (<div className='passedQuiz'>
+                                            quizResult === 'Pass' && (<div className='passedQuiz'>
                                                 <h2>Passed</h2>
                                                 <TiTick />
-                                                <button onClick={() => setQuizPopup(false)} >
+                                                <button onClick={handleCloseQuizPopup} >
                                                     Okay
                                                 </button>
                                             </div>)
@@ -284,10 +310,10 @@ const CoursePage = () => {
 
 
                                         {
-                                            quizResult === 'false' && (<div className='failedQuiz passedQuiz'>
+                                            quizResult === 'Fail' && (<div className='failedQuiz passedQuiz'>
                                                 <h2>Failed</h2>
                                                 <ImCross />
-                                                <button onClick={() => setQuizPopup(false)} >
+                                                <button onClick={handleCloseQuizPopup} >
                                                     Okay
                                                 </button>
                                             </div>)

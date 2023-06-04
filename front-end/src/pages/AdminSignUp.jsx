@@ -2,12 +2,10 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header/Header'
-import { useNavigate } from 'react-router-dom';
+
 // eslint-disable-next-line
 import { Link, Navigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { setUserData } from '../Redux/slices/accountSlice';
 import { useGetAdminSignupMutation } from '../Redux/api/courseSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -25,6 +23,8 @@ const AdminSignUp = () => {
     });
     const [message, setMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
+    const [successMsg, setSuccessMsg] = useState("");
+    const [showSuccess, setShowSuccess] = useState(false);
 
 
 
@@ -32,13 +32,12 @@ const AdminSignUp = () => {
         // console.log(e);
         let nameofinput = e.target.name;
         let value = e.target.value;
-
+        
         setUser({ ...user, [nameofinput]: value });
 
     }
     const [getSignup, { data, error, isError, isLoading, isSuccess }] = useGetAdminSignupMutation();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  
 
     // console.log(isSuccess)
     useEffect(() => {
@@ -47,33 +46,28 @@ const AdminSignUp = () => {
             setShowAlert(true);
         }
     }, [isError]);
-    
-    if (isSuccess) {
-        console.log(data)
-        const { token, data: userdata } = data;
-        const { user } = userdata;
-        // console.log(user)
+    useEffect(() => {
+        if (isSuccess) {
+            console.log(data)
+            setSuccessMsg(data.message);
+            setShowSuccess(true);
 
-        dispatch(setUserData(user));
-        localStorage.setItem('token', token);
-        const { role } = user;
-        localStorage.setItem('role', role);
+            // const setfalse = () => { 
+            //   setSuccessMsg("");
+            //   setShowSuccess(false);
+            // }
 
-        if (role === 'admin') {
-            navigate('/admindashboard');
+            setTimeout(() => {
+                setSuccessMsg("");
+                setShowSuccess(false);
+            }, 8000);
         }
-        else if (role === 'student') {
-            navigate('/studentdashboard');
-        }else if (role === 'teacher') {
-            navigate('/teacherdashboard');
-        }
-
-    }
+    }, [isSuccess]);
     const signup = () => {
 
         // const { cpassword, ...Newuser } = user;
         // console.log(Newuser);
-         console.log(user);
+        console.log(user);
         getSignup(user);
 
 
@@ -194,15 +188,8 @@ const AdminSignUp = () => {
                         <div className='heading'>
                             <span>Sign Up</span>
                             {showAlert && <Alert variant="filled" severity="error">{message}</Alert>}
-                            {/* <Alert variant="filled" severity="warning">
-                This is a warning alert — check it out!
-              </Alert>
-              <Alert variant="filled" severity="info">
-                This is an info alert — check it out!
-              </Alert>
-              <Alert variant="filled" severity="success">
-                This is a success alert — check it out!
-              </Alert> */}
+                            {showSuccess && <Alert variant="filled" severity="success">{successMsg}</Alert>}
+                          
                         </div>
                         <div className="form-group">
                             <input type="text" name="name" id="name" placeholder='Name'

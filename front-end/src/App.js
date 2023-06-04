@@ -19,6 +19,8 @@ import Price from './pages/Price';
 import Courses from './pages/Courses';
 import ViewCourseT from './pages/Dashboard/Teacher/ViewCourseT';
 import ViewRequests from './pages/Dashboard/Admin/ViewRequests';
+import PageNotFound404 from './pages/PageNotFound404';
+import EmailVerification from './pages/EmailVerification';
 
 
 
@@ -70,6 +72,11 @@ function App() {
           <Route path='/dashboard/changepassword' element={<ChangePassword />} />
           <Route path='/coursedetails/:id' element={<CoursePage />} />
           <Route path='/courses' element={<Courses />} />
+
+          <Route path='*' element={<PageNotFound404 />} />
+          
+          <Route path='/api/v1/users/verifyemail/:token' element={<EmailVerification />} />
+
           
         </Routes>
       </BrowserRouter>

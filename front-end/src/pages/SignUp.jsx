@@ -1,14 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header/Header'
-import { useNavigate } from 'react-router-dom';
-// eslint-disable-next-line
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Alert } from '@mui/material';
-
-
-import { useDispatch } from 'react-redux';
-import { setUserData } from '../Redux/slices/accountSlice';
 import { useGetSignupMutation } from '../Redux/api/courseSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -17,38 +12,31 @@ const SignUp = () => {
   // const [show, setShow] = useState(false);
   const [show, setShow] = useState(false);
   const [term, setTerm] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
   // eslint-disable-next-line
   const [getSignup, { data, error, isError, isLoading, isSuccess }] = useGetSignupMutation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  console.log(error)
-    useEffect(() => {
+  // console.log(error)
+
+  useEffect(() => {
     if (isError) {
       setMessage(error.data.message);
       setShowAlert(true);
     }
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [ isError]);
-  if (isSuccess) {
-    // console.log(data)
-    const { token, data: userdata } = data;
-    const { user } = userdata;
-    // console.log(user)
-    dispatch(setUserData(user));
-    localStorage.setItem('token', token);
-    const { role } = user;
-    localStorage.setItem('role', role);
+  }, [isError]);
 
-    if (role === 'admin') {
-      navigate('/admindashboard');
-    }
-    else if (role === 'student') {
-      navigate('/studentdashboard');
-    } else if (role === 'teacher') {
-      navigate('/teacherdashboard');
-    }
+  useEffect(() => {
+    if (isSuccess) {
+      console.log(data)
+      setSuccessMsg(data.message);
+      setShowSuccess(true)
 
-  }
+      // setTimeout(() => {
+      //   setSuccessMsg("");
+      //   setShowSuccess(false);
+      // }, 8000);
+    }
+  }, [isSuccess]);
   // console.log(token)
 
   const [user, setUser] = useState({
@@ -217,6 +205,7 @@ const SignUp = () => {
             <div className='heading'>
               <span>Sign Up</span>
               {showAlert && <Alert variant="filled" severity="error">{message}</Alert>}
+              {showSuccess && <Alert variant="filled" severity="success">{successMsg}</Alert>}
               {/* <Alert variant="filled" severity="warning">
                 This is a warning alert — check it out!
               </Alert>
