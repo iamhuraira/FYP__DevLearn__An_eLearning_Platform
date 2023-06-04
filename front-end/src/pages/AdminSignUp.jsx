@@ -76,6 +76,8 @@ const AdminSignUp = () => {
 
     const validateform = (e) => {
         e.preventDefault();
+        setSuccessMsg("");
+        setShowSuccess(false);
         const { name, email, password, cpassword } = user;
 
         if (name === '' || email === '' || password === '' || cpassword === '') {

@@ -31,10 +31,10 @@ const SignUp = () => {
       setSuccessMsg(data.message);
       setShowSuccess(true)
 
-      // setTimeout(() => {
-      //   setSuccessMsg("");
-      //   setShowSuccess(false);
-      // }, 8000);
+      setTimeout(() => {
+        setSuccessMsg("");
+        setShowSuccess(false);
+      }, 8000);
     }
   }, [isSuccess]);
   // console.log(token)
@@ -72,6 +72,8 @@ const SignUp = () => {
 
   const validateform = (e) => {
     e.preventDefault();
+    setSuccessMsg("");
+    setShowSuccess(false);
     const { name, email, password, cpassword } = user;
 
     if (name === '' || email === '' || password === '' || cpassword === '') {

@@ -86,6 +86,8 @@ const ChangePassword = () => {
 
 
     const validateform = () => {
+        setSuccessMsg("");
+        setShowSuccess(false);
         const { oldPassword, newPassword, confirmPassword } = changePassword;
         if (oldPassword === '' || newPassword === '' || confirmPassword === '') {
             if (oldPassword === '') {

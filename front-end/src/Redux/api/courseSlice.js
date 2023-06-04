@@ -5,7 +5,7 @@ console.log(baseurl);
 
 export const courseApi = createApi({
   reducerPath: "courses",
-  tagTypes: ["Courses", "adminCourse"],
+  tagTypes: ["Courses", "adminCourse", "SingleCourse"],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
     prepareHeaders: (headers) => {
@@ -30,8 +30,8 @@ export const courseApi = createApi({
           body,
         };
       },
-   
-     
+
+
     }),
     getAdminSignup: builder.mutation({
       query: (body) => ({
@@ -39,7 +39,7 @@ export const courseApi = createApi({
         method: "POST",
         body,
       }),
-     
+
     }),
 
 
@@ -58,7 +58,7 @@ export const courseApi = createApi({
 
     updateUserProfile: builder.mutation({
       query: (body) => ({
-        url: "api/v1/users/updateMe", 
+        url: "api/v1/users/updateMe",
         method: "PATCH",
         body,
       }),
@@ -80,6 +80,7 @@ export const courseApi = createApi({
         url: `api/v1/courses/viewAllCourses/`,
         Method: "GET",
       }),
+      // invalidatesTags: ["SingleCourse"],
     }),
 
     createCourse: builder.mutation({
@@ -105,6 +106,7 @@ export const courseApi = createApi({
         url: `api/v1/courses/viewOneCourse/${id}`,
         Method: "GET",
       }),
+      invalidatesTags: ["SingleCourse"],
     }),
     getAdminCourses: builder.query({
       query: () => ({

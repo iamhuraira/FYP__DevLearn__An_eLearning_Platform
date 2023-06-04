@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hero/Hero";
@@ -10,6 +10,7 @@ import CourseSlider from "../components/CourseSlider/CourseSlider";
 import HeaderDashboard from "../DashboardComponents/HeaderDashboard";
 import { useSelector } from "react-redux";
 import { useGetAllCoursesQuery } from "../Redux/api/courseSlice";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -17,15 +18,27 @@ import { useGetAllCoursesQuery } from "../Redux/api/courseSlice";
 const LandingPage = () => {
   const useDatar = useSelector(state => state.user.userData)
   const auth = localStorage.getItem('token')
-
-  const { data = [], isLoading, isFetching } = useGetAllCoursesQuery()
+  const navigate = useNavigate()
+  useEffect(() => { 
+    if (auth) {
+      if (useDatar.role === "admin") {
+        navigate("/admindashboard");
+      }
+      if (useDatar.role === "teacher") {
+        navigate("/teacherdashboard");
+      }
+      if (useDatar.role === "student") {
+        navigate("/studentdashboard");
+      }
+    }
+  }, [auth])
+  const { data = [], isLoading, isFetching } = useGetAllCoursesQuery({ refetchOnMountOrArgChange: true })
   // console.log(data)
 
  
   return (
     <>
-      {/* <Header /> */}
-      {auth ? <HeaderDashboard user={useDatar} /> : <Header />}
+       <Header />
       <Hero />
       <ChooseUs />
       <OurLearningPath />

@@ -87,6 +87,8 @@ const Login = () => {
   };
   const validateform = (e) => {
     e.preventDefault();
+    setSuccessMsg("");
+    setShowSuccess(false);
     const { email, password } = user;
 
     if (email === "" || password === "") {

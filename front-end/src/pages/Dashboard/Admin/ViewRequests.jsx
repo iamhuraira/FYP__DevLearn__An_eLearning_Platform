@@ -20,8 +20,8 @@ const ViewRequests = () => {
 
                 <h1>Courses Needs Approval</h1>
                 {
-                    data.data?.map((course) => (
-                        <div className='viewRequestsCard'>
+                    data.data?.map((course, index) => (
+                        <div className='viewRequestsCard' key={index}>
                             <div className='course-info-logo'>
 
                                 <div className='admin-courseLogo'>

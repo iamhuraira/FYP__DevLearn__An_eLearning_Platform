@@ -19,6 +19,7 @@ const HeaderDashboard = (props) => {
     dispatch(logoutuser());
     navigate("/");
   };
+  const deleteAccount = () => { }
 
   const handleChangePassword = () => {
     navigate("/dashboard/changepassword");
@@ -32,14 +33,22 @@ const HeaderDashboard = (props) => {
 
 
   // console.log(profileAvatar);
-  const ShowLandingPage = () => { 
-    navigate("/");
+  const showDashboard = () => { 
+    if(props.user.role === "admin"){
+      navigate("/admindashboard");
+    }
+    if(props.user.role === "teacher"){
+      navigate("/teacherdashboard");
+    }
+    if(props.user.role === "student"){
+      navigate("/studentdashboard");
+    }
   }
 
   return (
     <div className="header">
       <div className="logo" >
-        <img src={logo} alt="logo" onClick={ShowLandingPage} />
+        <img src={logo} alt="logo" onClick={showDashboard} />
       </div>
       <div className="userinfo">
         <h2>{name}</h2>
@@ -72,6 +81,7 @@ const HeaderDashboard = (props) => {
                 <li className="changePassword" onClick={handleChangePassword}>
                   Change Password
                 </li>
+                <li onClick={deleteAccount}>Delete Account</li>
                 <li className="logout" onClick={logout}>
                   Logout{" "}
                   <span>
