@@ -33,18 +33,24 @@ const HeaderDashboard = (props) => {
 
 
   // console.log(profileAvatar);
-  const showDashboard = () => { 
-    if(props.user.role === "admin"){
+  const showDashboard = () => {
+    if (props.user.role === "admin") {
       navigate("/admindashboard");
     }
-    if(props.user.role === "teacher"){
+    if (props.user.role === "teacher") {
       navigate("/teacherdashboard");
     }
-    if(props.user.role === "student"){
+    if (props.user.role === "student") {
       navigate("/studentdashboard");
     }
   }
 
+  const [showDeletePopup, setshowDeletePopup] = useState(false);
+
+  const handleDeleteAccount = () => { 
+    setshowDeletePopup(false);
+    // logout();
+  }
   return (
     <div className="header">
       <div className="logo" >
@@ -81,7 +87,8 @@ const HeaderDashboard = (props) => {
                 <li className="changePassword" onClick={handleChangePassword}>
                   Change Password
                 </li>
-                <li onClick={deleteAccount}>Delete Account</li>
+                <li onClick={() => setshowDeletePopup(true)}>Delete Account</li>
+               
                 <li className="logout" onClick={logout}>
                   Logout{" "}
                   <span>
@@ -93,6 +100,17 @@ const HeaderDashboard = (props) => {
           )}
         </div>
       </div>
+      {
+        showDeletePopup && <div className="deletePopup">
+          <h2>
+            Are you sure you want to delete your account?
+          </h2>
+          <div className="confermButton">
+            <button onClick={() => { setshowDeletePopup(false) }}>No</button>
+            <button onClick={handleDeleteAccount}>Yes</button>
+          </div>
+        </div>
+      }
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { courseApi } from "./Redux/api/courseSlice";
 import userReducer from "./Redux/slices/accountSlice";
+import courseReducer from "./Redux/slices/courseSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
@@ -14,6 +15,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   user: userReducer,
+  course: courseReducer,
   // [signupApi.reducerPath]: signupApi.reducer,
   [courseApi.reducerPath]: courseApi.reducer,
 });

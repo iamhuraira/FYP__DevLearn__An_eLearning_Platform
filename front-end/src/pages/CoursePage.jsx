@@ -9,19 +9,16 @@ import { GrClose } from 'react-icons/gr';
 import { TiTick } from 'react-icons/ti';
 import { ImCross } from 'react-icons/im';
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
-import { useGetCourseByIdQuery } from '../Redux/api/courseSlice'
-import { useParams } from 'react-router-dom'
+import { useGetCourseByIdQuery, useGetCourseDeleteIdMutation, useGetCourseDeleteIdQuery } from '../Redux/api/courseSlice'
+import { useNavigate, useParams } from 'react-router-dom'
+import { setCourseData } from '../Redux/slices/courseSlice'
 
 const { Panel } = Collapse;
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+
 
 
 const CoursePage = () => {
@@ -32,9 +29,19 @@ const CoursePage = () => {
     const param = useParams()
     // console.log(param.id)
 
-    const { data = [], isLoading, isFetching, refetch } = useGetCourseByIdQuery(param.id, { refetchOnMountOrArgChange: false })
+    const { data = [], isLoading, isFetching, refetch } = useGetCourseByIdQuery(param.id, { refetchOnMountOrArgChange: true })
+
+    useEffect(() => { 
+
+    }, [data])
+
+
     const course = data.data
+    const dispatch = useDispatch()
+    dispatch(setCourseData(course))
     console.log(data.data)
+    console.log(course?.status)
+
 
     // useEffect(() => { 
     //     refetch()
@@ -94,16 +101,16 @@ const CoursePage = () => {
 
     const [videoPopup, setVideoPopup] = useState(false);
     const [quizPopup, setQuizPopup] = useState(false);
-
+    const [showDeletePopup, setshowDeletePopup] = useState(false)
     useEffect(() => {
-        if (videoPopup || quizPopup) {
+        if (videoPopup || quizPopup || showDeletePopup) {
 
             document.body.style.overflow = 'hidden';
         } else {
 
             document.body.style.overflow = 'unset';
         }
-    }, [videoPopup, quizPopup]);
+    }, [videoPopup, quizPopup, showDeletePopup]);
 
     const [quizAnswer, setQuizAnswer] = useState([])
     // console.log(quizAnswer)
@@ -187,12 +194,46 @@ const CoursePage = () => {
         color: DifficultyColor[course?.difficultylevel]
     }
 
+    console.log(user.role)
 
+    const navigate = useNavigate()
+
+    const handleUpdateCourse = () => { 
+        navigate(`/teacherdashboard/updatecourse/${course._id}`)
+    }
+    
+    const [deleteCourse, response] = useGetCourseDeleteIdMutation()
+   
+    const handleDeleteCourse = () => { 
+        deleteCourse(course._id)
+        setshowDeletePopup(false)
+        console.log(response)
+        // navigate('/teacherdashboard')
+     
+    }
     return (
         <>
-            {(videoPopup || quizPopup) && <div className='overLay'></div>}
+            {(videoPopup || quizPopup || showDeletePopup ) && <div className='overLay'></div>}
             {auth ? <HeaderDashboard user={user} /> : <Header />}
+            {
+                showDeletePopup && <div className="deletePopup">
+                    <h2>
+                        Are you sure you want to delete?
+                    </h2>
+                    <div className="confermButton">
+                        <button onClick={() => { setshowDeletePopup(false) }}>No</button>
+                        <button onClick={handleDeleteCourse}>Yes</button>
+                    </div>
+                </div>
+            }
 
+            {
+
+                (course?.status === 'pending' || course?.status === 'rejected') && user?.role === 'teacher' && <div className='adminControl teacherControl'>
+                    <button onClick={handleUpdateCourse}> Update</button>
+                    <button onClick={() => setshowDeletePopup(true)}>Delete</button>
+                </div>
+            }
 
             <div className="backgroundCourse">
                 <div className="courseHeader">
@@ -321,12 +362,15 @@ const CoursePage = () => {
                                                             ))
                                                         }
 
+                                                        {
+                                                            user.role !== 'admin' && user.role !== 'teacher' && <div className='quizButton'>
+                                                                <button onClick={SubmitQuiz}>
+                                                                    Submit Quiz
+                                                                </button>
+                                                            </div>
+                                                        }
 
-                                                        <div className='quizButton'>
-                                                            <button onClick={SubmitQuiz}>
-                                                                Submit Quiz
-                                                            </button>
-                                                        </div>
+
                                                     </>
                                                     )
                                                 }
@@ -387,6 +431,16 @@ const CoursePage = () => {
                     </div>
                 </div>
             </div>
+
+            {
+                course?.status === 'pending' && user?.role === 'admin' && <div className='adminControl'>
+                    <button> Approve</button>
+                    <button>Reject</button>
+                </div>
+            }
+
+
+
 
             <Footer />
         </>

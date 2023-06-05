@@ -21,6 +21,8 @@ import ViewCourseT from './pages/Dashboard/Teacher/ViewCourseT';
 import ViewRequests from './pages/Dashboard/Admin/ViewRequests';
 import PageNotFound404 from './pages/PageNotFound404';
 import EmailVerification from './pages/EmailVerification';
+import UpdateCourse from './pages/Dashboard/Teacher/UpdateCourse';
+import ForgotPassword from './pages/ForgotPassword';
 
 
 
@@ -54,6 +56,7 @@ function App() {
           {/* Teacher Routes */}
           <Route path='/teacherdashboard' element={<TeacherDashboard />} />
           <Route path='/teacherdashboard/createcourse' element={<CreateCourse />} />
+          <Route path='/teacherdashboard/updatecourse/:id' element={<UpdateCourse />} />
           <Route path='/teacherdashboard/viewcourses' element={<ViewCourseT />} />
 
           {/* Admin Routes */}
@@ -72,6 +75,8 @@ function App() {
           <Route path='/dashboard/changepassword' element={<ChangePassword />} />
           <Route path='/coursedetails/:id' element={<CoursePage />} />
           <Route path='/courses' element={<Courses />} />
+          <Route path='/forgotpassword' element={<ForgotPassword />} />
+
 
           <Route path='*' element={<PageNotFound404 />} />
           

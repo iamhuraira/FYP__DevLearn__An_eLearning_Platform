@@ -56,6 +56,16 @@ export const courseApi = createApi({
       invalidatesTags: ["Courses", "adminCourse"],
     }),
 
+    getForgetPassword: builder.mutation({
+      query: (body) => {
+        return {
+          url: "api/v1/users/login",  // change this url
+          method: "POST",
+          body,
+        };
+      },
+    }),
+
     updateUserProfile: builder.mutation({
       query: (body) => ({
         url: "api/v1/users/updateMe",
@@ -108,6 +118,13 @@ export const courseApi = createApi({
       }),
       invalidatesTags: ["SingleCourse"],
     }),
+    getCourseDeleteId: builder.mutation({
+      query: (id) => ({
+        url: `api/v1/courses/deleteCourse/${id}`,
+        Method: "DELETE",
+      }),
+      invalidatesTags: ["Courses"],
+    }),
     getAdminCourses: builder.query({
       query: () => ({
         url: `api/v1/courses/viewAdminCourses/`,
@@ -122,13 +139,14 @@ export const {
   useGetAdminSignupMutation,
   useGetSignupMutation,
   useGetLoginMutation,
+  useGetForgetPasswordMutation,
   useUpdateUserProfileMutation,
   useUpdateUserPasswordMutation,
 
   useCreateCourseMutation,
   useGetTeacherCourcesQuery,
   useGetCourseByIdQuery,
-  useGetAllCoursesQuery,
+  useGetAllCoursesQuery, useGetCourseDeleteIdMutation,
   useGetAdminCoursesQuery
 
 } = courseApi;

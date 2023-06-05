@@ -167,7 +167,7 @@ const Login = () => {
               />
             </div>
             <div className="checkbox forget">
-              <Link to="/ForgetPassword" target="_blank">
+              <Link to="/forgotpassword" target="_blank">
                 <span className="term fpass">Forget Password?</span>
               </Link>
             </div>
