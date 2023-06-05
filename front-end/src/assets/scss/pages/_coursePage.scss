@@ -25,7 +25,7 @@
     // height: 100%;
 
     .courseHeader__left {
-        width:50%;
+        width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,7 +34,7 @@
         padding: 60px 0;
 
         h2 {
-            font-family: 'Inter';
+            // font-family: 'Inter';
             font-style: normal;
             font-weight: 700;
             font-size: 5rem;
@@ -44,10 +44,10 @@
         }
 
         p {
-            font-family: 'Inter';
+            // font-family: 'Inter';
             font-style: normal;
             font-weight: 400;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
 
 
 
@@ -393,11 +393,12 @@
                     justify-content: center;
                     align-items: center;
                     height: 700px;
-                    h2{
+
+                    h2 {
                         color: green;
                     }
 
-                    svg{
+                    svg {
                         position: unset;
                         font-size: 10rem;
                         color: green;
@@ -407,7 +408,8 @@
                         border: 10px solid green;
                         margin-bottom: 30px;
                     }
-                    button{
+
+                    button {
                         width: 200px;
                         height: 50px;
                         font-size: 2rem;
@@ -421,6 +423,7 @@
                         justify-content: center;
                         background-color: #0C3A53;
                         color: white;
+
                         &:hover {
                             background-color: white;
                             color: #0C3A53;
@@ -428,13 +431,15 @@
                         }
                     }
                 }
-                .failedQuiz{
-                    h2{
+
+                .failedQuiz {
+                    h2 {
                         color: red;
 
                     }
-                    svg{
-                         width: 100px;
+
+                    svg {
+                        width: 100px;
                         height: 100px;
                         padding: 10px;
                         color: red;
@@ -446,4 +451,64 @@
         }
 
     }
+}
+
+.teacherCard {
+    width: 70%;
+    margin: 50px auto;
+    border: 2px solid #0C3A53;
+    border-radius: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffff;
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
+
+    h1 {
+        margin-left: 20px;
+        font-size: 4rem;
+        font-weight: 700;
+        color: #1ABBB1;
+        margin-bottom: 10px;
+    }
+
+    .teacherImg {
+        // width: 200px;
+        width: 30%;
+
+
+        img {
+            width: 200px;
+            // height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .teacherInfo {
+        margin-left: 20px;
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0C3A53;
+            // margin-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: #0C3A53;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #0C3A53;
+            margin-bottom: 5px;
+            // width: 70%;
+        }
+    }
+
 }

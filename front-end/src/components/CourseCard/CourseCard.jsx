@@ -12,7 +12,7 @@ const CourseCard = ({ course }) => {
   const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
   const DifficultyColor = {
     Beginner: "#00b300",
-    Hard: "#ffcc00",
+    Hard: "#febe00",
     Expert: "#ff0000",
   }
   const Dstyle = {

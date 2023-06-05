@@ -121,9 +121,9 @@ const CoursePage = () => {
     const handleOpenQuiz = (no) => {
         console.log(no)
         // console.log(course?.sections[no]?.quiz)
-        const quiz1 = course?.sections[no]?.quiz.map((item, i) => { 
+        const quiz1 = course?.sections[no]?.quiz.map((item, i) => {
             return {
-                id: `${i+1}`,
+                id: `${i + 1}`,
                 question: item.question,
                 options: [
                     item.option1,
@@ -177,9 +177,10 @@ const CoursePage = () => {
     const auth = localStorage.getItem('token')
     const user = useSelector(state => state.user.userData)
     const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
+    const UserImg = `${process.env.REACT_APP_BASE_URL}/public/img/users`;
     const DifficultyColor = {
         Beginner: "#00b300",
-        Hard: "#ffcc00",
+        Hard: "#febe00",
         Expert: "#ff0000",
     }
     const Dstyle = {
@@ -320,7 +321,7 @@ const CoursePage = () => {
                                                             ))
                                                         }
 
-                                                    
+
                                                         <div className='quizButton'>
                                                             <button onClick={SubmitQuiz}>
                                                                 Submit Quiz
@@ -342,7 +343,7 @@ const CoursePage = () => {
 
                                                 {
                                                     quizResult === 'Fail' && (<div className='failedQuiz passedQuiz'>
-                                                        <h2>Failed</h2>
+                                                        <h2>Failed (Less then 65%)</h2>
                                                         <ImCross />
                                                         <button onClick={handleCloseQuizPopup} >
                                                             Okay
@@ -365,9 +366,26 @@ const CoursePage = () => {
                 }
 
             </div>
-            
+
             <div className="teacherCard">
-                
+                <h1>Instructor</h1>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%'
+                }}>
+
+                    <div className="teacherImg">
+                        <img src={`${UserImg}/${course?.teacher?.profilePic}`} alt="" srcset="" />
+                    </div>
+                    <div className="teacherInfo">
+
+                        <h2>{`${course?.teacher?.name}, ${course?.teacher?.country}`}</h2>
+                        <h3>{course?.teacher?.email}</h3>
+                        <p>{course?.teacher?.userdescription}</p>
+                    </div>
+                </div>
             </div>
 
             <Footer />
