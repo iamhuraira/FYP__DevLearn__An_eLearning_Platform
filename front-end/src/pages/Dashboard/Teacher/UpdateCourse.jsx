@@ -9,26 +9,43 @@ import Image from "./Image";
 import { Alert, FormControl, InputLabel, MenuItem } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { useCreateCourseMutation,  } from "../../../Redux/api/courseSlice";
+import { useUpdateCourseMutation,  } from "../../../Redux/api/courseSlice";
 import CircularProgress from '@mui/material/CircularProgress';
-// import { useCreateCourseMutation } from "../../../Redux/api/signupSlice";
-// import DynamicForm from './DynamicForm';
-// import { display } from '@mui/system';
+import axios from 'axios'
+
 const UpdateCourse = () => {
     const navigate = useNavigate();
 
-    const [updateCourseDB, { data, isLoading, isSuccess }] = useCreateCourseMutation();
+    const [updateCourseDB, { data, isLoading, isSuccess }] = useUpdateCourseMutation();
     const param = useParams()
     
+    // useEffect(() => {
+    //     const verifyEmil = async () => {
+    //         try {
+    //             const url = `${process.env.REACT_APP_BASE_URL}/api/v1/courses/viewOneCourse/${param.token}`;
+    //             const { data } = await axios.patch(url);
+    //             if (data.status === 'success') {
+
+    //                 courseFetch = data;
+    //             }
+    //         }
+    //         catch (error) {
+    //            console.log(error)
+    //         }
+    //     }
+    //     verifyEmil()
+    // }, [param])
+
     // const { data: courseDataDB } = useGetCourseByIdQuery(param.id, { refetchOnMountOrArgChange: false })
-    const courseFetch = useSelector((state) => state.course.courseData);
-    // const courseFetch = courseDataDB?.data
+    let courseFetch = useSelector((state) => state.course.courseData);
+
+    // let courseFetch = courseDataDB?.data
     // console.log(courseDataDB.data)
 
-    if (isSuccess) {
-        console.log(data);
-        navigate("/teacherdashboard/viewcourses");
-    }
+    // if (isSuccess) {
+    //     console.log(data);
+    //     navigate("/teacherdashboard/viewcourses");
+    // }
 
     const [course, setCourse] = React.useState({
         name: courseFetch?.courseName,
@@ -74,11 +91,32 @@ const UpdateCourse = () => {
         quiz: [questionTemplate],
     };
 
-    console.log(courseFetch?.sections)
+    // console.log(courseFetch?.sections)
 
-    let sectionData1 = Object.preventExtensions([...courseFetch?.sections]);
+    let sectionData1 = courseFetch?.sections.map((section) => { 
+        return {
+            sectionName: section.sectionName,
+            videoData: section.videoData.map((video) => {
+                return {
+                    videoName: video.videoName,
+                    videoLink: video.videoLink,
+                };
+            }),
+            quiz: section.quiz.map((question) => { 
+                return {
+                    question: question.question,
+                    option1: question.option1,
+                    option2: question.option2,
+                    option3: question.option3,
+                    option4: question.option4,
+                    answer: question.answer,
+                };
+            })
+        }
+    });
 
     // const [sectionData, setsectionData] = React.useState([]);
+    // const [sectionData, setsectionData] = React.useState([...courseFetch?.sections]);
     const [sectionData, setsectionData] = React.useState([...sectionData1]);
     // const [videoData, setvideoData] = React.useState([videoTempalte])
     // useEffect(() => { setsectionData(courseFetch?.sections) }, [sectionData1]);
@@ -139,9 +177,10 @@ const UpdateCourse = () => {
 
         const newSectionData = [...sectionData];
         newSectionData[index].videoData.push(videoTempalte);
-        // [...newSectionData[index].videoData, videoTempalte];
-        // setsectionData(newSectionData);
+        // console.log([...newSectionData[index].videoData, videoTempalte]);
         setsectionData(newSectionData);
+        // setsectionData([...newSectionData[index].videoData, videoTempalte]);
+        console.log(sectionData);
     };
     const addQuestionData = (index) => {
         const newSectionData = [...sectionData];
@@ -178,9 +217,8 @@ const UpdateCourse = () => {
             course.shortDescription === "" ||
             course.solvedExample === "" ||
             course.courseDuration === "" ||
-            course.deficulty === "" ||
-            courseLogo === null ||
-            courseImage === null
+            course.deficulty === "" 
+          
         ) {
             if (course.name === "") {
                 setMsg("Please fill course name");
@@ -208,20 +246,20 @@ const UpdateCourse = () => {
                 setShowAlert(true);
                 return false;
             }
-            if (courseLogo === null) {
-                const parent = document.getElementById("courseLogo").parentNode;
-                parent.classList.add("error");
-                setMsg("Please upload course logo");
-                setShowAlert(true);
-                return false;
-            }
-            if (courseImage === null) {
-                const parent = document.getElementById("courseImage").parentNode;
-                parent.classList.add("error");
-                setMsg("Please upload course image");
-                setShowAlert(true);
-                return false;
-            }
+            // if (courseLogo === null ) {
+            //     const parent = document.getElementById("courseLogo").parentNode;
+            //     parent.classList.add("error");
+            //     setMsg("Please upload course logo");
+            //     setShowAlert(true);
+            //     return false;
+            // }
+            // if (courseImage === null) {
+            //     const parent = document.getElementById("courseImage").parentNode;
+            //     parent.classList.add("error");
+            //     setMsg("Please upload course image");
+            //     setShowAlert(true);
+            //     return false;
+            // }
             return false;
         }
 
@@ -291,16 +329,17 @@ const UpdateCourse = () => {
         formData.append("solvedExample", course.solvedExample);
         formData.append("courseDuration", course.courseDuration);
         formData.append("difficultylevel", course.deficulty);
-        formData.append("selectLogo", courseLogo);
-        formData.append("selectImage", courseImage);
+        formData.append("selectLogo", courseLogo || courseFetch?.selectLogo);
+        formData.append("selectImage", courseImage || courseFetch?.selectLogo);
         formData.append("sections", JSON.stringify(sectionData));
         formData.append("teacher", teacher);
 
         // console.log(completeCourseData)
         // alert('Course Created Successfully')
 
-        // updateCourseDB(formData);
+        // updateCourseDB(formData, param.id);
         console.log([...formData]);
+        // console.log(sectionData);
     };
 
     useEffect(() => {
@@ -378,7 +417,7 @@ const UpdateCourse = () => {
                                         <Image file={courseLogo} height={80} width={80} />
                                     )}
                                     {
-                                        !courseLogo && courseLogoUrl && <img src={courseLogoUrl} alt="" height={67.5} width={120} />
+                                        !courseLogo && courseLogoUrl && <img src={courseLogoUrl} alt="" height={80} width={120} />
                                     }
                                 </div>
                             </div>
@@ -481,7 +520,7 @@ const UpdateCourse = () => {
                                     {/* Section Videos And Hedings */}
 
                                     <div className="VideoSection">
-                                        {sectionData[index].videoData.map((video, i) => (
+                                        {sectionData[index].videoData?.map((video, i) => (
                                             <div className="sectionVideo" key={i}>
                                                 <TextField
                                                     id="outlined-basic"
@@ -543,7 +582,7 @@ const UpdateCourse = () => {
                                     <div className="QuizSection">
                                         <h2>Quiz </h2>
 
-                                        {sectionData[index].quiz.map((question, i) => (
+                                        {sectionData[index].quiz?.map((question, i) => (
                                             <div className="quizSection" key={i}>
                                                 <h2>{`Question ${i + 1}`}</h2>
                                                 <div className="question">

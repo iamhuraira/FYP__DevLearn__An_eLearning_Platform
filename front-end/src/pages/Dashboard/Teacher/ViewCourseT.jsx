@@ -21,7 +21,11 @@ const ViewCourseT = () => {
   const pendingCourse = data.data?.filter((item) => item.status === "pending");
   const rejectedCourse = data.data?.filter((item) => item.status === "rejected");
 
-
+  useEffect(() => {
+  
+      document.body.style.overflow = 'unset';
+ 
+  }, []);
   return (
     <div>
       <HeaderDashboard user={useDatar} />

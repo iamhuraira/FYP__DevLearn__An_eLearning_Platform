@@ -12,7 +12,7 @@ import { ImCross } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux'
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
-import { useGetCourseByIdQuery, useGetCourseDeleteIdMutation, useGetCourseDeleteIdQuery } from '../Redux/api/courseSlice'
+import { useGetCourseByIdQuery, useDeleteCourseMutation, useCourseApproveMutation } from '../Redux/api/courseSlice'
 import { useNavigate, useParams } from 'react-router-dom'
 import { setCourseData } from '../Redux/slices/courseSlice'
 
@@ -39,8 +39,8 @@ const CoursePage = () => {
     const course = data.data
     const dispatch = useDispatch()
     dispatch(setCourseData(course))
-    console.log(data.data)
-    console.log(course?.status)
+    // console.log(data.data)
+    // console.log(course?.status)
 
 
     // useEffect(() => { 
@@ -116,7 +116,7 @@ const CoursePage = () => {
     // console.log(quizAnswer)
     // let myArray = new Array(); 
     const handleQuizAnswer = (i, ans) => {
-        console.log(i, ans)
+        // console.log(i, ans)
         // myArray[i] = ans
         const newarray = [...quizAnswer]
         newarray[i] = ans
@@ -126,7 +126,7 @@ const CoursePage = () => {
 
     }
     const handleOpenQuiz = (no) => {
-        console.log(no)
+        // console.log(no)
         // console.log(course?.sections[no]?.quiz)
         const quiz1 = course?.sections[no]?.quiz.map((item, i) => {
             return {
@@ -194,7 +194,7 @@ const CoursePage = () => {
         color: DifficultyColor[course?.difficultylevel]
     }
 
-    console.log(user.role)
+    // console.log(user.role)
 
     const navigate = useNavigate()
 
@@ -202,15 +202,26 @@ const CoursePage = () => {
         navigate(`/teacherdashboard/updatecourse/${course._id}`)
     }
     
-    const [deleteCourse, response] = useGetCourseDeleteIdMutation()
+    const [deleteCourse, response] = useDeleteCourseMutation()
    
     const handleDeleteCourse = () => { 
         deleteCourse(course._id)
         setshowDeletePopup(false)
-        console.log(response)
-        // navigate('/teacherdashboard')
+        // console.log(response)
+        navigate('/teacherdashboard/viewcourses')
      
     }
+
+    const [courseAprove, { isSuccess, isError, error }] = useCourseApproveMutation();
+    
+    const handleApproveCourse = (decision) => { 
+        console.log({status: decision},course._id)
+        // courseAprove({
+        //     status: decision
+        // },course._id)
+        // navigate('/admin/viewrequests')
+    }
+
     return (
         <>
             {(videoPopup || quizPopup || showDeletePopup ) && <div className='overLay'></div>}
@@ -434,8 +445,8 @@ const CoursePage = () => {
 
             {
                 course?.status === 'pending' && user?.role === 'admin' && <div className='adminControl'>
-                    <button> Approve</button>
-                    <button>Reject</button>
+                    <button onClick={() => { handleApproveCourse("approved")}}> Approve</button>
+                    <button onClick={() => { handleApproveCourse("rejected") }}>Reject</button>
                 </div>
             }
 

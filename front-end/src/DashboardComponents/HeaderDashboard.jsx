@@ -5,6 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { logoutuser } from "../Redux/slices/accountSlice";
+import { useDeleteUserMutation } from "../Redux/api/courseSlice";
 
 const HeaderDashboard = (props) => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const HeaderDashboard = (props) => {
     dispatch(logoutuser());
     navigate("/");
   };
-  const deleteAccount = () => { }
+ 
 
   const handleChangePassword = () => {
     navigate("/dashboard/changepassword");
@@ -47,71 +48,89 @@ const HeaderDashboard = (props) => {
 
   const [showDeletePopup, setshowDeletePopup] = useState(false);
 
-  const handleDeleteAccount = () => { 
+  const [deleteUser, response] = useDeleteUserMutation()
+  
+  // console.log("Delete User", response)
+
+  const handleDeleteAccount = () => {
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("role");
+    // localStorage.removeItem("user");
+    // dispatch(logoutuser());
+   
+    // deleteUser(props.user._id)
+    console.log("Delete User", props.user._id)
     setshowDeletePopup(false);
+  
+    // navigate("/");
     // logout();
   }
   return (
-    <div className="header">
-      <div className="logo" >
-        <img src={logo} alt="logo" onClick={showDashboard} />
-      </div>
-      <div className="userinfo">
-        <h2>{name}</h2>
-        <div className="dashboard-nav">
-          <span
-            className="user-icon"
-            onClick={() => {
-              setshowLogout(!showLogout);
-            }}
-          >
-            {profileAvatar ? (
-              <img
-                src={`${process.env.REACT_APP_BASE_URL}/public/img/users/${props.user.profilePic}`}
-                alt="profile"
-              />
-            ) : (
-              <FaUser />
-            )}
-          </span>
-          {showLogout && (
-            <nav>
-              <ul>
-                <li className="name">{name}</li>
-                <li className="Dashboard">
-                  {props.user.role === "admin" && <Link to="/admindashboard">Dashboard</Link>}
-                  {props.user.role === "teacher" && <Link to="/teacherdashboard">Dashboard</Link>}
-                  {props.user.role === "student" && <Link to="/studentdashboard">Dashboard</Link>}
-
-                </li>
-                <li className="changePassword" onClick={handleChangePassword}>
-                  Change Password
-                </li>
-                <li onClick={() => setshowDeletePopup(true)}>Delete Account</li>
-               
-                <li className="logout" onClick={logout}>
-                  Logout{" "}
-                  <span>
-                    <FiLogOut />{" "}
-                  </span>
-                </li>
-              </ul>
-            </nav>
-          )}
+    <>
+      {showDeletePopup && <div className='overLay'></div>}
+      <div className="header">
+        <div className="logo" >
+          <img src={logo} alt="logo" onClick={showDashboard} />
         </div>
-      </div>
-      {
-        showDeletePopup && <div className="deletePopup">
-          <h2>
-            Are you sure you want to delete your account?
-          </h2>
-          <div className="confermButton">
-            <button onClick={() => { setshowDeletePopup(false) }}>No</button>
-            <button onClick={handleDeleteAccount}>Yes</button>
+        <div className="userinfo">
+          <h2>{name}</h2>
+          <div className="dashboard-nav">
+            <span
+              className="user-icon"
+              onClick={() => {
+                setshowLogout(!showLogout);
+              }}
+            >
+              {profileAvatar ? (
+                <img
+                  src={`${process.env.REACT_APP_BASE_URL}/public/img/users/${props.user.profilePic}`}
+                  alt="profile"
+                />
+              ) : (
+                <FaUser />
+              )}
+            </span>
+            {showLogout && (
+              <nav>
+                <ul>
+                  <li className="name">{name}</li>
+                  <li className="Dashboard">
+                    {props.user.role === "admin" && <Link to="/admindashboard">Dashboard</Link>}
+                    {props.user.role === "teacher" && <Link to="/teacherdashboard">Dashboard</Link>}
+                    {props.user.role === "student" && <Link to="/studentdashboard">Dashboard</Link>}
+
+                  </li>
+                  <li onClick={() => navigate("/courses")}>All Courses</li>
+                  <li onClick={() => navigate("/price")}>All Package</li>
+                  <li className="changePassword" onClick={handleChangePassword}>
+                    Change Password
+                  </li>
+                  <li onClick={() => setshowDeletePopup(true)}>Delete Account</li>
+
+                  <li className="logout" onClick={logout}>
+                    Logout{" "}
+                    <span>
+                      <FiLogOut />{" "}
+                    </span>
+                  </li>
+                </ul>
+              </nav>
+            )}
           </div>
         </div>
-      }
-    </div>
+        {
+          showDeletePopup && <div className="deletePopup">
+            <h2>
+              Are you sure you want to delete your account?
+            </h2>
+            <div className="confermButton">
+              <button onClick={() => { setshowDeletePopup(false) }}>No</button>
+              <button onClick={handleDeleteAccount}>Yes</button>
+            </div>
+          </div>
+        }
+      </div>
+    </>
   );
 };
 

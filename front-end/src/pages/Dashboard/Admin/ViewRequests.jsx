@@ -11,14 +11,16 @@ const ViewRequests = () => {
     const { data = [], isLoading, isFetching } = useGetAdminCoursesQuery()
     const handleViewCourse = (id) => {
         navigate(`/coursedetails/${id}`);
+        // console.log(data.data.length)
     }
+    const courseCount = data.data?.length > 10 ? '10+' : data.data?.length
     const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
     return (
         <div>
             <HeaderDashboard user={useDatar} />
             <div className='course-div viewRequest'>
 
-                <h1>Courses Needs Approval</h1>
+                <h1> Courses Needs Approval ( <span style={{ color: "#1abbb1" }}>{courseCount}</span> )</h1>
                 {
                     data.data?.map((course, index) => (
                         <div className='viewRequestsCard' key={index}>

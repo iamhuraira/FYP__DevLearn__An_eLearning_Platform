@@ -6,24 +6,32 @@ import '@splidejs/splide/dist/css/splide.min.css';
 import arrowslide from '../../assets/img/arrow.png'
 
 
-const CourseSlider = ({ title ,data}) => {
+const CourseSlider = ({ title, data }) => {
 
     const [logedIn, setLogedIn] = React.useState(true)
-  
+    const widthsize = {
+        1: "25%",
+        2: "50%",
+        3: "75%",
+        4: "100%",
+    }
+
+    const courseCount = data?.length > 10 ? '10+' : data?.length
+
     return (
         <>
             <div className='courseSliderSection'>
 
 
                 <div className={`headingCourse ${logedIn && "JCS"} `} >
-                    <h1>{title}</h1>
+                    <h1>{title} ( <span style={{ color: "#1abbb1" }}>{courseCount}</span> )</h1>
 
                 </div>
 
                 {
                     data?.length <= 4 && (
                         <div className='withoutSlider' style={{
-                            width: `calc(100% / ${data?.length})`,
+                            width: `${widthsize[data?.length]}`,
                         }}>
                             {data?.map((course) => (
                                 <CourseCard course={course} />
@@ -78,7 +86,7 @@ const CourseSlider = ({ title ,data}) => {
 
                     </Splide>)
                 }
-               
+
             </div>
         </>
     )

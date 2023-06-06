@@ -19,8 +19,8 @@ const Header = (props) => {
         <nav className='' ref = {navref}>
           
         <ul>
-          <li > Courses</li>
-          <li>Pricing</li>
+            <li onClick={() => { navigate("/courses")}}> Courses</li>
+            <li onClick={() => { navigate("/price") }}>Pricing</li>
         </ul>
         <button className=' btn-nav btn-times'  onClick={showNavBar}><FaTimes/></button>
       </nav>

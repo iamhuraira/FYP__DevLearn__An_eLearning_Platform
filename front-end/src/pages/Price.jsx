@@ -1,14 +1,18 @@
 import React from 'react'
 import HeaderDashboard from '../DashboardComponents/HeaderDashboard'
 import Header from '../components/Header/Header'
+import { useSelector } from 'react-redux'
 
 
 
 const Price = () => {
+  const auth = localStorage.getItem('token')
+  const user = useSelector(state => state.user.userData)
+
   return (
     <>
-      <HeaderDashboard name="Abu Huraira" />
-      <Header/>
+      {auth ? <HeaderDashboard user={user} /> : <Header />} 
+     
     </>
   )
 }

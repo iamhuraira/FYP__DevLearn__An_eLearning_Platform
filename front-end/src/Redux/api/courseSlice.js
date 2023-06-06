@@ -83,6 +83,16 @@ export const courseApi = createApi({
       }),
     }),
 
+    
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `api/v1/users/deleteMe/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Courses"],
+    }),
+
+
 
     // Course Routes
     getAllCourses: builder.query({
@@ -118,20 +128,54 @@ export const courseApi = createApi({
       }),
       invalidatesTags: ["SingleCourse"],
     }),
-    getCourseDeleteId: builder.mutation({
-      query: (id) => ({
-        url: `api/v1/courses/deleteCourse/${id}`,
-        Method: "DELETE",
-      }),
-      invalidatesTags: ["Courses"],
-    }),
     getAdminCourses: builder.query({
       query: () => ({
         url: `api/v1/courses/viewAdminCourses/`,
         Method: "GET",
       }),
-      // providesTags: ["adminCourse"],
+      providesTags: ["adminCourse"],
     }),
+
+
+    DeleteCourse: builder.mutation({
+      query: (id) => ({
+        url: `api/v1/courses/deleteCourse/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Courses"],
+    }),
+    updateCourse: builder.mutation({
+      query: (body, id) => ({
+        url: `api/v1/courses/updateCourse/${id}`, 
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["SingleCourse", "adminCourse"],
+    }),
+
+    quizResultSubmit: builder.mutation({   // this is not working
+      query: (body, id) => ({
+        url: `api/v1/courses/quizResultSubmit/${id}`,
+        method: "PATCH",
+      }),
+        invalidatesTags: ["SingleCourse"],
+    }),
+
+
+
+
+    // Admin Routes
+    courseApprove: builder.mutation({
+      query: (body, id) => ({
+        url: `api/v1/courses/adminCourseDecision/${id}`,
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["SingleCourse", "adminCourse"],
+    }),
+
+
+
   }),
 });
 
@@ -141,12 +185,12 @@ export const {
   useGetLoginMutation,
   useGetForgetPasswordMutation,
   useUpdateUserProfileMutation,
-  useUpdateUserPasswordMutation,
+  useUpdateUserPasswordMutation, useDeleteUserMutation, useCourseApproveMutation,
 
   useCreateCourseMutation,
   useGetTeacherCourcesQuery,
   useGetCourseByIdQuery,
-  useGetAllCoursesQuery, useGetCourseDeleteIdMutation,
-  useGetAdminCoursesQuery
+  useGetAllCoursesQuery, useDeleteCourseMutation, useUpdateCourseMutation , 
+  useGetAdminCoursesQuery, 
 
 } = courseApi;
