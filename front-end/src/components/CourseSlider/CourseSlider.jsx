@@ -31,10 +31,13 @@ const CourseSlider = ({ title, data }) => {
                 {
                     data?.length <= 4 && (
                         <div className='withoutSlider' style={{
-                            width: `${widthsize[data?.length]}`,
+                            // width: `${widthsize[data?.length]}`,
                         }}>
                             {data?.map((course) => (
+                                <div className='withoutSliderDiv' >
+
                                 <CourseCard course={course} />
+                                </div>
                             )
                             )}
                         </div>

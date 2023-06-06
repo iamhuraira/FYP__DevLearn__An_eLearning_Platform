@@ -16,25 +16,25 @@ import axios from 'axios'
 const UpdateCourse = () => {
     const navigate = useNavigate();
 
-    const [updateCourseDB, { data, isLoading, isSuccess }] = useUpdateCourseMutation();
+    const [updateCourseDB, { data, isLoading, isSuccess, isError, error }] = useUpdateCourseMutation();
     const param = useParams()
     
-    // useEffect(() => {
-    //     const verifyEmil = async () => {
-    //         try {
-    //             const url = `${process.env.REACT_APP_BASE_URL}/api/v1/courses/viewOneCourse/${param.token}`;
-    //             const { data } = await axios.patch(url);
-    //             if (data.status === 'success') {
+    useEffect(() => {
+        if (isSuccess) {
+           
+           navigate("/teacherdashboard/viewcourses");
+       }
+    }, [isSuccess])
 
-    //                 courseFetch = data;
-    //             }
-    //         }
-    //         catch (error) {
-    //            console.log(error)
-    //         }
-    //     }
-    //     verifyEmil()
-    // }, [param])
+    useEffect(() => {
+        if (isError) {
+
+           console.log(error)
+        //    navigate("/teacherdashboard/viewcourses");
+       }
+    }, [isError])
+
+    
 
     // const { data: courseDataDB } = useGetCourseByIdQuery(param.id, { refetchOnMountOrArgChange: false })
     let courseFetch = useSelector((state) => state.course.courseData);
@@ -338,6 +338,7 @@ const UpdateCourse = () => {
         // alert('Course Created Successfully')
 
         // updateCourseDB(formData, param.id);
+        updateCourseDB({ formData, id: param.id });
         console.log([...formData]);
         // console.log(sectionData);
     };

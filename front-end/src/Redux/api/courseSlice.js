@@ -135,12 +135,12 @@ export const courseApi = createApi({
       invalidatesTags: ["Courses"],
     }),
     updateCourse: builder.mutation({
-      query: (body, id) => ({
-        url: `api/v1/courses/updateCourse/${id}`,
+      query: (body) => ({
+        url: `api/v1/courses/updateCourse/${body.id}`,
         method: "PATCH",
-        body,
+        body: body.formData,
       }),
-      invalidatesTags: ["SingleCourse", "adminCourse"],
+      invalidatesTags: ["SingleCourse", "adminCourse", "Courses"],
     }),
 
     quizResultSubmit: builder.mutation({
