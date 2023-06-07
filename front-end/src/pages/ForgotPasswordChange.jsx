@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import HeaderDashboard from '../../DashboardComponents/HeaderDashboard'
+
 import TextField from '@mui/material/TextField';
 
 
 import { Alert } from '@mui/material';
 
-import { useUpdateUserPasswordMutation } from '../../Redux/api/courseSlice';
-import { useNavigate } from 'react-router-dom';
-import { setUserData } from '../../Redux/slices/accountSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
+import axios from 'axios';
 
 
 
@@ -27,28 +26,26 @@ const ForgotPasswordChange = () => {
         confirmPassword: '',
     })
     const navigate = useNavigate();
-    const [changePasswordUser, { data, isSuccess, isError, error }] = useUpdateUserPasswordMutation()
-
-    // console.log(data)
-    useEffect(() => {
-        if (isError) {
-            setMsg(error.data.message);
-            setShowAlert(true);
-        }
-    }, [isError]);
-
-    useEffect(() => {
-        if (isSuccess) {
-            if (data.status === 'success') {
+    const param = useParams()
+    const [validUrl, setValidUrl] = React.useState('');
+    // const [msg , setMsg] = React.useState('');
 
 
-
-            }
-        }
-    }, [isSuccess]);
-
-
-
+    
+       const verifyEmil = async (body) => {
+         try {
+           const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/resetpassword/${param.token}`;
+           const { data } = await axios.patch(url, body);
+           if (data.status === 'success') {
+               setValidUrl(true);
+               navigate('/Login');
+           }
+         } catch (error) {
+             setValidUrl(false);
+             setMsg(error.response.data.message)
+         }
+       };
+      
 
     const handleInputs = (e) => {
         let nameofinput = e.target.name;
@@ -127,11 +124,11 @@ const ForgotPasswordChange = () => {
     const handleSubmit = () => {
 
 
-        changePasswordUser({
+        verifyEmil({
             password: changePassword.newPassword,
             cpassword: changePassword.confirmPassword
-        })
-        console.log(changePassword)
+        });
+        // console.log(changePassword)
     }
 
 
@@ -139,7 +136,7 @@ const ForgotPasswordChange = () => {
 
     return (
         <>
-            {/* <HeaderDashboard user={useDatar} / */}
+          
             <Header />
 
             <div className="course-div" >

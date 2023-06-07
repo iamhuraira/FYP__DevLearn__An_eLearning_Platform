@@ -4,15 +4,15 @@ const baseurl = `${process.env.REACT_APP_BASE_URL}`;
 console.log(baseurl);
 
 export const courseApi = createApi({
-  reducerPath: "courses",
-  tagTypes: ["Courses", "adminCourse", "SingleCourse"],
+  reducerPath: 'courses',
+  tagTypes: ['Courses', 'adminCourse', 'SingleCourse'],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       // If we have a token set in local storage, let's assume that we should be passing it.
       if (token) {
-        headers.set("authorization", `Bearer ${token}`);
+        headers.set('authorization', `Bearer ${token}`);
       }
       return headers;
     },
@@ -25,16 +25,16 @@ export const courseApi = createApi({
     getSignup: builder.mutation({
       query: (body) => {
         return {
-          url: "api/v1/users/signup",
-          method: "POST",
+          url: 'api/v1/users/signup',
+          method: 'POST',
           body,
         };
       },
     }),
     getAdminSignup: builder.mutation({
       query: (body) => ({
-        url: "api/v1/users/adminSignup",
-        method: "POST",
+        url: 'api/v1/users/adminSignup',
+        method: 'POST',
         body,
       }),
     }),
@@ -42,19 +42,19 @@ export const courseApi = createApi({
     getLogin: builder.mutation({
       query: (body) => {
         return {
-          url: "api/v1/users/login",
-          method: "POST",
+          url: 'api/v1/users/login',
+          method: 'POST',
           body,
         };
       },
-      invalidatesTags: ["Courses", "adminCourse"],
+      invalidatesTags: ['Courses', 'adminCourse'],
     }),
 
     getForgetPassword: builder.mutation({
       query: (body) => {
         return {
-          url: "api/v1/users/login", // change this url
-          method: "POST",
+          url: 'api/v1/users/forgotpassword', // change this url
+          method: 'POST',
           body,
         };
       },
@@ -62,17 +62,17 @@ export const courseApi = createApi({
 
     updateUserProfile: builder.mutation({
       query: (body) => ({
-        url: "api/v1/users/updateMe",
-        method: "PATCH",
+        url: 'api/v1/users/updateMe',
+        method: 'PATCH',
         body,
       }),
-      invalidatesTags: ["Courses"],
+      invalidatesTags: ['Courses'],
     }),
 
     updateUserPassword: builder.mutation({
       query: (body) => ({
         url: `api/v1/users/updateMyPassword/`,
-        method: "PATCH",
+        method: 'PATCH',
         body,
       }),
     }),
@@ -80,16 +80,16 @@ export const courseApi = createApi({
     deleteUser: builder.mutation({
       query: (id) => ({
         url: `api/v1/users/deleteMe/${id}`,
-        method: "DELETE",
+        method: 'DELETE',
       }),
-      invalidatesTags: ["Courses"],
+      invalidatesTags: ['Courses', 'adminCourse', 'SingleCourse'],
     }),
 
     // Course Routes
     getAllCourses: builder.query({
       query: () => ({
         url: `api/v1/courses/viewAllCourses/`,
-        Method: "GET",
+        Method: 'GET',
       }),
       // invalidatesTags: ["SingleCourse"],
     }),
@@ -97,71 +97,71 @@ export const courseApi = createApi({
     createCourse: builder.mutation({
       query: (formData) => {
         return {
-          url: "api/v1/courses/createCourse",
-          method: "POST",
+          url: 'api/v1/courses/createCourse',
+          method: 'POST',
           body: formData,
         };
       },
-      invalidatesTags: ["Courses", "adminCourse"],
+      invalidatesTags: ['Courses', 'adminCourse'],
     }),
 
     getTeacherCources: builder.query({
       query: () => ({
-        url: "api/v1/courses/viewTeacherCourses/",
-        Method: "GET",
+        url: 'api/v1/courses/viewTeacherCourses/',
+        Method: 'GET',
       }),
-      providesTags: ["Courses"],
+      providesTags: ['Courses'],
     }),
     getCourseById: builder.query({
       query: (id) => ({
         url: `api/v1/courses/viewOneCourse/${id}`,
-        Method: "GET",
+        Method: 'GET',
       }),
-      invalidatesTags: ["SingleCourse"],
+      invalidatesTags: ['SingleCourse'],
     }),
     getAdminCourses: builder.query({
       query: () => ({
         url: `api/v1/courses/viewAdminCourses/`,
-        Method: "GET",
+        Method: 'GET',
       }),
-      providesTags: ["adminCourse"],
+      providesTags: ['adminCourse'],
     }),
 
     DeleteCourse: builder.mutation({
       query: (id) => ({
         url: `api/v1/courses/deleteCourse/${id}`,
-        method: "DELETE",
+        method: 'DELETE',
       }),
-      invalidatesTags: ["Courses"],
+      invalidatesTags: ['Courses'],
     }),
     updateCourse: builder.mutation({
       query: (body) => ({
         url: `api/v1/courses/updateCourse/${body.id}`,
-        method: "PATCH",
+        method: 'PATCH',
         body: body.formData,
       }),
-      invalidatesTags: ["SingleCourse", "adminCourse", "Courses"],
+      invalidatesTags: ['SingleCourse', 'adminCourse', 'Courses'],
     }),
 
     quizResultSubmit: builder.mutation({
       // this is not working
       query: (body, id) => ({
         url: `api/v1/courses/quizResultSubmit/${id}`,
-        method: "PATCH",
+        method: 'PATCH',
       }),
-      invalidatesTags: ["SingleCourse"],
+      invalidatesTags: ['SingleCourse'],
     }),
 
     // Admin Routes
     courseApprove: builder.mutation({
       query: (body) => ({
         url: `api/v1/courses/adminCourseDecision/${body.id}`,
-        method: "PATCH",
+        method: 'PATCH',
         body: {
           status: body.decision,
         },
       }),
-      invalidatesTags: ["SingleCourse", "adminCourse", "Courses"],
+      invalidatesTags: ['SingleCourse', 'adminCourse', 'Courses'],
     }),
   }),
 });

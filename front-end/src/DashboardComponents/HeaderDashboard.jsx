@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/img/logo.png";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
@@ -48,21 +48,31 @@ const HeaderDashboard = (props) => {
 
   const [showDeletePopup, setshowDeletePopup] = useState(false);
 
-  const [deleteUser, response] = useDeleteUserMutation()
+  const [deleteUser, { data=[], isError, error}] = useDeleteUserMutation()
   
   // console.log("Delete User", response)
+  // useEffect(() => { 
+  //   if (response.data) {
+  //     console.log("Delete User Data", response.data)
 
+  //     logout();
+  //   }
+  //   if(response.error){
+  //     console.log("Delete User Error", response.error.message)
+
+  //   }
+
+  // }, [response])
+
+  // console.log("Delete User", resopnse.error)
   const handleDeleteAccount = () => {
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("role");
-    // localStorage.removeItem("user");
-    // dispatch(logoutuser());
    
-    // deleteUser(props.user._id)
+   
+    deleteUser(props.user._id)
     console.log("Delete User", props.user._id)
+
     setshowDeletePopup(false);
-  
-    // navigate("/");
+    navigate("/");
     // logout();
   }
   return (

@@ -1,7 +1,6 @@
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
-import './assets/scss/main.scss'
+import './assets/scss/main.scss';
 // import { useNavigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
@@ -23,66 +22,68 @@ import PageNotFound404 from './pages/PageNotFound404';
 import EmailVerification from './pages/EmailVerification';
 import UpdateCourse from './pages/Dashboard/Teacher/UpdateCourse';
 import ForgotPassword from './pages/ForgotPassword';
-
-
-
+import ForgotPasswordChange from './pages/ForgotPasswordChange';
 
 // import { useEffect, useState } from 'react';
 function App() {
-
-
-
-
   return (
-
-
     <div className="App">
-
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<LandingPage />} />
-          <Route path='/Login' element={<Login />} />
-          <Route path='/SignUp' element={<SignUp />} />
-          <Route path='/adminSignUp' element={<AdminSignUp />} />
-          <Route path='/Terms' element={<Terms />} />
-          <Route path='/price' element={<Price />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/adminSignUp" element={<AdminSignUp />} />
+          <Route path="/Terms" element={<Terms />} />
+          <Route path="/price" element={<Price />} />
 
           {/* Dashboard Routes */}
 
           {/* <Route path='/studentdashboard' element={<TeacherDashboard />} />
           <Route path='/admin' element={<TeacherDashboard />} /> */}
 
-
           {/* Teacher Routes */}
-          <Route path='/teacherdashboard' element={<TeacherDashboard />} />
-          <Route path='/teacherdashboard/createcourse' element={<CreateCourse />} />
-          <Route path='/teacherdashboard/updatecourse/:id' element={<UpdateCourse />} />
-          <Route path='/teacherdashboard/viewcourses' element={<ViewCourseT />} />
+          <Route path="/teacherdashboard" element={<TeacherDashboard />} />
+          <Route
+            path="/teacherdashboard/createcourse"
+            element={<CreateCourse />}
+          />
+          <Route
+            path="/teacherdashboard/updatecourse/:id"
+            element={<UpdateCourse />}
+          />
+          <Route
+            path="/teacherdashboard/viewcourses"
+            element={<ViewCourseT />}
+          />
 
           {/* Admin Routes */}
-          <Route path='/admindashboard' element={<AdminDashboard />} />
-          <Route path='/admin/viewrequests' element={<ViewRequests />} />
-
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/admin/viewrequests" element={<ViewRequests />} />
 
           {/* Student Routes */}
-          <Route path='/studentdashboard' element={<StudentDashboard />} />
-
-
-
+          <Route path="/studentdashboard" element={<StudentDashboard />} />
 
           {/* Common Routes  Dynamic Route */}
-          <Route path='/dashboard/updateprofile' element={<UpdateProfile />} />
-          <Route path='/dashboard/changepassword' element={<ChangePassword />} />
-          <Route path='/coursedetails/:id' element={<CoursePage />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/forgotpassword' element={<ForgotPassword />} />
+          <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
+          <Route
+            path="/dashboard/changepassword"
+            element={<ChangePassword />}
+          />
+          <Route path="/coursedetails/:id" element={<CoursePage />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
 
+          <Route path="*" element={<PageNotFound404 />} />
 
-          <Route path='*' element={<PageNotFound404 />} />
-          
-          <Route path='/api/v1/users/verifyemail/:token' element={<EmailVerification />} />
-
-          
+          <Route
+            path="/api/v1/users/resetpassword/:token"
+            element={<ForgotPasswordChange />}
+          />
+          <Route
+            path="/api/v1/users/verifyemail/:token"
+            element={<EmailVerification />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
