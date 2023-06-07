@@ -52,24 +52,24 @@ const HeaderDashboard = (props) => {
   
   // console.log("Delete User", response)
   useEffect(() => {
-    // if (response.status) {
-    //   console.log("Delete User Data", response.data)
+    if (response.status) {
+      console.log("Delete User Data", response.status)
 
-    //   logout();
-    // }
-    // if(response.error){
-    //   console.log("Delete User Error", response.error.message)
+      logout();
+    }
+    if(response.error){
+      console.log("Delete User Error", response.error.message)
 
-    // }
-    console.log('Delete User Response', response);
+    }
+    // console.log('Delete User Response', response);
   }, [response]);
 
   // console.log("Delete User", resopnse.error)
   const handleDeleteAccount = () => {
    
    
-    deleteUser(props.user._id)
-    console.log("Delete User", props.user._id)
+    deleteUser()
+    // console.log("Delete User", props.user._id)
 
     setshowDeletePopup(false);
     navigate("/");

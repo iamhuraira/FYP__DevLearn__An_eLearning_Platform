@@ -78,8 +78,8 @@ export const courseApi = createApi({
     }),
 
     deleteUser: builder.mutation({
-      query: (id) => ({
-        url: `api/v1/users/deleteMe/${id}`,
+      query: () => ({
+        url: `api/v1/users/deleteMe`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Courses', 'adminCourse', 'SingleCourse'],
