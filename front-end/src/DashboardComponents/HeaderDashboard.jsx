@@ -48,21 +48,10 @@ const HeaderDashboard = (props) => {
 
   const [showDeletePopup, setshowDeletePopup] = useState(false);
 
-  const [deleteUser, response] = useDeleteUserMutation()
+  const [deleteUser] = useDeleteUserMutation()
   
   // console.log("Delete User", response)
-  useEffect(() => {
-    if (response.status) {
-      console.log("Delete User Data", response.status)
-
-      logout();
-    }
-    if(response.error){
-      console.log("Delete User Error", response.error.message)
-
-    }
-    // console.log('Delete User Response', response);
-  }, [response]);
+ 
 
   // console.log("Delete User", resopnse.error)
   const handleDeleteAccount = () => {
@@ -72,8 +61,8 @@ const HeaderDashboard = (props) => {
     // console.log("Delete User", props.user._id)
 
     setshowDeletePopup(false);
-    navigate("/");
-    // logout();
+    // navigate("/");
+    logout();
   }
   return (
     <>
