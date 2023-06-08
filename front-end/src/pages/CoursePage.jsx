@@ -16,6 +16,8 @@ import {
   useGetCourseByIdQuery,
   useDeleteCourseMutation,
   useCourseApproveMutation,
+  useEnrollCourseMutation,
+  useStudentEnrolledCourseQuery,
 } from '../Redux/api/courseSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import { setCourseData } from '../Redux/slices/courseSlice';
@@ -180,6 +182,32 @@ const CoursePage = () => {
     color: DifficultyColor[course?.difficultylevel],
   };
 
+  // const EnrollCheck = user?.courses?.includes(course?._id) ? true : false;
+  // console.log(user?.courses);
+    const {
+      data: enrolledCourse = [],
+      isLoading: EnrollCourseLoading,
+      isFetching: EnrollCourseFetching,
+    } = useStudentEnrolledCourseQuery({ refetchOnMountOrArgChange: true });
+  const EnrollCheck = enrolledCourse?.data?.courses?.map((item) => {
+    if (item._id === course?._id) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  // console.log([...EnrollCheck]);
+  const cresult = EnrollCheck?.includes(true);
+  // console.log(cresult);
+  // const EnrollCheck = () => {
+  //   if (user?.courses?.includes(course?._id)) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+  // console.log(EnrollCheck);
+
   // console.log(user.role)
 
   const navigate = useNavigate();
@@ -209,6 +237,25 @@ const CoursePage = () => {
     console.log(decision, course._id);
     courseAprove({ decision, id: course._id });
   };
+
+  const [enrollCourse, { isSuccess: enrollSuccess, isError: enrollError }] = useEnrollCourseMutation();
+  useEffect(() => {
+    if (enrollSuccess) {
+      navigate('/studentdashboard');
+    }
+  }, [enrollSuccess]);
+
+  const HandleEnrollCurse = () => {
+    if (auth) {
+      enrollCourse({
+        courseId: course._id,
+        studentId: user._id,
+      });
+    } else {
+      navigate('/login');
+    }
+  };
+  const handleGenerateCourseCertificate = () => {};
 
   return (
     <>
@@ -245,9 +292,10 @@ const CoursePage = () => {
           <div className="courseHeader__left">
             <h2>{course?.courseName}</h2>
             <p>{course?.shortDescription}.</p>
-            {user.role !== 'admin' && user.role !== 'teacher' && (
-              <button>Enroll Now!</button>
+            {user.role !== 'admin' && user.role !== 'teacher' && !cresult && (
+              <button onClick={HandleEnrollCurse}>Enroll Now!</button>
             )}
+            {cresult && <button>Enrolled</button>}
             {/* <button>Enroll Now!</button> */}
           </div>
           <div className="courseHeader__right">
@@ -312,7 +360,10 @@ const CoursePage = () => {
                   ))}
                 </div>
                 <div className="right">
-                  <button onClick={() => handleOpenQuiz(i)}>Quiz</button>
+                  {cresult && user.role === 'student' && (
+                    <button onClick={() => handleOpenQuiz(i)}>Quiz</button>
+                  )}
+
                   {/* <button onClick={() => handleOpenQuiz(i)}>Retake</button> */}
                   {quizPopup && (
                     <div className="quizPopup">
@@ -442,7 +493,7 @@ const CoursePage = () => {
                           {user.role !== 'admin' && user.role !== 'teacher' && (
                             <div className="quizButton">
                               <button onClick={SubmitQuiz}>Submit Quiz</button>
-                              {/* <button onClick={SubmitQuiz}>Submit Quiz</button>   */}   
+                              {/* <button onClick={SubmitQuiz}>Submit Quiz</button>   */}
                             </div>
                           )}
                         </>
@@ -515,6 +566,12 @@ const CoursePage = () => {
           </button>
         </div>
       )}
+
+      {/* {course?.status === 'approved' && user?.role === 'student' && (
+        <div className="StudentControl">
+          <button onClick={handleGenerateCourseCertificate}>Generate Certificate</button>
+        </div>
+      )} */}
 
       <Footer />
     </>

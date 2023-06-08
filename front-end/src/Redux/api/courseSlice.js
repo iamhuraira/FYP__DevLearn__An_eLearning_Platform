@@ -5,7 +5,7 @@ console.log(baseurl);
 
 export const courseApi = createApi({
   reducerPath: 'courses',
-  tagTypes: ['Courses', 'adminCourse', 'SingleCourse'],
+  tagTypes: ['Courses', 'adminCourse', 'SingleCourse', 'EnrolledCourse'],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
     prepareHeaders: (headers) => {
@@ -47,7 +47,7 @@ export const courseApi = createApi({
           body,
         };
       },
-      invalidatesTags: ['Courses', 'adminCourse'],
+      invalidatesTags: ['Courses', 'adminCourse', 'EnrolledCourse'],
     }),
 
     getForgetPassword: builder.mutation({
@@ -143,6 +143,22 @@ export const courseApi = createApi({
       invalidatesTags: ['SingleCourse', 'adminCourse', 'Courses'],
     }),
 
+    enrollCourse: builder.mutation({
+      query: (body) => ({
+        url: `api/v1/enroll/enrollStudentinCourse/`,
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: ['SingleCourse', 'EnrolledCourse'],
+    }),
+    StudentEnrolledCourse: builder.query({
+      query: () => ({
+        url: `api/v1/enroll/viewEnrolledCourses`,
+        Method: 'GET',
+      }),
+      providesTags: ['EnrolledCourse'],
+    }),
+
     quizResultSubmit: builder.mutation({
       // this is not working
       query: (body, id) => ({
@@ -174,7 +190,7 @@ export const {
   useUpdateUserProfileMutation,
   useUpdateUserPasswordMutation,
   useDeleteUserMutation,
-  useCourseApproveMutation,
+  useCourseApproveMutation, useEnrollCourseMutation , useStudentEnrolledCourseQuery,
 
   useCreateCourseMutation,
   useGetTeacherCourcesQuery,

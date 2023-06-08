@@ -22,14 +22,14 @@ const Courses = () => {
     <div className='coursesPage'>
       {auth ? <HeaderDashboard user={user} /> : <Header />}
       <OfferHeading />
-      <CourseSlider title="Popular Courses" data={data?.data} />
+      {/* <CourseSlider title="Popular Courses" data={data?.data} /> */}
 
       <div className='allCourses'>
         <h1>All Courses  ( <span style={{ color: "#1abbb1" }}>{courseCount}</span> ) </h1>
         <div className='courseLoop'>
 
           {
-            data?.data.map(( course ) => {
+            data?.data?.map(( course ) => {
               return(
               <div className='courseCard'>
                   <CourseCard course={course} />
