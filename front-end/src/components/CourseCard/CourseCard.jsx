@@ -2,7 +2,7 @@ import React from "react";
 // import courseimg from "../../assets/img/CourseImages/python.png";
 // import py from "../../assets/img/CourseImages/py.png";
 import { useNavigate } from "react-router-dom/dist";
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, id }) => {
   const navigate = useNavigate();
   const handleOpenPage = (id) => {
     navigate(`/coursedetails/${id}`);
@@ -19,7 +19,7 @@ const CourseCard = ({ course }) => {
     color: DifficultyColor[course.difficultylevel]
  } 
   return (
-    <div className="fun" onClick={() => handleOpenPage(course._id)}>
+    <div className="fun" onClick={() => handleOpenPage(course._id)} key={id}>
       <div className="backgroundCard">
         <img src={`${ImgUrl}/${course.selectImage}`} alt="" />
         <div className="courseLogo">

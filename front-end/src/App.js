@@ -23,6 +23,11 @@ import EmailVerification from './pages/EmailVerification';
 import UpdateCourse from './pages/Dashboard/Teacher/UpdateCourse';
 import ForgotPassword from './pages/ForgotPassword';
 import ForgotPasswordChange from './pages/ForgotPasswordChange';
+import ProtectedAdmin from './ProtectedRoutes/ProtectedAdmin';
+import AuthProtected from './ProtectedRoutes/AuthProtected';
+import ProtectedStudent from './ProtectedRoutes/ProtectedStudent';
+import ProtectedTeacher from './ProtectedRoutes/ProtectedTeacher';
+import UnAuthProtected from './ProtectedRoutes/UnAuthProtected';
 
 // import { useEffect, useState } from 'react';
 function App() {
@@ -30,11 +35,28 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/adminSignUp" element={<AdminSignUp />} />
+          <Route
+            path="/"
+            element={<UnAuthProtected Component={LandingPage} />}
+          />
+          <Route
+            path="/Login"
+            element={<UnAuthProtected Component={Login} />}
+          />
+          <Route
+            path="/SignUp"
+            element={<UnAuthProtected Component={SignUp} />}
+          />
+          <Route
+            path="/adminSignUp"
+            element={<UnAuthProtected Component={AdminSignUp} />}
+          />
           <Route path="/Terms" element={<Terms />} />
+          <Route
+            path="/forgotpassword"
+            element={<UnAuthProtected Component={ForgotPassword} />}
+          />
+
           <Route path="/price" element={<Price />} />
 
           {/* Dashboard Routes */}
@@ -43,36 +65,51 @@ function App() {
           <Route path='/admin' element={<TeacherDashboard />} /> */}
 
           {/* Teacher Routes */}
-          <Route path="/teacherdashboard" element={<TeacherDashboard />} />
+          <Route
+            path="/teacherdashboard"
+            element={<ProtectedTeacher Component={TeacherDashboard} />}
+          />
           <Route
             path="/teacherdashboard/createcourse"
-            element={<CreateCourse />}
+            element={<ProtectedTeacher Component={CreateCourse} />}
           />
           <Route
             path="/teacherdashboard/updatecourse/:id"
-            element={<UpdateCourse />}
+            element={<ProtectedTeacher Component={UpdateCourse} />}
           />
           <Route
             path="/teacherdashboard/viewcourses"
-            element={<ViewCourseT />}
+            element={<ProtectedTeacher Component={ViewCourseT} />}
           />
 
           {/* Admin Routes */}
-          <Route path="/admindashboard" element={<AdminDashboard />} />
-          <Route path="/admin/viewrequests" element={<ViewRequests />} />
+          <Route
+            path="/admindashboard"
+            element={<ProtectedAdmin Component={AdminDashboard} />}
+          />
+          <Route
+            path="/admin/viewrequests"
+            element={<ProtectedAdmin Component={ViewRequests} />}
+          />
 
           {/* Student Routes */}
-          <Route path="/studentdashboard" element={<StudentDashboard />} />
+          <Route
+            path="/studentdashboard"
+            element={<ProtectedStudent Component={StudentDashboard} />}
+          />
 
           {/* Common Routes  Dynamic Route */}
-          <Route path="/dashboard/updateprofile" element={<UpdateProfile />} />
+          <Route
+            path="/dashboard/updateprofile"
+            element={<AuthProtected Component={UpdateProfile} />}
+          />
           <Route
             path="/dashboard/changepassword"
-            element={<ChangePassword />}
+            element={<AuthProtected Component={ChangePassword} />}
           />
+
           <Route path="/coursedetails/:id" element={<CoursePage />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
 
           <Route path="*" element={<PageNotFound404 />} />
 
