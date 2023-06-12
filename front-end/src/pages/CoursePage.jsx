@@ -22,12 +22,12 @@ import {
 } from "../Redux/api/courseSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { setCourseData } from "../Redux/slices/courseSlice";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+
 import certificateTemplate from "../assets/img/certificateTemplate.jpg";
 import { TextField } from "@mui/material";
 import { validateDate } from "@mui/x-date-pickers/internals";
-import { parseStackingContexts } from "html2canvas/dist/types/render/stacking-context";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 const { Panel } = Collapse;
 
 const CoursePage = () => {
@@ -704,9 +704,9 @@ const CoursePage = () => {
               </div>
             </div>
             <div className="certificateDownloadBtn">
-              <button onClick={DownloadCertificate}>
+              {/* <button onClick={DownloadCertificate}>
                 Download Certificate
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="courseCertificate" id="courseCertificate">
