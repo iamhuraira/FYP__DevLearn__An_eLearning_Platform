@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, Fragment, useEffect } from 'react';
-import Header from '../components/Header/Header';
-import HeaderDashboard from '../DashboardComponents/HeaderDashboard';
-import python from '../assets/img/CourseImages/python.png';
-import Footer from '../components/Footer/Footer';
-import { BiVideo } from 'react-icons/bi';
-import { GrClose } from 'react-icons/gr';
-import { TiTick } from 'react-icons/ti';
-import { ImCross } from 'react-icons/im';
+import React, { useState, Fragment, useEffect } from "react";
+import Header from "../components/Header/Header";
+import HeaderDashboard from "../DashboardComponents/HeaderDashboard";
+import python from "../assets/img/CourseImages/python.png";
+import Footer from "../components/Footer/Footer";
+import { BiVideo } from "react-icons/bi";
+import { GrClose } from "react-icons/gr";
+import { TiTick } from "react-icons/ti";
+import { ImCross } from "react-icons/im";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { CaretRightOutlined } from '@ant-design/icons';
-import { Collapse } from 'antd';
+import { useDispatch, useSelector } from "react-redux";
+import { CaretRightOutlined } from "@ant-design/icons";
+import { Collapse } from "antd";
 import {
   useGetCourseByIdQuery,
   useDeleteCourseMutation,
@@ -19,14 +19,15 @@ import {
   useEnrollCourseMutation,
   useStudentEnrolledCourseQuery,
   useGetQuizResultQuery,
-} from '../Redux/api/courseSlice';
-import { useNavigate, useParams } from 'react-router-dom';
-import { setCourseData } from '../Redux/slices/courseSlice';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import certificateTemplate from '../assets/img/certificateTemplate.jpg';
-import { TextField } from '@mui/material';
-import { validateDate } from '@mui/x-date-pickers/internals';
+} from "../Redux/api/courseSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { setCourseData } from "../Redux/slices/courseSlice";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import certificateTemplate from "../assets/img/certificateTemplate.jpg";
+import { TextField } from "@mui/material";
+import { validateDate } from "@mui/x-date-pickers/internals";
+import { parseStackingContexts } from "html2canvas/dist/types/render/stacking-context";
 const { Panel } = Collapse;
 
 const CoursePage = () => {
@@ -58,12 +59,12 @@ const CoursePage = () => {
 
   const panelStyle = {
     marginBottom: 15,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    background: 'rgba(35, 186, 177, 0.05)',
+    marginLeft: "auto",
+    marginRight: "auto",
+    background: "rgba(35, 186, 177, 0.05)",
     borderRadius: 10,
-    border: 'none',
-    width: '60%',
+    border: "none",
+    width: "60%",
   };
   // 7S_tz1z_5bA';
 
@@ -95,7 +96,7 @@ const CoursePage = () => {
   // ]
   const [quiz, setQuiz] = useState([]);
 
-  const [iFromeSrc, setiFromeSrc] = useState('');
+  const [iFromeSrc, setiFromeSrc] = useState("");
   const chnageUrl = (url) => {
     const iFromeSrc = `https://www.youtube.com/embed/${url}?rel=0&autoplay=1`;
     setiFromeSrc(iFromeSrc);
@@ -108,9 +109,9 @@ const CoursePage = () => {
   const [showDeletePopup, setshowDeletePopup] = useState(false);
   useEffect(() => {
     if (videoPopup || quizPopup || showDeletePopup) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [videoPopup, quizPopup, showDeletePopup]);
 
@@ -142,7 +143,7 @@ const CoursePage = () => {
 
     setQuizPopup(true);
   };
-  const [quizResult, setQuizResult] = useState('');
+  const [quizResult, setQuizResult] = useState("");
 
   const SubmitQuiz = () => {
     // setQuizPopup(false)
@@ -161,7 +162,7 @@ const CoursePage = () => {
       }
     }
     const percentage = (count / result.length) * 100;
-    percentage >= 65 ? setQuizResult('Pass') : setQuizResult('Fail');
+    percentage >= 65 ? setQuizResult("Pass") : setQuizResult("Fail");
 
     // setQuizResult(count);
     console.log(result);
@@ -169,19 +170,46 @@ const CoursePage = () => {
     result = [];
     console.log(quizAnswer);
   };
+
+  const RetakeSubmitQuiz = () => {
+    // setQuizPopup(false)
+    let result = quiz.map((item, i) => {
+      if (item.answer === quizAnswer[i]) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    let count = 0;
+    for (let i = 0; i < result.length; i++) {
+      if (result[i] === true) {
+        count++;
+      }
+    }
+    const percentage = (count / result.length) * 100;
+    percentage >= 65 ? setQuizResult("Pass") : setQuizResult("Fail");
+
+    // setQuizResult(count);
+    console.log(result);
+    setQuizAnswer([]);
+    result = [];
+    console.log(quizAnswer);
+  };
+
   const handleCloseQuizPopup = () => {
     setQuizPopup(false);
-    setQuizResult('');
+    setQuizResult("");
     setQuizAnswer([]);
   };
-  const auth = localStorage.getItem('token');
+  const auth = localStorage.getItem("token");
   const user = useSelector((state) => state.user.userData);
   const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
   const UserImg = `${process.env.REACT_APP_BASE_URL}/public/img/users`;
   const DifficultyColor = {
-    Beginner: '#00b300',
-    Hard: '#febe00',
-    Expert: '#ff0000',
+    Beginner: "#00b300",
+    Hard: "#febe00",
+    Expert: "#ff0000",
   };
   const Dstyle = {
     color: DifficultyColor[course?.difficultylevel],
@@ -202,7 +230,7 @@ const CoursePage = () => {
     }
   });
   // console.log([...EnrollCheck]);
-  const cresult = EnrollCheck?.includes(true);
+  const cenrollresult = EnrollCheck?.includes(true);
   // console.log(cresult);
   // const EnrollCheck = () => {
   //   if (user?.courses?.includes(course?._id)) {
@@ -227,14 +255,14 @@ const CoursePage = () => {
     deleteCourse(course._id);
     setshowDeletePopup(false);
     // console.log(response)
-    navigate('/teacherdashboard/viewcourses');
+    navigate("/teacherdashboard/viewcourses");
   };
 
   const [courseAprove, { isSuccess, isError, error }] =
     useCourseApproveMutation();
   useEffect(() => {
     if (isSuccess) {
-      navigate('/admin/viewrequests');
+      navigate("/admin/viewrequests");
     }
   }, [isSuccess]);
 
@@ -247,7 +275,7 @@ const CoursePage = () => {
     useEnrollCourseMutation();
   useEffect(() => {
     if (enrollSuccess) {
-      navigate('/studentdashboard');
+      navigate("/studentdashboard");
     }
   }, [enrollSuccess]);
 
@@ -258,7 +286,7 @@ const CoursePage = () => {
         studentId: user._id,
       });
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   };
 
@@ -267,7 +295,7 @@ const CoursePage = () => {
     isLoading: guizresultLoading,
     isFetching: guizresultFetching,
     isError: guizresultError,
-  } = useGetQuizResultQuery({ refetchOnMountOrArgChange: true });
+  } = useGetQuizResultQuery(param.id, { refetchOnMountOrArgChange: true });
 
   // let quizResultData = quizResultList?.document?.map((item) => {
 
@@ -283,19 +311,29 @@ const CoursePage = () => {
     console.log(quizResultList.document);
   }, [guizresultError]);
 
+  const map = new Map();
+  quizResultList.document?.map((item) => {
+    map.set(item.sectionid, item.result);
+  });
+  const quizPassed = quizResultList.document?.map((item) => {
+    return item.result === "pass" ? "true" : "false";
+  });
+
+  console.log(quizPassed);
+
   const DownloadCertificate = () => {
-    const capture = document.getElementById('courseCertificate');
+    const capture = document.getElementById("courseCertificate");
     html2canvas(capture).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const doc = new jsPDF('landscape');
+      const imgData = canvas.toDataURL("image/png");
+      const doc = new jsPDF("landscape");
       const componentWidth = doc.internal.pageSize.getWidth();
       const componentHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+      doc.addImage(imgData, "PNG", 0, 0, componentWidth, componentHeight);
       doc.save(`${user.name}_certificate.pdf`);
     });
   };
 
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
 
   const handleAddReview = () => {};
 
@@ -304,18 +342,18 @@ const CoursePage = () => {
   // console.log(date1.getDate());
 
   const month = [
-    'Januray',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'Octomber',
-    'November',
-    'December',
+    "Januray",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "Octomber",
+    "November",
+    "December",
   ];
 
   return (
@@ -340,8 +378,8 @@ const CoursePage = () => {
         </div>
       )}
 
-      {(course?.status === 'pending' || course?.status === 'rejected') &&
-        user?.role === 'teacher' && (
+      {(course?.status === "pending" || course?.status === "rejected") &&
+        user?.role === "teacher" && (
           <div className="adminControl teacherControl">
             <button onClick={handleUpdateCourse}> Update</button>
             <button onClick={() => setshowDeletePopup(true)}>Delete</button>
@@ -353,10 +391,12 @@ const CoursePage = () => {
           <div className="courseHeader__left">
             <h2>{course?.courseName}</h2>
             <p>{course?.shortDescription}.</p>
-            {user.role !== 'admin' && user.role !== 'teacher' && !cresult && (
-              <button onClick={HandleEnrollCurse}>Enroll Now!</button>
-            )}
-            {cresult && <button>Enrolled</button>}
+            {user.role !== "admin" &&
+              user.role !== "teacher" &&
+              !cenrollresult && (
+                <button onClick={HandleEnrollCurse}>Enroll Now!</button>
+              )}
+            {cenrollresult && <button>Enrolled</button>}
             {/* <button>Enroll Now!</button> */}
           </div>
           <div className="courseHeader__right">
@@ -389,7 +429,7 @@ const CoursePage = () => {
         {course?.sections?.map((section, i) => (
           <Collapse
             bordered={false}
-            defaultActiveKey={['0']}
+            defaultActiveKey={["0"]}
             expandIcon={({ isActive }) => (
               <CaretRightOutlined rotate={isActive ? 90 : 0} />
             )}
@@ -403,7 +443,7 @@ const CoursePage = () => {
                     <div className="VideoDetails" key={vi}>
                       <BiVideo />
                       <p onClick={() => chnageUrl(video.videoLink)}>
-                        {video.videoName}{' '}
+                        {video.videoName}{" "}
                       </p>
                       {videoPopup && (
                         <div className="viderPopup">
@@ -421,15 +461,34 @@ const CoursePage = () => {
                   ))}
                 </div>
                 <div className="right">
-                  {cresult && user.role === 'student' && (
-                    <button onClick={() => handleOpenQuiz(i)}>Quiz</button>
+                  {cenrollresult && user.role === "student" && (
+                    <>
+                      {!map.has(i) ? (
+                        <button onClick={() => handleOpenQuiz(i)}>Quiz</button>
+                      ) : map?.get(i) === "fail" ? (
+                        <button
+                          onClick={() => handleOpenQuiz(i)}
+                          className="red"
+                        >
+                          Retake
+                        </button>
+                      ) : (
+                        <div className="passed">Passed</div>
+                      )}
+                      {/* <button
+                        onClick={() => handleOpenQuiz(i)}
+                        className={map.get(i) === "fail" ? "red" : ""}
+                      >
+                        {map.get(i) === "fail" ? "Retake " : "Quiz"}
+                      </button> */}
+                    </>
                   )}
 
                   {/* <button onClick={() => handleOpenQuiz(i)}>Retake</button> */}
                   {quizPopup && (
                     <div className="quizPopup">
                       <GrClose onClick={handleCloseQuizPopup} />
-                      {quizResult === '' && (
+                      {quizResult === "" && (
                         <>
                           <div>
                             <h2>Quiz</h2>
@@ -551,17 +610,27 @@ const CoursePage = () => {
                             </div>
                           ))}
 
-                          {user.role !== 'admin' && user.role !== 'teacher' && (
+                          {user.role !== "admin" && user.role !== "teacher" && (
                             <div className="quizButton">
-                              <button onClick={SubmitQuiz}>
-                                {}Submit Quiz
-                              </button>
+                              {map?.get(i) === "fail" ? (
+                                <button
+                                  onClick={RetakeSubmitQuiz}
+                                  className="red"
+                                >
+                                  Retake Quiz
+                                </button>
+                              ) : (
+                                <button onClick={SubmitQuiz}>
+                                  Submit Quiz
+                                </button>
+                              )}
+
                               {/* <button onClick={SubmitQuiz}>Submit Quiz</button>   */}
                             </div>
                           )}
                         </>
                       )}
-                      {quizResult === 'Pass' && (
+                      {quizResult === "Pass" && (
                         <div className="passedQuiz">
                           <h2>Passed</h2>
                           <TiTick />
@@ -569,7 +638,7 @@ const CoursePage = () => {
                         </div>
                       )}
 
-                      {quizResult === 'Fail' && (
+                      {quizResult === "Fail" && (
                         <div className="failedQuiz passedQuiz">
                           <h2>Failed (Less then 65%)</h2>
                           <ImCross />
@@ -589,10 +658,10 @@ const CoursePage = () => {
         <h1>Instructor</h1>
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
           }}
         >
           <div className="teacherImg">
@@ -652,28 +721,31 @@ const CoursePage = () => {
         <h4 className="TagLine">High Your Skills With DevLearn !</h4>
       </div>
 
-      <div className="reviewFormSection">
-        <h2 className="reviewSectionTitle">Add Review</h2>
-        <form onSubmit={handleAddReview}>
-          <TextField
-            id="outlined-basic"
-            label="Review"
-            name="courseDuration"
-            variant="outlined"
-            onChange={(e) => {
-              setReview(e.target.value);
-            }}
-          />
-          <button type="submit">Add Review</button>
-        </form>
-      </div>
+      {cenrollresult && user.role === "student" && (
+        <div className="reviewFormSection">
+          <h2 className="reviewSectionTitle">Add Review</h2>
+          <form onSubmit={handleAddReview}>
+            <TextField
+              id="outlined-basic"
+              label="Review"
+              name="courseDuration"
+              variant="outlined"
+              onChange={(e) => {
+                setReview(e.target.value);
+              }}
+            />
+            <button type="submit">Add Review</button>
+          </form>
+        </div>
+      )}
+
       <div className="reviewShowSection">
         <h2 className="reviewShowSectionTitle">All Reviews</h2>
         <div
           class=""
           style={{
-            width: '70%',
-            margin: '0 auto',
+            width: "70%",
+            margin: "0 auto",
           }}
         >
           <div class="row justify-content-center">
@@ -696,7 +768,7 @@ const CoursePage = () => {
                   </span>
                   <span class="post-txt">
                     I upgraded my Dribble account to the Pro version. Absolutely
-                    loving the super clean look of the Playbook feature{' '}
+                    loving the super clean look of the Playbook feature{" "}
                   </span>
                   <span>
                     <img
@@ -721,19 +793,19 @@ const CoursePage = () => {
         </div>
       </div>
 
-      {course?.status === 'pending' && user?.role === 'admin' && (
+      {course?.status === "pending" && user?.role === "admin" && (
         <div className="adminControl">
           <button
             onClick={() => {
-              handleApproveCourse('approved');
+              handleApproveCourse("approved");
             }}
           >
-            {' '}
+            {" "}
             Approve
           </button>
           <button
             onClick={() => {
-              handleApproveCourse('rejected');
+              handleApproveCourse("rejected");
             }}
           >
             Reject
