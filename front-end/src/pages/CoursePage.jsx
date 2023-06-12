@@ -18,10 +18,15 @@ import {
   useCourseApproveMutation,
   useEnrollCourseMutation,
   useStudentEnrolledCourseQuery,
+  useGetQuizResultQuery,
 } from '../Redux/api/courseSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import { setCourseData } from '../Redux/slices/courseSlice';
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import certificateTemplate from '../assets/img/certificateTemplate.jpg';
+import { TextField } from '@mui/material';
+import { validateDate } from '@mui/x-date-pickers/internals';
 const { Panel } = Collapse;
 
 const CoursePage = () => {
@@ -184,11 +189,11 @@ const CoursePage = () => {
 
   // const EnrollCheck = user?.courses?.includes(course?._id) ? true : false;
   // console.log(user?.courses);
-    const {
-      data: enrolledCourse = [],
-      isLoading: EnrollCourseLoading,
-      isFetching: EnrollCourseFetching,
-    } = useStudentEnrolledCourseQuery({ refetchOnMountOrArgChange: true });
+  const {
+    data: enrolledCourse = [],
+    isLoading: EnrollCourseLoading,
+    isFetching: EnrollCourseFetching,
+  } = useStudentEnrolledCourseQuery({ refetchOnMountOrArgChange: true });
   const EnrollCheck = enrolledCourse?.data?.courses?.map((item) => {
     if (item._id === course?._id) {
       return true;
@@ -238,7 +243,8 @@ const CoursePage = () => {
     courseAprove({ decision, id: course._id });
   };
 
-  const [enrollCourse, { isSuccess: enrollSuccess, isError: enrollError }] = useEnrollCourseMutation();
+  const [enrollCourse, { isSuccess: enrollSuccess, isError: enrollError }] =
+    useEnrollCourseMutation();
   useEffect(() => {
     if (enrollSuccess) {
       navigate('/studentdashboard');
@@ -255,7 +261,62 @@ const CoursePage = () => {
       navigate('/login');
     }
   };
-  const handleGenerateCourseCertificate = () => {};
+
+  const {
+    data: quizResultList = [],
+    isLoading: guizresultLoading,
+    isFetching: guizresultFetching,
+    isError: guizresultError,
+  } = useGetQuizResultQuery({ refetchOnMountOrArgChange: true });
+
+  // let quizResultData = quizResultList?.document?.map((item) => {
+
+  //   return {
+  //     sectionID: item.sectionid,
+  //     result: item.result,
+  //   };
+
+  // })
+  // console.log(quizResultData);
+
+  useEffect(() => {
+    console.log(quizResultList.document);
+  }, [guizresultError]);
+
+  const DownloadCertificate = () => {
+    const capture = document.getElementById('courseCertificate');
+    html2canvas(capture).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const doc = new jsPDF('landscape');
+      const componentWidth = doc.internal.pageSize.getWidth();
+      const componentHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+      doc.save(`${user.name}_certificate.pdf`);
+    });
+  };
+
+  const [review, setReview] = useState('');
+
+  const handleAddReview = () => {};
+
+  const date = new Date(course?.createdAt);
+  const date1 = new Date();
+  // console.log(date1.getDate());
+
+  const month = [
+    'Januray',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'Octomber',
+    'November',
+    'December',
+  ];
 
   return (
     <>
@@ -328,14 +389,14 @@ const CoursePage = () => {
         {course?.sections?.map((section, i) => (
           <Collapse
             bordered={false}
-            defaultActiveKey={['1']}
+            defaultActiveKey={['0']}
             expandIcon={({ isActive }) => (
               <CaretRightOutlined rotate={isActive ? 90 : 0} />
             )}
             // style={{ background: '#f7f7f7' }}
             key={i}
           >
-            <Panel header={section.sectionName} key="1" style={panelStyle}>
+            <Panel header={section.sectionName} key={i} style={panelStyle}>
               <div className="SectionContent">
                 <div className="left">
                   {section?.videoData?.map((video, vi) => (
@@ -492,7 +553,9 @@ const CoursePage = () => {
 
                           {user.role !== 'admin' && user.role !== 'teacher' && (
                             <div className="quizButton">
-                              <button onClick={SubmitQuiz}>Submit Quiz</button>
+                              <button onClick={SubmitQuiz}>
+                                {}Submit Quiz
+                              </button>
                               {/* <button onClick={SubmitQuiz}>Submit Quiz</button>   */}
                             </div>
                           )}
@@ -543,6 +606,117 @@ const CoursePage = () => {
             <h2>{`${course?.teacher?.name}, ${course?.teacher?.country}`}</h2>
             <h3>{course?.teacher?.email}</h3>
             <p>{course?.teacher?.userdescription}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="CertificateSection">
+        <h2 className="SectionTitle">Course Certificate</h2>
+        <h3 className="CourseName"> {course?.courseName}</h3>
+        <div className="courseCertificateSection">
+          <div className="studentInfo">
+            <div className="certificateInfo">
+              <div className="left">
+                <img
+                  src={`${process.env.REACT_APP_BASE_URL}/public/img/users/${user.profilePic}`}
+                  alt=""
+                />
+              </div>
+              <div className="right">
+                <h2>
+                  Completed by <span>{user?.name}</span>
+                </h2>
+                <h3>{`${
+                  month[date1.getMonth()]
+                } ${date1.getDate()}, ${date1.getFullYear()}`}</h3>
+                <p>DevLearn certifies their successfll completion of </p>
+                <h4>{course?.courseName}</h4>
+                <h5>Congratulations !!</h5>
+              </div>
+            </div>
+            <div className="certificateDownloadBtn">
+              <button onClick={DownloadCertificate}>
+                Download Certificate
+              </button>
+            </div>
+          </div>
+          <div className="courseCertificate" id="courseCertificate">
+            <img src={certificateTemplate} alt="" />
+            <h2>{user?.name}</h2>
+            <h3>{course?.courseName}</h3>
+            <h4>{`${
+              month[date1.getMonth()]
+            } ${date1.getDate()}, ${date1.getFullYear()}`}</h4>
+          </div>
+        </div>
+        <h4 className="TagLine">High Your Skills With DevLearn !</h4>
+      </div>
+
+      <div className="reviewFormSection">
+        <h2 className="reviewSectionTitle">Add Review</h2>
+        <form onSubmit={handleAddReview}>
+          <TextField
+            id="outlined-basic"
+            label="Review"
+            name="courseDuration"
+            variant="outlined"
+            onChange={(e) => {
+              setReview(e.target.value);
+            }}
+          />
+          <button type="submit">Add Review</button>
+        </form>
+      </div>
+      <div className="reviewShowSection">
+        <h2 className="reviewShowSectionTitle">All Reviews</h2>
+        <div
+          class=""
+          style={{
+            width: '70%',
+            margin: '0 auto',
+          }}
+        >
+          <div class="row justify-content-center">
+            <div class=" col-sm-11 col-md-9 col-lg-8 col-xl-7">
+              <div class="card">
+                <div class=" userInfoReview row d-flex justify-content-center">
+                  <img
+                    class="profile-pic fit-image"
+                    src="https://i.imgur.com/RCwPA3O.jpg"
+                  />
+
+                  <p class="profile-name">Anne Snow</p>
+                </div>
+                <p class="post">
+                  <span>
+                    <img
+                      class="quote-img"
+                      src="https://i.imgur.com/i06xx2I.png"
+                    />
+                  </span>
+                  <span class="post-txt">
+                    I upgraded my Dribble account to the Pro version. Absolutely
+                    loving the super clean look of the Playbook feature{' '}
+                  </span>
+                  <span>
+                    <img
+                      class="nice-img"
+                      src="https://i.imgur.com/l5AkSHd.png"
+                    />
+                  </span>
+                </p>
+              </div>
+              <div class="arrow-down"></div>
+              {/* <div class=" userInfoReview row d-flex justify-content-center">
+                <div class="">
+                  <img
+                    class="profile-pic fit-image"
+                    src="https://i.imgur.com/RCwPA3O.jpg"
+                  />
+                </div>
+                <p class="profile-name">Anne Snow</p>
+              </div> */}
+            </div>
           </div>
         </div>
       </div>

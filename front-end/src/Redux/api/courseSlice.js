@@ -5,7 +5,13 @@ console.log(baseurl);
 
 export const courseApi = createApi({
   reducerPath: 'courses',
-  tagTypes: ['Courses', 'adminCourse', 'SingleCourse', 'EnrolledCourse'],
+  tagTypes: [
+    'Courses',
+    'adminCourse',
+    'SingleCourse',
+    'EnrolledCourse',
+    'QuizResult',
+  ],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
     prepareHeaders: (headers) => {
@@ -159,13 +165,32 @@ export const courseApi = createApi({
       providesTags: ['EnrolledCourse'],
     }),
 
-    quizResultSubmit: builder.mutation({
-      // this is not working
-      query: (body, id) => ({
-        url: `api/v1/courses/quizResultSubmit/${id}`,
-        method: 'PATCH',
+    //  Manage Quiz Routes
+
+    getQuizResult: builder.query({
+      query: (id) => ({
+        url: `api/v1/quizresult/getquizresult/${id}`,
+        Method: 'GET',
       }),
-      invalidatesTags: ['SingleCourse'],
+      providesTags: ['QuizResult'],
+    }),
+
+    submitQuizResult: builder.mutation({
+      query: (body) => ({
+        url: `api/v1/quizresult/getquizresult/${body.id}`,
+        Method: 'POST',
+        body: {},
+      }),
+      invalidatesTags: ['SingleCourse', 'QuizResult'],
+    }),
+
+    retakeQuizResult: builder.mutation({
+      query: (body) => ({
+        url: `api/v1/quizresult/getquizresult/${body.id}`,
+        Method: 'PATCH',
+        body: {},
+      }),
+      invalidatesTags: ['SingleCourse', 'QuizResult'],
     }),
 
     // Admin Routes
@@ -190,7 +215,9 @@ export const {
   useUpdateUserProfileMutation,
   useUpdateUserPasswordMutation,
   useDeleteUserMutation,
-  useCourseApproveMutation, useEnrollCourseMutation , useStudentEnrolledCourseQuery,
+  useCourseApproveMutation, useEnrollCourseMutation, useStudentEnrolledCourseQuery,
+  
+  useGetQuizResultQuery, useSubmitQuizResultMutation,  useRetakeQuizResultMutation,
 
   useCreateCourseMutation,
   useGetTeacherCourcesQuery,

@@ -99,7 +99,7 @@ const HeaderDashboard = (props) => {
                     )}
                   </li>
                   <li onClick={() => navigate('/courses')}>All Courses</li>
-                  <li onClick={() => navigate('/price')}>All Package</li>
+                  {/* <li onClick={() => navigate('/price')}>All Package</li> */}
                     {props.user.role === 'student' && (
                   <li>
                       <Link to="/dashboard/updateprofile">Update Profile</Link>
