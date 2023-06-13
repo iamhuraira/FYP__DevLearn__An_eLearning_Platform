@@ -33,7 +33,7 @@ const StudentDashboard = () => {
           title="Enrolled Courses"
           data={enrolledCourse?.data?.courses}
         />
-        <CourseSlider title="Completed" />
+        {/* <CourseSlider title="Completed" /> */}
         <Footer />
       </>
     );
