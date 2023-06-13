@@ -52,3 +52,52 @@
         margin-bottom: 20px;
     }
 }
+
+.SearchBar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+
+    label {
+        font-size: 2.7rem;
+        letter-spacing: 2px;
+    }
+
+    legend {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #0c3a53;
+        letter-spacing: 2px;
+    }
+
+    input {
+        display: flex;
+        justify-content: center;
+
+        border-radius: 7px;
+        padding: 20px 20px;
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: #0c3a53;
+        // margin-bottom: 0p
+            z-index: 1;
+    }
+
+    svg {
+        cursor: pointer;
+        font-size: 2rem !important;
+        z-index: 9;
+        margin-right: 10px;
+        font-weight: bolder;
+        width: 30px;
+        height: 25px;
+    }
+
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+        border-color: #0c3a53;
+        background-color: #ffffff;
+        padding: 0 5px;
+        top: 0px;
+    }
+}

@@ -170,27 +170,27 @@ export const courseApi = createApi({
     getQuizResult: builder.query({
       query: (id) => ({
         url: `api/v1/quizresult/getquizresult/${id}`,
-        Method: 'GET',
+        method: 'GET',
       }),
       providesTags: ['QuizResult'],
     }),
 
     submitQuizResult: builder.mutation({
       query: (body) => ({
-        url: `api/v1/quizresult/getquizresult/${body.id}`,
-        Method: 'POST',
-        body: {},
+        url: `api/v1/quizresult/createquizresult`,
+        method: 'POST',
+        body,
       }),
-      invalidatesTags: ['SingleCourse', 'QuizResult'],
+      invalidatesTags: ['SingleCourse', 'QuizResult', 'EnrolledCourse'],
     }),
 
     retakeQuizResult: builder.mutation({
       query: (body) => ({
-        url: `api/v1/quizresult/getquizresult/${body.id}`,
-        Method: 'PATCH',
-        body: {},
+        url: `api/v1/quizresult/updatequizresult`,
+        method: 'PATCH',
+        body,
       }),
-      invalidatesTags: ['SingleCourse', 'QuizResult'],
+      invalidatesTags: ['SingleCourse', 'QuizResult', 'EnrolledCourse'],
     }),
 
     // Admin Routes

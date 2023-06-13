@@ -852,7 +852,7 @@
     position: relative;
     border: solid 1px #212121;
     padding: 20px 50px 22px 50px;
-    background-color: #212121;
+  background: rgba(35, 186, 177, 0.05);
     border-radius: 10px;
     color: #fff;
     display: flex;
@@ -864,6 +864,7 @@
       padding-left: 10px;
       .post-txt {
         font-size: 22px;
+        color: #0c3a53;
         // margin-top: 100px;
       }
 
