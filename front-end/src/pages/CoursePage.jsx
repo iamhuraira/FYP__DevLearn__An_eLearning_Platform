@@ -278,7 +278,7 @@ const CoursePage = () => {
     navigate(`/teacherdashboard/updatecourse/${course._id}`);
   };
 
-  const [deleteCourse, response] = useDeleteCourseMutation();
+  const [deleteCourse, { isLoading: DeeteCourseIsloading} ] = useDeleteCourseMutation();
 
   const handleDeleteCourse = () => {
     deleteCourse(course._id);
@@ -287,7 +287,7 @@ const CoursePage = () => {
     navigate('/teacherdashboard/viewcourses');
   };
 
-  const [courseAprove, { isSuccess, isError, error }] =
+  const [courseAprove, { isSuccess, isLoading : CourseApproveIsLoading, isError, error }] =
     useCourseApproveMutation();
   useEffect(() => {
     if (isSuccess) {
@@ -300,7 +300,7 @@ const CoursePage = () => {
     courseAprove({ decision, id: course._id });
   };
 
-  const [enrollCourse, { isSuccess: enrollSuccess, isError: enrollError }] =
+  const [enrollCourse, { isSuccess: enrollSuccess, isError: enrollError, isLoading: enrollCourseIsLoading }] =
     useEnrollCourseMutation();
   useEffect(() => {
     if (enrollSuccess) {
@@ -350,8 +350,9 @@ const CoursePage = () => {
   });
 
   // console.log(quizPassed);
-
+  const [certificateDownloadLoading, setCertificateDownloadLoading] = useState(false);
   const DownloadCertificate = () => {
+    setCertificateDownloadLoading(true)
     const capture = document.getElementById('courseCertificate');
     html2canvas(capture).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
@@ -359,6 +360,7 @@ const CoursePage = () => {
       const componentWidth = doc.internal.pageSize.getWidth();
       const componentHeight = doc.internal.pageSize.getHeight();
       doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+          setCertificateDownloadLoading(false);
       doc.save(`${user.name}_certificate.pdf`);
     });
   };
@@ -412,7 +414,13 @@ const CoursePage = () => {
         user?.role === 'teacher' && (
           <div className="adminControl teacherControl">
             <button onClick={handleUpdateCourse}> Update</button>
-            <button onClick={() => setshowDeletePopup(true)}>Delete</button>
+            <button onClick={() => setshowDeletePopup(true)}>
+              {DeeteCourseIsloading ? (
+                <CircularProgress disableShrink />
+              ) : (
+                'Delete'
+              )}
+            </button>
           </div>
         )}
 
@@ -421,11 +429,14 @@ const CoursePage = () => {
           <div className="courseHeader__left">
             <h2>{course?.courseName}</h2>
             <p>{course?.shortDescription}.</p>
+            <span>
+              Last updated {`${date.getMonth() + 1}/${date.getFullYear()}`}
+            </span>
             {user.role !== 'admin' &&
               user.role !== 'teacher' &&
               !cenrollresult && (
                 <button onClick={HandleEnrollCurse}>
-                  {EnrollCourseLoading ? (
+                  {enrollCourseIsLoading ? (
                     <CircularProgress disableShrink />
                   ) : (
                     ' Enroll Now!'
@@ -744,7 +755,11 @@ const CoursePage = () => {
                 </div>
                 <div className="certificateDownloadBtn">
                   <button onClick={DownloadCertificate}>
-                    Download Certificate
+                    {certificateDownloadLoading ? (
+                      <CircularProgress disableShrink />
+                    ) : (
+                      ' Download Certificate'
+                    )}
                   </button>
                 </div>
               </div>
@@ -850,15 +865,22 @@ const CoursePage = () => {
               handleApproveCourse('approved');
             }}
           >
-            {' '}
-            Approve
+            {CourseApproveIsLoading ? (
+              <CircularProgress disableShrink />
+            ) : (
+              'Approve'
+            )}
           </button>
           <button
             onClick={() => {
               handleApproveCourse('rejected');
             }}
           >
-            Reject
+            {CourseApproveIsLoading ? (
+              <CircularProgress disableShrink />
+            ) : (
+              'Reject'
+            )}
           </button>
         </div>
       )}
