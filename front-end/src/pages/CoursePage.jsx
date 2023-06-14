@@ -430,7 +430,7 @@ const CoursePage = () => {
             <h2>{course?.courseName}</h2>
             <p>{course?.shortDescription}.</p>
             <span>
-              Last updated {`${date.getMonth() + 1}/${date.getFullYear()}`}
+              Last updated: {`${date.getMonth() + 1}/${date.getFullYear()}`}
             </span>
             {user.role !== 'admin' &&
               user.role !== 'teacher' &&
