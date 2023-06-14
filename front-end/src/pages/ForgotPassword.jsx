@@ -139,7 +139,9 @@ const ForgotPassword = () => {
                 justifyContent: 'flex-end',
               }}
             >
-              <button onClick={validateform}>Send Email</button>
+              <button onClick={validateform} style={{ width: '235px' }}>
+                Send Email
+              </button>
             </div>
           </div>
         </div>
