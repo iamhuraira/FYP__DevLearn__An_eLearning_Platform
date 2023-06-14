@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import logo from '../../assets/img/logo.png'
 import { useNavigate } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -11,8 +11,32 @@ const Header = (props) => {
   const ShowLandingPage = () => {
     navigate("/");
   }
+
+
+    const [stickyClass, setStickyClass] = useState('relative');
+
+   const stickNavbar = () => {
+     if (window !== undefined) {
+       let windowHeight = window.scrollY;
+       windowHeight > 100
+         ? setStickyClass('stickyClass')
+         : setStickyClass('relative');
+     }
+   };
+
+    useEffect(() => {
+      window.addEventListener('scroll', stickNavbar);
+
+      return () => {
+        window.removeEventListener('scroll', stickNavbar);
+      };
+    }, []);
+      
+      
   return (
-    <div className='header'>
+
+
+    <div className={`header  ${stickyClass}`}>
       <div className="logo">
         <img src={logo} alt="logo" onClick={ShowLandingPage} />
 

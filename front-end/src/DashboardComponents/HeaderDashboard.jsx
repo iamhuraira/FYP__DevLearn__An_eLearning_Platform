@@ -58,10 +58,30 @@ const HeaderDashboard = (props) => {
     // navigate("/");
     logout();
   };
+
+    const [stickyClass, setStickyClass] = useState('relative');
+
+    const stickNavbar = () => {
+      if (window !== undefined) {
+        let windowHeight = window.scrollY;
+        windowHeight > 100
+          ? setStickyClass('stickyClass')
+          : setStickyClass('relative');
+      }
+    };
+
+    useEffect(() => {
+      window.addEventListener('scroll', stickNavbar);
+
+      return () => {
+        window.removeEventListener('scroll', stickNavbar);
+      };
+    }, []);
+  
   return (
     <>
       {showDeletePopup && <div className="overLay"></div>}
-      <div className="header">
+      <div className={`header  ${stickyClass}`}>
         <div className="logo">
           <img src={logo} alt="logo" onClick={showDashboard} />
         </div>
@@ -100,11 +120,11 @@ const HeaderDashboard = (props) => {
                   </li>
                   <li onClick={() => navigate('/courses')}>All Courses</li>
                   {/* <li onClick={() => navigate('/price')}>All Package</li> */}
-                    {props.user.role === 'student' && (
-                  <li>
+                  {props.user.role === 'student' && (
+                    <li>
                       <Link to="/dashboard/updateprofile">Update Profile</Link>
-                  </li>
-                    )}
+                    </li>
+                  )}
                   <li className="changePassword" onClick={handleChangePassword}>
                     Change Password
                   </li>
