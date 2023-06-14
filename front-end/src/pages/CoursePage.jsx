@@ -27,7 +27,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { setCourseData } from '../Redux/slices/courseSlice';
 
 import certificateTemplate from '../assets/img/certificateTemplate.jpg';
-import { TextField } from '@mui/material';
+import { CircularProgress, TextField } from '@mui/material';
 import { validateDate } from '@mui/x-date-pickers/internals';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -424,7 +424,13 @@ const CoursePage = () => {
             {user.role !== 'admin' &&
               user.role !== 'teacher' &&
               !cenrollresult && (
-                <button onClick={HandleEnrollCurse}>Enroll Now!</button>
+                <button onClick={HandleEnrollCurse}>
+                  {EnrollCourseLoading ? (
+                    <CircularProgress disableShrink />
+                  ) : (
+                    ' Enroll Now!'
+                  )}
+                </button>
               )}
             {cenrollresult && <button>Enrolled</button>}
             {/* <button>Enroll Now!</button> */}
@@ -754,7 +760,7 @@ const CoursePage = () => {
             <h4 className="TagLine">High Your Skills With DevLearn !</h4>
           </div>
         )}
-{/* 
+      {/* 
       {cenrollresult && user.role === 'student' && (
         <div className="reviewFormSection">
           <h2 className="reviewSectionTitle">Add Review</h2>

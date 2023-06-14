@@ -44,7 +44,7 @@ const Header = (props) => {
           
         <ul>
             <li onClick={() => { navigate("/courses")}}> Courses</li>
-            <li onClick={() => { navigate("/price") }}>Pricing</li>
+            {/* <li onClick={() => { navigate("/price") }}>Pricing</li> */}
         </ul>
         <button className=' btn-nav btn-times'  onClick={showNavBar}><FaTimes/></button>
       </nav>
