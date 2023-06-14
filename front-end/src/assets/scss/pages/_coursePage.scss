@@ -52,15 +52,16 @@
       margin-bottom: 10px;
       width: 95%;
     }
-        span{
-          font-weight: 400;
-            font-size: 2.3rem;
-          
-            color: #787878;
-            margin-top: 10px;
-            margin-bottom: 40px;
-            width: 95%;
-        }
+
+    span {
+      font-weight: 400;
+      font-size: 2.3rem;
+
+      color: #787878;
+      margin-top: 10px;
+      margin-bottom: 40px;
+      width: 95%;
+    }
 
     button {
       background: #0c3a53;
@@ -70,12 +71,17 @@
       font-size: 2.4rem;
       color: #ffffff;
       width: 350px;
+      height: 70px;
       padding: 20px 30px;
       border-radius: 5px;
       transition: 0.3s all ease-in-out;
 
       &:hover {
         transform: scale(1.07);
+      }
+
+      svg {
+        color: #fff;
       }
     }
   }
@@ -300,7 +306,7 @@
               .list__item {
                 position: relative;
 
-                &:hover > .label {
+                &:hover>.label {
                   color: #009688;
 
                   &::before {
@@ -314,7 +320,7 @@
                   opacity: 0;
                   visibility: hidden;
 
-                  &:checked + .label {
+                  &:checked+.label {
                     color: #009688;
 
                     &::before {
@@ -861,7 +867,7 @@
     position: relative;
     border: solid 1px #212121;
     padding: 20px 50px 22px 50px;
-  background: rgba(35, 186, 177, 0.05);
+    background: rgba(35, 186, 177, 0.05);
     border-radius: 10px;
     color: #fff;
     display: flex;
@@ -871,6 +877,7 @@
       width: 87%;
       padding-top: 40px;
       padding-left: 10px;
+
       .post-txt {
         font-size: 22px;
         color: #0c3a53;

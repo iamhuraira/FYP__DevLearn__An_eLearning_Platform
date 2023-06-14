@@ -204,6 +204,15 @@ export const courseApi = createApi({
       }),
       invalidatesTags: ['SingleCourse', 'adminCourse', 'Courses'],
     }),
+
+    getStat: builder.query({
+      query: (id) => ({
+        url: `api/v1/quizresult/getquizresult/${id}`,
+        method: 'GET',
+      }),
+      providesTags: ['QuizResult'],
+    }),
+
   }),
 });
 
