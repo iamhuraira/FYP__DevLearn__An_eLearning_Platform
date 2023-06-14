@@ -38,12 +38,12 @@ const AdminDashboard = () => {
           <div className="box">
             <h2 style={{ backgroundColor: '#0c3a53' }}>No. of Teachers</h2>
             <h1>
-              <CircularProgress disableShrink />{' '}
-              {/* {isFetching ? (
+              {/* <CircularProgress disableShrink />{' '} */}
+              {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (
                 <> {data?.teachercount}</>
-              )} */}
+              )}
             </h1>
           </div>
           <div className="box">
