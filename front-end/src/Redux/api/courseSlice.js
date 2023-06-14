@@ -11,6 +11,7 @@ export const courseApi = createApi({
     'SingleCourse',
     'EnrolledCourse',
     'QuizResult',
+    'Stats',
   ],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
@@ -53,7 +54,7 @@ export const courseApi = createApi({
           body,
         };
       },
-      invalidatesTags: ['Courses', 'adminCourse', 'EnrolledCourse'],
+      invalidatesTags: ['Courses', 'adminCourse', 'EnrolledCourse', 'Stats'],
     }),
 
     getForgetPassword: builder.mutation({
@@ -207,12 +208,11 @@ export const courseApi = createApi({
 
     getStat: builder.query({
       query: (id) => ({
-        url: `api/v1/quizresult/getquizresult/${id}`,
+        url: `api/v1/stats/viewAdminStats`,
         method: 'GET',
       }),
-      providesTags: ['QuizResult'],
+      providesTags: ['Stats'],
     }),
-
   }),
 });
 
@@ -234,5 +234,5 @@ export const {
   useGetAllCoursesQuery,
   useDeleteCourseMutation,
   useUpdateCourseMutation,
-  useGetAdminCoursesQuery,
+  useGetAdminCoursesQuery, useGetStatQuery,
 } = courseApi;

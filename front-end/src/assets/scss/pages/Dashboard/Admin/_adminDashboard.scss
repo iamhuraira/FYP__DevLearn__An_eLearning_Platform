@@ -1,7 +1,7 @@
 .admin-btn {
     justify-content: space-evenly !important;
     margin: 100px 374px;
-    
+
 }
 
 .statSection {
@@ -32,7 +32,7 @@
                 padding: 10px;
                 font-size: 2.3rem;
                 text-align: center;
-                border-radius:  8px 8px 0  0px;
+                border-radius: 8px 8px 0 0px;
             }
 
             h1 {
@@ -44,7 +44,25 @@
                 align-items: center;
                 color: #0c3a53;
                 text-align: center;
+
                 // background: rgba(35, 186, 177, 0.05);
+                span {
+                    width: 60px;
+                    height: 60px;
+
+                    margin: 6px;
+
+                    svg {
+
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: #0c3a53;
+                    }
+                }
+
             }
 
             &:nth-of-type(2) {

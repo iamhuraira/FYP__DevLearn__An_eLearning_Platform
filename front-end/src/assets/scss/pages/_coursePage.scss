@@ -38,7 +38,7 @@
       font-weight: 700;
       font-size: 5rem;
 
-    color: #0c3a53;
+      color: #0c3a53;
     }
 
     p {
@@ -83,9 +83,14 @@
         transform: scale(1.07);
       }
 
-      svg {
-        color: #fff;
+      span {
+        margin: 6px;
+
+        svg {
+          color: #fff;
+        }
       }
+
     }
   }
 
