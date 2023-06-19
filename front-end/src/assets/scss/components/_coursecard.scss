@@ -1,295 +1,236 @@
 .fun {
-    width: 100%;
-    padding: 20px 45px;
-    // margin: 50px 48px;
+  width: 100%;
+  padding: 20px 45px;
+  // margin: 50px 48px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  @media screen and (max-width: 1764px) {
+    padding: 20px 9%;
+  }
 
-    @media screen and (max-width: 1764px) {
-        padding: 20px 9%;
+  @media screen and (max-width: 1440px) {
+    padding: 20px 5%;
+  }
 
-    }
+  @media screen and (max-width: 1300px) {
+    padding: 20px 0%;
+  }
 
-    @media screen and (max-width: 1440px) {
-        padding: 20px 5%;
-    }
+  @media screen and (max-width: 1024px) {
+    padding: 0px 0%;
+  }
 
-    @media screen and (max-width: 1300px) {
-        padding: 20px 0%;
-    }
+  @media screen and (max-width: 500px) {
+    padding: 20px 14%;
+  }
 
-    @media screen and (max-width: 1024px) {
-        padding: 0px 0%;
+  @media screen and (max-width: 400px) {
+    padding: 20px 6%;
+  }
 
-
-    }
-
-    @media screen and (max-width: 500px) {
-
-        padding: 20px 14%;
-
-    }
-
-    @media screen and (max-width: 400px) {
-
-        padding: 20px 6%;
-
-    }
-
+  &:hover {
+    transform: scale(1.07);
+  }
 }
 
 .backgroundCard {
-    height: 440px;
-    width: 100%;
-    max-width: 320px;
+  height: 440px;
+  width: 100%;
+  max-width: 320px;
 
+  background-color: white;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid gray;
+
+  img {
+    width: 100%;
+    height: 175px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+
+    @media screen and (max-width: 400px) {
+      height: 125px;
+    }
+  }
+
+  .courseLogo {
+    width: 120px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px lighter gray;
     background-color: white;
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
-    border-radius: 10px;
-    position: relative;
-    border: 1px solid gray;
+    border-radius: 5px;
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
+    position: absolute;
+    top: 120px;
+    left: 25px;
 
     img {
-        width: 100%;
-        height: 175px;
-        overflow: hidden;
-        border-radius: 10px 10px 0 0;
-
-        @media screen and (max-width: 400px) {
-
-            height: 125px;
-
-        }
+      height: 56px;
+      width: 56px;
     }
 
-    .courseLogo {
-        width: 120px;
-        height: 75px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px lighter gray;
-        background-color: white;
-        border-radius: 5px;
-        filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
-        position: absolute;
-        top: 120px;
-        left: 25px;
+    @media screen and (max-width: 400px) {
+      width: 80px;
+      height: 60px;
+      top: 95px;
+      left: 15px;
 
-
-        img {
-            height: 56px;
-            width: 56px;
-
-        }
-
-        @media screen and (max-width: 400px) {
-
-            width: 80px;
-            height: 60px;
-            top: 95px;
-            left: 15px;
-
-            img {
-                height: 36px;
-                width: 36px;
-
-            }
-
-        }
+      img {
+        height: 36px;
+        width: 36px;
+      }
     }
+  }
 
-    h2 {
-        width: 80%;
-        margin: 45px 0px 0px 25px;
-        font-weight: 700;
-        font-size: 2.4rem;
-        color: #444444;
+  h2 {
+    width: 80%;
+    margin: 45px 0px 0px 25px;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #444444;
 
-        @media screen and (max-width: 1199px) {
-            width: 90%;
-            margin: 45px 0px 0px 25px;
-
-        }
-
-        @media screen and (max-width: 1024px) {
-            width: 80%;
-
-
-        }
-
-        @media screen and (max-width: 890px) {
-
-            margin: 45px 0px 0px 15px;
-
-        }
-
-        @media screen and (max-width: 500px) {
-
-            width: 80%;
-            margin: 45px 0px 0px 35px;
-
-        }
-
-        @media screen and (max-width: 400px) {
-            width: 90%;
-            margin: 45px 0px 0px 15px;
-
-        }
-    }
-
-    h3 {
-        width: 80%;
-        margin: 10px 0px 0px 30px;
-        font-weight: 400;
-        font-size: 2rem;
-        color: #444444;
-
-        @media screen and (max-width: 1199px) {
-
-            width: 90%;
-            margin: 10px 0px 0px 25px;
-
-        }
-
-        @media screen and (max-width: 1024px) {
-            width: 80%;
-
-
-        }
-
-        @media screen and (max-width: 890px) {
-
-            margin: 10px 0px 0px 20px;
-
-        }
-
-        @media screen and (max-width: 500px) {
-
-            width: 80%;
-            margin: 10px 0px 0px 35px;
-
-        }
-
-        @media screen and (max-width: 400px) {
-            width: 90%;
-            margin: 10px 0px 0px 20px;
-
-        }
-    }
-
-    p {
-        margin-left: 25px;
-        margin-top: 30px;
-        font-weight: 400;
-        font-size: 18px;
-        color: #444444;
-        gap: 10px;
-
-        span:nth-of-type(2) {
-            font-size: 2.5rem;
-            font-weight: bolder;
-        }
-
-        &:nth-of-type(2) {
-            margin-top: 5px;
-        }
-
-        @media screen and (max-width: 890px) {
-
-            margin: 30px 0px 0px 20px;
-
-        }
-
-        @media screen and (max-width: 768px) {
-
-            margin-left: 35px;
-            margin-top: 50px;
-
-        }
-
-        @media screen and (max-width: 500px) {
-            margin-left: 35px;
-            margin-top: 50px;
-
-        }
-
-        @media screen and (max-width: 400px) {
-
-            margin: 20px 0px 0px 20px;
-
-        }
-
-    }
-
-    @media screen and (max-width: 1605px) {
-
-        // transform: scale(0.9);
-
-    }
-
-    @media screen and (max-width: 1440px) {
-
-        transform: scale(0.8);
-
-    }
-
-    @media screen and (max-width: 1300px) {
-
-        transform: scale(0.8);
-
-    }
-
-
-    @media screen and (max-width: 1132px) {
-
-        transform: scale(0.8);
-
+    @media screen and (max-width: 1199px) {
+      width: 90%;
+      margin: 45px 0px 0px 25px;
     }
 
     @media screen and (max-width: 1024px) {
-
-        transform: scale(0.9);
-
-    }
-
-    @media screen and (max-width: 978px) {
-
-        transform: scale(0.8);
-
+      width: 80%;
     }
 
     @media screen and (max-width: 890px) {
-
-        transform: scale(0.8);
-
+      margin: 45px 0px 0px 15px;
     }
 
-    @media screen and (max-width: 800px) {
-
-        transform: scale(0.85);
-
+    @media screen and (max-width: 500px) {
+      width: 80%;
+      margin: 45px 0px 0px 35px;
     }
-
-    @media screen and (max-width: 780px) {
-
-        transform: scale(0.85);
-
-    }
-
-    @media screen and (max-width: 586px) {
-
-        transform: scale0(.9);
-
-    }
-         @media screen and (max-width: 500px) {
-    
-             transform: scale(1);
-    
-         }
 
     @media screen and (max-width: 400px) {
-        height: 365px;
-
-        transform: scale(1);
-
+      width: 90%;
+      margin: 45px 0px 0px 15px;
     }
+  }
+
+  h3 {
+    width: 80%;
+    margin: 10px 0px 0px 30px;
+    font-weight: 400;
+    font-size: 2rem;
+    color: #444444;
+
+    @media screen and (max-width: 1199px) {
+      width: 90%;
+      margin: 10px 0px 0px 25px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      width: 80%;
+    }
+
+    @media screen and (max-width: 890px) {
+      margin: 10px 0px 0px 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 80%;
+      margin: 10px 0px 0px 35px;
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 90%;
+      margin: 10px 0px 0px 20px;
+    }
+  }
+
+  p {
+    margin-left: 25px;
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #444444;
+    gap: 10px;
+
+    span:nth-of-type(2) {
+      font-size: 2.5rem;
+      font-weight: bolder;
+    }
+
+    &:nth-of-type(2) {
+      margin-top: 5px;
+    }
+
+    @media screen and (max-width: 890px) {
+      margin: 30px 0px 0px 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-left: 35px;
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-left: 35px;
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: 400px) {
+      margin: 20px 0px 0px 20px;
+    }
+  }
+
+  @media screen and (max-width: 1605px) {
+    // transform: scale(0.9);
+  }
+
+  @media screen and (max-width: 1440px) {
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: 1300px) {
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: 1132px) {
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: 1024px) {
+    transform: scale(0.9);
+  }
+
+  @media screen and (max-width: 978px) {
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: 890px) {
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: 800px) {
+    transform: scale(0.85);
+  }
+
+  @media screen and (max-width: 780px) {
+    transform: scale(0.85);
+  }
+
+  @media screen and (max-width: 586px) {
+    transform: scale0(0.9);
+  }
+  @media screen and (max-width: 500px) {
+    transform: scale(1);
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 365px;
+
+    transform: scale(1);
+  }
 }

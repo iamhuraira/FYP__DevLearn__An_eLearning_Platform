@@ -90,7 +90,6 @@
           color: #fff;
         }
       }
-
     }
   }
 
@@ -314,7 +313,7 @@
               .list__item {
                 position: relative;
 
-                &:hover>.label {
+                &:hover > .label {
                   color: #009688;
 
                   &::before {
@@ -328,7 +327,7 @@
                   opacity: 0;
                   visibility: hidden;
 
-                  &:checked+.label {
+                  &:checked + .label {
                     color: #009688;
 
                     &::before {
@@ -949,6 +948,12 @@
     border: 2px solid red !important;
     color: red !important;
     background-color: white !important;
+  }
+}
+
+.UnenrollButton {
+  &:hover {
+    background-color: red !important;
   }
 }
 

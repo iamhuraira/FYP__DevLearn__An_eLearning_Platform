@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, Fragment, useEffect } from 'react';
-import Header from '../components/Header/Header';
-import HeaderDashboard from '../DashboardComponents/HeaderDashboard';
-import python from '../assets/img/CourseImages/python.png';
-import Footer from '../components/Footer/Footer';
-import { BiVideo } from 'react-icons/bi';
-import { GrClose } from 'react-icons/gr';
-import { TiTick } from 'react-icons/ti';
-import { ImCross } from 'react-icons/im';
+import React, { useState, Fragment, useEffect } from "react";
+import Header from "../components/Header/Header";
+import HeaderDashboard from "../DashboardComponents/HeaderDashboard";
+import python from "../assets/img/CourseImages/python.png";
+import Footer from "../components/Footer/Footer";
+import { BiVideo } from "react-icons/bi";
+import { GrClose } from "react-icons/gr";
+import { TiTick } from "react-icons/ti";
+import { ImCross } from "react-icons/im";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { CaretRightOutlined } from '@ant-design/icons';
-import { Collapse } from 'antd';
+import { useDispatch, useSelector } from "react-redux";
+import { CaretRightOutlined } from "@ant-design/icons";
+import { Collapse } from "antd";
 import {
   useGetCourseByIdQuery,
   useDeleteCourseMutation,
@@ -22,15 +22,16 @@ import {
   useGetQuizResultQuery,
   useSubmitQuizResultMutation,
   useRetakeQuizResultMutation,
-} from '../Redux/api/courseSlice';
-import { useNavigate, useParams } from 'react-router-dom';
-import { setCourseData } from '../Redux/slices/courseSlice';
+  useUnenrollCourseMutation,
+} from "../Redux/api/courseSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { setCourseData } from "../Redux/slices/courseSlice";
 
-import certificateTemplate from '../assets/img/certificateTemplate.jpg';
-import { CircularProgress, TextField } from '@mui/material';
-import { validateDate } from '@mui/x-date-pickers/internals';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import certificateTemplate from "../assets/img/certificateTemplate.jpg";
+import { CircularProgress, TextField } from "@mui/material";
+import { validateDate } from "@mui/x-date-pickers/internals";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 const { Panel } = Collapse;
 
 const CoursePage = () => {
@@ -62,12 +63,12 @@ const CoursePage = () => {
 
   const panelStyle = {
     marginBottom: 15,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    background: 'rgba(35, 186, 177, 0.05)',
+    marginLeft: "auto",
+    marginRight: "auto",
+    background: "rgba(35, 186, 177, 0.05)",
     borderRadius: 10,
-    border: 'none',
-    width: '60%',
+    border: "none",
+    width: "60%",
   };
   // 7S_tz1z_5bA';
 
@@ -99,7 +100,7 @@ const CoursePage = () => {
   // ]
   const [quiz, setQuiz] = useState([]);
 
-  const [iFromeSrc, setiFromeSrc] = useState('');
+  const [iFromeSrc, setiFromeSrc] = useState("");
   const chnageUrl = (url) => {
     const iFromeSrc = `https://www.youtube.com/embed/${url}?rel=0&autoplay=1`;
     setiFromeSrc(iFromeSrc);
@@ -112,9 +113,9 @@ const CoursePage = () => {
   const [showDeletePopup, setshowDeletePopup] = useState(false);
   useEffect(() => {
     if (videoPopup || quizPopup || showDeletePopup) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [videoPopup, quizPopup, showDeletePopup]);
 
@@ -146,7 +147,7 @@ const CoursePage = () => {
 
     setQuizPopup(true);
   };
-  const [quizResult, setQuizResult] = useState('');
+  const [quizResult, setQuizResult] = useState("");
 
   const [
     submitQuizResult,
@@ -171,7 +172,7 @@ const CoursePage = () => {
       }
     }
     const percentage = (count / result.length) * 100;
-    percentage >= 65 ? setQuizResult('Pass') : setQuizResult('Fail');
+    percentage >= 65 ? setQuizResult("Pass") : setQuizResult("Fail");
 
     // setQuizResult(count);
     // console.log(result);
@@ -190,7 +191,7 @@ const CoursePage = () => {
       studentId: user._id,
       courseId: param.id,
       sectionid: SectionId,
-      result: `${percentage >= 65 ? 'pass' : 'fail'}`,
+      result: `${percentage >= 65 ? "pass" : "fail"}`,
     });
   };
 
@@ -211,7 +212,7 @@ const CoursePage = () => {
       }
     }
     const percentage = (count / result.length) * 100;
-    percentage >= 65 ? setQuizResult('Pass') : setQuizResult('Fail');
+    percentage >= 65 ? setQuizResult("Pass") : setQuizResult("Fail");
 
     // setQuizResult(count);
     // console.log(result);
@@ -222,23 +223,23 @@ const CoursePage = () => {
       studentId: user._id,
       courseId: param.id,
       sectionid: SectionId,
-      result: `${percentage >= 65 ? 'pass' : 'fail'}`,
+      result: `${percentage >= 65 ? "pass" : "fail"}`,
     });
   };
 
   const handleCloseQuizPopup = () => {
     setQuizPopup(false);
-    setQuizResult('');
+    setQuizResult("");
     setQuizAnswer([]);
   };
-  const auth = localStorage.getItem('token');
+  const auth = localStorage.getItem("token");
   const user = useSelector((state) => state.user.userData);
   const ImgUrl = `${process.env.REACT_APP_BASE_URL}/public/img/courses`;
   const UserImg = `${process.env.REACT_APP_BASE_URL}/public/img/users`;
   const DifficultyColor = {
-    Beginner: '#00b300',
-    Hard: '#febe00',
-    Expert: '#ff0000',
+    Beginner: "#00b300",
+    Hard: "#febe00",
+    Expert: "#ff0000",
   };
   const Dstyle = {
     color: DifficultyColor[course?.difficultylevel],
@@ -278,33 +279,56 @@ const CoursePage = () => {
     navigate(`/teacherdashboard/updatecourse/${course._id}`);
   };
 
-  const [deleteCourse, { isLoading: DeeteCourseIsloading} ] = useDeleteCourseMutation();
+  const [deleteCourse, { isLoading: DeeteCourseIsloading }] =
+    useDeleteCourseMutation();
 
   const handleDeleteCourse = () => {
     deleteCourse(course._id);
     setshowDeletePopup(false);
     // console.log(response)
-    navigate('/teacherdashboard/viewcourses');
+    navigate("/teacherdashboard/viewcourses");
   };
 
-  const [courseAprove, { isSuccess, isLoading : CourseApproveIsLoading, isError, error }] =
-    useCourseApproveMutation();
+  const [
+    courseAprove,
+    { isSuccess, isLoading: CourseApproveIsLoading, isError, error },
+  ] = useCourseApproveMutation();
   useEffect(() => {
     if (isSuccess) {
-      navigate('/admin/viewrequests');
+      navigate("/admin/viewrequests");
     }
   }, [isSuccess]);
 
   const handleApproveCourse = (decision) => {
-    console.log(decision, course._id);
+    // console.log(decision, course._id);
     courseAprove({ decision, id: course._id });
   };
+  const [
+    courseReject,
+    { isSuccess: courseRejectIsSuccess, isLoading: courseRejectIsLoading },
+  ] = useCourseApproveMutation();
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/admin/viewrequests");
+    }
+  }, [isSuccess]);
 
-  const [enrollCourse, { isSuccess: enrollSuccess, isError: enrollError, isLoading: enrollCourseIsLoading }] =
-    useEnrollCourseMutation();
+  const handleRejectCourse = (decision) => {
+    // console.log(decision, course._id);
+    courseReject({ decision, id: course._id });
+  };
+
+  const [
+    enrollCourse,
+    {
+      isSuccess: enrollSuccess,
+      isError: enrollError,
+      isLoading: enrollCourseIsLoading,
+    },
+  ] = useEnrollCourseMutation();
   useEffect(() => {
     if (enrollSuccess) {
-      navigate('/studentdashboard');
+      navigate("/studentdashboard");
     }
   }, [enrollSuccess]);
 
@@ -315,7 +339,31 @@ const CoursePage = () => {
         studentId: user._id,
       });
     } else {
-      navigate('/login');
+      navigate("/login");
+    }
+  };
+  const [
+    unenrollCourse,
+    {
+      isSuccess: unenrollSuccess,
+      isError: unenrollError,
+      isLoading: unenrollCourseIsLoading,
+    },
+  ] = useUnenrollCourseMutation();
+  useEffect(() => {
+    if (unenrollSuccess) {
+      navigate("/studentdashboard");
+    }
+  }, [unenrollSuccess]);
+
+  const HandleUnEnrollCurse = () => {
+    if (auth) {
+      unenrollCourse({
+        courseId: course._id,
+        studentId: user._id,
+      });
+    } else {
+      navigate("/login");
     }
   };
 
@@ -346,26 +394,27 @@ const CoursePage = () => {
   });
 
   const quizPassed = quizResultList.document?.filter((item) => {
-    return item.result === 'pass';
+    return item.result === "pass";
   });
 
   // console.log(quizPassed);
-  const [certificateDownloadLoading, setCertificateDownloadLoading] = useState(false);
+  const [certificateDownloadLoading, setCertificateDownloadLoading] =
+    useState(false);
   const DownloadCertificate = () => {
-    setCertificateDownloadLoading(true)
-    const capture = document.getElementById('courseCertificate');
+    setCertificateDownloadLoading(true);
+    const capture = document.getElementById("courseCertificate");
     html2canvas(capture).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const doc = new jsPDF('landscape');
+      const imgData = canvas.toDataURL("image/png");
+      const doc = new jsPDF("landscape");
       const componentWidth = doc.internal.pageSize.getWidth();
       const componentHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-          setCertificateDownloadLoading(false);
+      doc.addImage(imgData, "PNG", 0, 0, componentWidth, componentHeight);
+      setCertificateDownloadLoading(false);
       doc.save(`${user.name}_certificate.pdf`);
     });
   };
 
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
 
   const handleAddReview = () => {};
 
@@ -374,18 +423,18 @@ const CoursePage = () => {
   // console.log(date1.getDate());
 
   const month = [
-    'Januray',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'Octomber',
-    'November',
-    'December',
+    "Januray",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "Octomber",
+    "November",
+    "December",
   ];
 
   return (
@@ -410,15 +459,15 @@ const CoursePage = () => {
         </div>
       )}
 
-      {(course?.status === 'pending' || course?.status === 'rejected') &&
-        user?.role === 'teacher' && (
+      {(course?.status === "pending" || course?.status === "rejected") &&
+        user?.role === "teacher" && (
           <div className="adminControl teacherControl">
             <button onClick={handleUpdateCourse}> Update</button>
             <button onClick={() => setshowDeletePopup(true)}>
               {DeeteCourseIsloading ? (
                 <CircularProgress disableShrink />
               ) : (
-                'Delete'
+                "Delete"
               )}
             </button>
           </div>
@@ -432,18 +481,27 @@ const CoursePage = () => {
             <span>
               Last updated: {`${date.getMonth() + 1}/${date.getFullYear()}`}
             </span>
-            {user.role !== 'admin' &&
-              user.role !== 'teacher' &&
+            {user.role !== "admin" &&
+              user.role !== "teacher" &&
               !cenrollresult && (
                 <button onClick={HandleEnrollCurse}>
                   {enrollCourseIsLoading ? (
                     <CircularProgress disableShrink />
                   ) : (
-                    ' Enroll Now!'
+                    " Enroll Now!"
                   )}
                 </button>
               )}
-            {cenrollresult && <button>Enrolled</button>}
+            {cenrollresult && (
+              <button onClick={HandleUnEnrollCurse} className="UnenrollButton ">
+                {unenrollCourseIsLoading ? (
+                  <CircularProgress disableShrink />
+                ) : (
+                  " Unenroll !"
+                )}
+                {/* Unenroll */}
+              </button>
+            )}
             {/* <button>Enroll Now!</button> */}
           </div>
           <div className="courseHeader__right">
@@ -476,7 +534,7 @@ const CoursePage = () => {
         {course?.sections?.map((section, i) => (
           <Collapse
             bordered={false}
-            defaultActiveKey={['0']}
+            defaultActiveKey={["0"]}
             expandIcon={({ isActive }) => (
               <CaretRightOutlined rotate={isActive ? 90 : 0} />
             )}
@@ -490,7 +548,7 @@ const CoursePage = () => {
                     <div className="VideoDetails" key={vi}>
                       <BiVideo />
                       <p onClick={() => chnageUrl(video.videoLink)}>
-                        {video.videoName}{' '}
+                        {video.videoName}{" "}
                       </p>
                       {videoPopup && (
                         <div className="viderPopup">
@@ -508,11 +566,11 @@ const CoursePage = () => {
                   ))}
                 </div>
                 <div className="right">
-                  {cenrollresult && user.role === 'student' && (
+                  {cenrollresult && user.role === "student" && (
                     <>
                       {!map.has(i) ? (
                         <button onClick={() => handleOpenQuiz(i)}>Quiz</button>
-                      ) : map?.get(i) === 'fail' ? (
+                      ) : map?.get(i) === "fail" ? (
                         <button
                           onClick={() => handleOpenQuiz(i)}
                           className="red"
@@ -535,7 +593,7 @@ const CoursePage = () => {
                   {quizPopup && (
                     <div className="quizPopup">
                       <GrClose onClick={handleCloseQuizPopup} />
-                      {quizResult === '' && (
+                      {quizResult === "" && (
                         <>
                           <div>
                             <h2>Quiz</h2>
@@ -657,9 +715,9 @@ const CoursePage = () => {
                             </div>
                           ))}
 
-                          {user.role !== 'admin' && user.role !== 'teacher' && (
+                          {user.role !== "admin" && user.role !== "teacher" && (
                             <div className="quizButton">
-                              {map?.get(i) === 'fail' ? (
+                              {map?.get(i) === "fail" ? (
                                 <button
                                   onClick={() => RetakeSubmitQuiz(i)}
                                   className="red"
@@ -677,7 +735,7 @@ const CoursePage = () => {
                           )}
                         </>
                       )}
-                      {quizResult === 'Pass' && (
+                      {quizResult === "Pass" && (
                         <div className="passedQuiz">
                           <h2>Passed</h2>
                           <TiTick />
@@ -685,7 +743,7 @@ const CoursePage = () => {
                         </div>
                       )}
 
-                      {quizResult === 'Fail' && (
+                      {quizResult === "Fail" && (
                         <div className="failedQuiz passedQuiz">
                           <h2>Failed (Less then 65%)</h2>
                           <ImCross />
@@ -705,10 +763,10 @@ const CoursePage = () => {
         <h1>Instructor</h1>
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
           }}
         >
           <div className="teacherImg">
@@ -728,7 +786,7 @@ const CoursePage = () => {
 
       {quizPassed?.length === course?.sections?.length &&
         cenrollresult &&
-        user.role === 'student' && (
+        user.role === "student" && (
           <div className="CertificateSection">
             <h2 className="SectionTitle">Course Certificate</h2>
             <h3 className="CourseName"> {course?.courseName}</h3>
@@ -758,7 +816,7 @@ const CoursePage = () => {
                     {certificateDownloadLoading ? (
                       <CircularProgress disableShrink />
                     ) : (
-                      ' Download Certificate'
+                      " Download Certificate"
                     )}
                   </button>
                 </div>
@@ -858,29 +916,30 @@ const CoursePage = () => {
         </div>
       </div> */}
 
-      {course?.status === 'pending' && user?.role === 'admin' && (
+      {course?.status === "pending" && user?.role === "admin" && (
         <div className="adminControl">
           <button
             onClick={() => {
-              handleApproveCourse('approved');
+              handleApproveCourse("approved");
             }}
           >
             {CourseApproveIsLoading ? (
               <CircularProgress disableShrink />
             ) : (
-              'Approve'
+              "Approve"
             )}
           </button>
           <button
             onClick={() => {
-              handleApproveCourse('rejected');
+              handleRejectCourse("rejected");
             }}
           >
-            {CourseApproveIsLoading ? (
+            {courseRejectIsLoading ? (
               <CircularProgress disableShrink />
             ) : (
-              'Reject'
+              "Reject"
             )}
+            {/* Reject */}
           </button>
         </div>
       )}

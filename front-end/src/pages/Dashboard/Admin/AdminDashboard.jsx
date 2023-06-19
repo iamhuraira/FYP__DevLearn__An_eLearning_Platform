@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
-import HeaderDashboard from '../../../DashboardComponents/HeaderDashboard';
-import { useSelector } from 'react-redux';
-import Welcome from '../../../DashboardComponents/Welcome';
-import { Link } from 'react-router-dom';
-import { useGetStatQuery } from '../../../Redux/api/courseSlice';
-import { CircularProgress } from '@mui/material';
+import React, { useEffect } from "react";
+import HeaderDashboard from "../../../DashboardComponents/HeaderDashboard";
+import { useSelector } from "react-redux";
+import Welcome from "../../../DashboardComponents/Welcome";
+import { Link } from "react-router-dom";
+import { useGetStatQuery } from "../../../Redux/api/courseSlice";
+import { CircularProgress } from "@mui/material";
 
 const AdminDashboard = () => {
   const useDatar = useSelector((state) => state.user.userData);
   const { data, isLoading, isFetching, isSuccess } = useGetStatQuery({
     refetchOnMountOrArgChange: true,
+    refetchOnReconnect: true,
   });
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const AdminDashboard = () => {
             </h1>
           </div>
           <div className="box">
-            <h2 style={{ backgroundColor: '#0c3a53' }}>No. of Teachers</h2>
+            <h2 style={{ backgroundColor: "#0c3a53" }}>No. of Teachers</h2>
             <h1>
               {/* <CircularProgress disableShrink />{' '} */}
               {isFetching ? (
@@ -47,9 +48,9 @@ const AdminDashboard = () => {
             </h1>
           </div>
           <div className="box">
-            <h2 style={{ backgroundColor: '#0c3a53' }}>No. of Students</h2>
+            <h2 style={{ backgroundColor: "#0c3a53" }}>No. of Students</h2>
             <h1>
-              {' '}
+              {" "}
               {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (
@@ -62,7 +63,7 @@ const AdminDashboard = () => {
           <div className="box">
             <h2>Total Users</h2>
             <h1>
-              {' '}
+              {" "}
               {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (
@@ -73,7 +74,7 @@ const AdminDashboard = () => {
           <div className="box">
             <h2>Verified Users</h2>
             <h1>
-              {' '}
+              {" "}
               {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (
@@ -84,7 +85,7 @@ const AdminDashboard = () => {
           <div className="box">
             <h2>Unverified Users</h2>
             <h1>
-              {' '}
+              {" "}
               {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (
@@ -98,7 +99,7 @@ const AdminDashboard = () => {
           <div className="box">
             <h2>Total Courses</h2>
             <h1>
-              {' '}
+              {" "}
               {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (
@@ -109,7 +110,7 @@ const AdminDashboard = () => {
           <div className="box">
             <h2>Approved Courses</h2>
             <h1>
-              {' '}
+              {" "}
               {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (
@@ -120,7 +121,7 @@ const AdminDashboard = () => {
           <div className="box">
             <h2>Disapproved Courses</h2>
             <h1>
-              {' '}
+              {" "}
               {isFetching ? (
                 <CircularProgress disableShrink />
               ) : (

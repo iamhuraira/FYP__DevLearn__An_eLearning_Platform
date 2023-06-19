@@ -4,22 +4,22 @@ const baseurl = `${process.env.REACT_APP_BASE_URL}`;
 console.log(baseurl);
 
 export const courseApi = createApi({
-  reducerPath: 'courses',
+  reducerPath: "courses",
   tagTypes: [
-    'Courses',
-    'adminCourse',
-    'SingleCourse',
-    'EnrolledCourse',
-    'QuizResult',
-    'Stats',
+    "Courses",
+    "adminCourse",
+    "SingleCourse",
+    "EnrolledCourse",
+    "QuizResult",
+    "Stats",
   ],
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl,
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       // If we have a token set in local storage, let's assume that we should be passing it.
       if (token) {
-        headers.set('authorization', `Bearer ${token}`);
+        headers.set("authorization", `Bearer ${token}`);
       }
       return headers;
     },
@@ -32,16 +32,16 @@ export const courseApi = createApi({
     getSignup: builder.mutation({
       query: (body) => {
         return {
-          url: 'api/v1/users/signup',
-          method: 'POST',
+          url: "api/v1/users/signup",
+          method: "POST",
           body,
         };
       },
     }),
     getAdminSignup: builder.mutation({
       query: (body) => ({
-        url: 'api/v1/users/adminSignup',
-        method: 'POST',
+        url: "api/v1/users/adminSignup",
+        method: "POST",
         body,
       }),
     }),
@@ -49,19 +49,19 @@ export const courseApi = createApi({
     getLogin: builder.mutation({
       query: (body) => {
         return {
-          url: 'api/v1/users/login',
-          method: 'POST',
+          url: "api/v1/users/login",
+          method: "POST",
           body,
         };
       },
-      invalidatesTags: ['Courses', 'adminCourse', 'EnrolledCourse', 'Stats'],
+      invalidatesTags: ["Courses", "adminCourse", "EnrolledCourse", "Stats"],
     }),
 
     getForgetPassword: builder.mutation({
       query: (body) => {
         return {
-          url: 'api/v1/users/forgotpassword', // change this url
-          method: 'POST',
+          url: "api/v1/users/forgotpassword", // change this url
+          method: "POST",
           body,
         };
       },
@@ -69,17 +69,17 @@ export const courseApi = createApi({
 
     updateUserProfile: builder.mutation({
       query: (body) => ({
-        url: 'api/v1/users/updateMe',
-        method: 'PATCH',
+        url: "api/v1/users/updateMe",
+        method: "PATCH",
         body,
       }),
-      invalidatesTags: ['Courses'],
+      invalidatesTags: ["Courses"],
     }),
 
     updateUserPassword: builder.mutation({
       query: (body) => ({
         url: `api/v1/users/updateMyPassword/`,
-        method: 'PATCH',
+        method: "PATCH",
         body,
       }),
     }),
@@ -87,16 +87,16 @@ export const courseApi = createApi({
     deleteUser: builder.mutation({
       query: () => ({
         url: `api/v1/users/deleteMe`,
-        method: 'DELETE',
+        method: "DELETE",
       }),
-      invalidatesTags: ['Courses', 'adminCourse', 'SingleCourse'],
+      invalidatesTags: ["Courses", "adminCourse", "SingleCourse"],
     }),
 
     // Course Routes
     getAllCourses: builder.query({
       query: () => ({
         url: `api/v1/courses/viewAllCourses/`,
-        Method: 'GET',
+        Method: "GET",
       }),
       // invalidatesTags: ["SingleCourse"],
     }),
@@ -104,66 +104,75 @@ export const courseApi = createApi({
     createCourse: builder.mutation({
       query: (formData) => {
         return {
-          url: 'api/v1/courses/createCourse',
-          method: 'POST',
+          url: "api/v1/courses/createCourse",
+          method: "POST",
           body: formData,
         };
       },
-      invalidatesTags: ['Courses', 'adminCourse'],
+      invalidatesTags: ["Courses", "adminCourse"],
     }),
 
     getTeacherCources: builder.query({
       query: () => ({
-        url: 'api/v1/courses/viewTeacherCourses/',
-        Method: 'GET',
+        url: "api/v1/courses/viewTeacherCourses/",
+        Method: "GET",
       }),
-      providesTags: ['Courses'],
+      providesTags: ["Courses"],
     }),
     getCourseById: builder.query({
       query: (id) => ({
         url: `api/v1/courses/viewOneCourse/${id}`,
-        Method: 'GET',
+        Method: "GET",
       }),
-      invalidatesTags: ['SingleCourse'],
+      invalidatesTags: ["SingleCourse"],
     }),
     getAdminCourses: builder.query({
       query: () => ({
         url: `api/v1/courses/viewAdminCourses/`,
-        Method: 'GET',
+        Method: "GET",
       }),
-      providesTags: ['adminCourse'],
+      providesTags: ["adminCourse"],
     }),
 
     DeleteCourse: builder.mutation({
       query: (id) => ({
         url: `api/v1/courses/deleteCourse/${id}`,
-        method: 'DELETE',
+        method: "DELETE",
       }),
-      invalidatesTags: ['Courses'],
+      invalidatesTags: ["Courses"],
     }),
     updateCourse: builder.mutation({
       query: (body) => ({
         url: `api/v1/courses/updateCourse/${body.id}`,
-        method: 'PATCH',
+        method: "PATCH",
         body: body.formData,
       }),
-      invalidatesTags: ['SingleCourse', 'adminCourse', 'Courses'],
+      invalidatesTags: ["SingleCourse", "adminCourse", "Courses"],
     }),
 
     enrollCourse: builder.mutation({
       query: (body) => ({
         url: `api/v1/enroll/enrollStudentinCourse/`,
-        method: 'PATCH',
+        method: "PATCH",
         body,
       }),
-      invalidatesTags: ['SingleCourse', 'EnrolledCourse'],
+      invalidatesTags: ["SingleCourse", "EnrolledCourse"],
     }),
+    unenrollCourse: builder.mutation({
+      query: (body) => ({
+        url: `api/v1/enroll/unenrollCourse`,
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["SingleCourse", "EnrolledCourse"],
+    }),
+
     StudentEnrolledCourse: builder.query({
       query: () => ({
         url: `api/v1/enroll/viewEnrolledCourses`,
-        Method: 'GET',
+        Method: "GET",
       }),
-      providesTags: ['EnrolledCourse'],
+      providesTags: ["EnrolledCourse"],
     }),
 
     //  Manage Quiz Routes
@@ -171,47 +180,47 @@ export const courseApi = createApi({
     getQuizResult: builder.query({
       query: (id) => ({
         url: `api/v1/quizresult/getquizresult/${id}`,
-        method: 'GET',
+        method: "GET",
       }),
-      providesTags: ['QuizResult'],
+      providesTags: ["QuizResult"],
     }),
 
     submitQuizResult: builder.mutation({
       query: (body) => ({
         url: `api/v1/quizresult/createquizresult`,
-        method: 'POST',
+        method: "POST",
         body,
       }),
-      invalidatesTags: ['SingleCourse', 'QuizResult', 'EnrolledCourse'],
+      invalidatesTags: ["SingleCourse", "QuizResult", "EnrolledCourse"],
     }),
 
     retakeQuizResult: builder.mutation({
       query: (body) => ({
         url: `api/v1/quizresult/updatequizresult`,
-        method: 'PATCH',
+        method: "PATCH",
         body,
       }),
-      invalidatesTags: ['SingleCourse', 'QuizResult', 'EnrolledCourse'],
+      invalidatesTags: ["SingleCourse", "QuizResult", "EnrolledCourse"],
     }),
 
     // Admin Routes
     courseApprove: builder.mutation({
       query: (body) => ({
         url: `api/v1/courses/adminCourseDecision/${body.id}`,
-        method: 'PATCH',
+        method: "PATCH",
         body: {
           status: body.decision,
         },
       }),
-      invalidatesTags: ['SingleCourse', 'adminCourse', 'Courses'],
+      invalidatesTags: ["SingleCourse", "adminCourse", "Courses", "Stats"],
     }),
 
     getStat: builder.query({
       query: (id) => ({
         url: `api/v1/stats/viewAdminStats`,
-        method: 'GET',
+        method: "GET",
       }),
-      providesTags: ['Stats'],
+      providesTags: ["Stats"],
     }),
   }),
 });
@@ -224,9 +233,14 @@ export const {
   useUpdateUserProfileMutation,
   useUpdateUserPasswordMutation,
   useDeleteUserMutation,
-  useCourseApproveMutation, useEnrollCourseMutation, useStudentEnrolledCourseQuery,
-  
-  useGetQuizResultQuery, useSubmitQuizResultMutation,  useRetakeQuizResultMutation,
+  useCourseApproveMutation,
+  useEnrollCourseMutation,
+  useUnenrollCourseMutation,
+  useStudentEnrolledCourseQuery,
+
+  useGetQuizResultQuery,
+  useSubmitQuizResultMutation,
+  useRetakeQuizResultMutation,
 
   useCreateCourseMutation,
   useGetTeacherCourcesQuery,
@@ -234,5 +248,6 @@ export const {
   useGetAllCoursesQuery,
   useDeleteCourseMutation,
   useUpdateCourseMutation,
-  useGetAdminCoursesQuery, useGetStatQuery,
+  useGetAdminCoursesQuery,
+  useGetStatQuery,
 } = courseApi;

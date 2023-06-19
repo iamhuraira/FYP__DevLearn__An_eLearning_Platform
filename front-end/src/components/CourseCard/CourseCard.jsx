@@ -14,10 +14,10 @@ const CourseCard = ({ course, id }) => {
     Beginner: "#00b300",
     Hard: "#febe00",
     Expert: "#ff0000",
-  }
+  };
   const Dstyle = {
-    color: DifficultyColor[course.difficultylevel]
- } 
+    color: DifficultyColor[course.difficultylevel],
+  };
   return (
     <div className="fun" onClick={() => handleOpenPage(course._id)} key={id}>
       <div className="backgroundCard">
