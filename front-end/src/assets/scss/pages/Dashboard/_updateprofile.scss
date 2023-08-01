@@ -185,16 +185,29 @@
         padding: 0 10px;
     }
 
+    .datainfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // width: 87%;
+        gap: 20px;
+
+        .MuiFormControl-root {
+            width: 735px !important;
+        }
+    }
+
     .css-1nrlq1o-MuiFormControl-root {
 
-        width: 348px;
+        width: 348px !important;
         // height: 58px;
 
 
     }
 
     .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-        width: 348px;
+        width: 348px !important;
         // height: 58px;
     }
 
@@ -213,7 +226,7 @@
 
 
     label[data-shrink=false]+.MuiInputBase-formControl .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-        width: 303px;
+        width: 303px !important;
         // height: 28px;
     }
 
@@ -244,7 +257,7 @@
     }
 
     @media screen and (max-width: 980px) {
-        width: 600px;
+        width: 600px !important;
         margin-left: 30px;
 
         input {
@@ -252,21 +265,34 @@
             font-size: 1.8rem;
         }
 
+        .datainfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 600px !important;
+            gap: 20px;
+
+            .MuiFormControl-root {
+                width: 600px !important;
+            }
+        }
+
         .css-1nrlq1o-MuiFormControl-root {
 
-            width: 600px;
+            width: 600px !important;
             // height: 58px;
 
 
         }
 
         .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-            width: 600px;
+            width: 600px !important;
             // height: 58px;
         }
 
         label[data-shrink=false]+.MuiInputBase-formControl .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-            width: 303px;
+            width: 303px !important;
             // height: 28px;
         }
     }
@@ -279,6 +305,23 @@
         input {
             width: 100% !important;
             font-size: 1.8rem;
+        }
+
+        .datainfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100% !important;
+            gap: 20px;
+
+            .MuiFormControl-root {
+                width: 100% !important;
+            }
+        }
+
+        .MuiFormControl-root {
+            width: 100% !important;
         }
 
         .css-1nrlq1o-MuiFormControl-root {
