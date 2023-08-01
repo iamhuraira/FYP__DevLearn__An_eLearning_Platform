@@ -87,9 +87,9 @@ const ForgotPassword = () => {
     <>
       <Header />
 
-      <div className="course-div">
+      <div className="course-div passworddiv">
         {/* <form action=""> */}
-        <div className="profile-info">
+        <div className="profile-info passwordInfo">
           <h2>Forgot Password</h2>
 
           {showAlert && (

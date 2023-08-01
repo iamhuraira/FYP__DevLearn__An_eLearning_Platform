@@ -135,38 +135,56 @@ const ForgotPasswordChange = () => {
 
 
     return (
-        <>
-          
-            <Header />
+      <>
+        <Header />
 
-            <div className="course-div" >
-                {/* <form action=""> */}
-                <div className="profile-info">
-                    <h2>Create New Password</h2>
+        <div className="course-div passworddiv">
+          {/* <form action=""> */}
+          <div className="profile-info passwordInfo">
+            <h2>Create New Password</h2>
 
-                    {showAlert && <Alert variant="filled" severity="error">{msg}</Alert>}
-                    {showSuccess && <Alert variant="filled" severity="success">{successMsg}</Alert>}
-                    <div className="profile-input">
+            {showAlert && (
+              <Alert variant="filled" severity="error">
+                {msg}
+              </Alert>
+            )}
+            {showSuccess && (
+              <Alert variant="filled" severity="success">
+                {successMsg}
+              </Alert>
+            )}
+            <div className="profile-input">
+              <div className="profile-data">
+                <TextField
+                  error={newPasswordE}
+                  id="outlined-basic"
+                  label="New Password"
+                  name="newPassword"
+                  onChange={handleInputs}
+                  variant="outlined"
+                  style={{ width: '735px' }}
+                />
+                <TextField
+                  error={confirmPasswordE}
+                  id="outlined-basic"
+                  label="Confirm Password"
+                  name="confirmPassword"
+                  onChange={handleInputs}
+                  variant="outlined"
+                  style={{ width: '735px' }}
+                />
 
-                        <div className="profile-data">
-                            <TextField error={newPasswordE} id="outlined-basic" label="New Password" name='newPassword' onChange={handleInputs} variant="outlined" style={{ width: '735px' }} />
-                            <TextField error={confirmPasswordE} id="outlined-basic" label="Confirm Password" name='confirmPassword' onChange={handleInputs} variant="outlined" style={{ width: '735px' }} />
-
-
-                            <button style={{ width: '735px' }} onClick={validateform}>Create New Password</button>
-                        </div>
-
-
-
-
-                    </div>
-                </div>
-
-
-                {/* </form> */}
+                <button style={{ width: '735px' }} onClick={validateform}>
+                  Create New Password
+                </button>
+              </div>
             </div>
-        </>
-    )
+          </div>
+
+          {/* </form> */}
+        </div>
+      </>
+    );
 }
 
 export default ForgotPasswordChange;

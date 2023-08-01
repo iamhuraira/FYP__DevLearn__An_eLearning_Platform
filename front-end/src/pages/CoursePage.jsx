@@ -308,10 +308,10 @@ const CoursePage = () => {
     { isSuccess: courseRejectIsSuccess, isLoading: courseRejectIsLoading },
   ] = useCourseApproveMutation();
   useEffect(() => {
-    if (isSuccess) {
-      navigate("/admin/viewrequests");
+    if (courseRejectIsSuccess) {
+      navigate('/admin/viewrequests');
     }
-  }, [isSuccess]);
+  }, [courseRejectIsSuccess]);
 
   const handleRejectCourse = (decision) => {
     // console.log(decision, course._id);

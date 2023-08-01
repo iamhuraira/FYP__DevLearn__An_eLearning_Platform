@@ -153,6 +153,11 @@ html {
     font-size: 56.25%; //1rem = 10px
     //   font-size: 56.25%; //1rem =9px
 
+    @media screen and (max-width: 100em) {
+        //1200px
+        font-size: 45.25%; //1rem =9px
+    }
+
     @media screen and (max-width: 75em) {
         //1200px
         font-size: 50.25%; //1rem =9px

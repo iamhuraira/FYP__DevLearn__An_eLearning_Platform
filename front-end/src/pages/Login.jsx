@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,9 +29,16 @@ const Login = () => {
 
   useEffect(() => {
     if (isError) {
-      console.log(error);
-      setMessage(error.data?.message);
-      setShowAlert(true);
+      console.log(error.status);
+      if (error.status === 'FETCH_ERROR') {
+        setMessage("Check Your Internet Connection");
+          //  console.log(error.status, "s");
+        setShowAlert(true);
+      } else {
+        
+        setMessage(error.data?.message);
+        setShowAlert(true);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);

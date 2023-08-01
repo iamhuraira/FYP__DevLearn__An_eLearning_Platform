@@ -18,7 +18,7 @@ const Header = (props) => {
    const stickNavbar = () => {
      if (window !== undefined) {
        let windowHeight = window.scrollY;
-       windowHeight > 100
+       windowHeight > 80
          ? setStickyClass('stickyClass')
          : setStickyClass('relative');
      }

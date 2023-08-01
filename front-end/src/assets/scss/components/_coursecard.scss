@@ -3,7 +3,7 @@
   padding: 20px 45px;
   // margin: 50px 48px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
   @media screen and (max-width: 1764px) {
     padding: 20px 9%;
   }
@@ -39,10 +39,11 @@
   max-width: 320px;
 
   background-color: white;
-  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
   border-radius: 10px;
   position: relative;
   border: 1px solid gray;
+  transition: all 0.3s ease-in-out; 
 
   img {
     width: 100%;
@@ -68,6 +69,7 @@
     position: absolute;
     top: 120px;
     left: 25px;
+
 
     img {
       height: 56px;
@@ -185,8 +187,12 @@
     }
   }
 
+  &:hover {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.0));
+  }
+
   @media screen and (max-width: 1605px) {
-    // transform: scale(0.9);
+    height: 400px;
   }
 
   @media screen and (max-width: 1440px) {

@@ -15,6 +15,34 @@
         font-size: 5rem;
 
     }
+
+
+    @media screen and (max-width: 980px) {
+        width: 700px;
+
+        h2 {
+            font-size: 5rem;
+
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 90%;
+
+        h2 {
+            font-size: 4rem;
+
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 95%;
+
+        h2 {
+            font-size: 3.5rem;
+
+        }
+    }
 }
 
 .profile-input {
@@ -32,6 +60,28 @@
         width: 100px;
         border-radius: 50%;
         object-fit: cover;
+    }
+
+    @media screen and (max-width: 768px) {
+        margin-left: 20px;
+        position: relative;
+
+        img {
+            height: 70px;
+            width: 70px;
+
+        }
+    }
+
+    @media screen and (max-width: 330px) {
+        margin-left: 10px;
+        position: relative;
+
+        img {
+            height: 60px;
+            width: 60px;
+
+        }
     }
 }
 
@@ -192,6 +242,63 @@
             border: 2px solid #0C3A53;
         }
     }
+
+    @media screen and (max-width: 980px) {
+        width: 600px;
+        margin-left: 30px;
+
+        input {
+            width: 600px !important;
+            font-size: 1.8rem;
+        }
+
+        .css-1nrlq1o-MuiFormControl-root {
+
+            width: 600px;
+            // height: 58px;
+
+
+        }
+
+        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+            width: 600px;
+            // height: 58px;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+            width: 303px;
+            // height: 28px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 95% !important;
+        margin-left: auto;
+        margin-right: auto;
+
+        input {
+            width: 100% !important;
+            font-size: 1.8rem;
+        }
+
+        .css-1nrlq1o-MuiFormControl-root {
+
+            width: 100% !important;
+            // height: 58px;
+
+
+        }
+
+        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+            width: 100% !important;
+            // height: 58px;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+            width: 100% !important;
+            // height: 28px;
+        }
+    }
 }
 
 .imgcourseDiv {
@@ -205,12 +312,14 @@
         align-items: center;
         margin-left: 30px;
         margin-right: 20px;
-       
+
         svg {
             font-size: 5rem;
             color: #0C3A53;
             margin-left: -17px;
         }
     }
+
+
 
 }

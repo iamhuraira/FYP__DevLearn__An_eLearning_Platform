@@ -4,14 +4,14 @@
     display: flex;
     justify-content: center;
     background: rgba(35, 186, 177, 0.05);
-        // height: calc(100vh - 100px);
-        height: calc(100dvh - 100px);
+    height: calc(100vh - 80px);
+    // height: calc(100dvh - 100px);
     // align-items: center;
     // justify-items: center;
-
-    @media screen and (max-height: 768px) {
-        height: 105vh;
-    }
+    // height: 100vh;
+    // @media screen and (max-height: 768px) {
+    //     height: 105vh;
+    // }
 }
 
 .roleContainer {
@@ -36,7 +36,7 @@
 
     @media screen and (max-width: 320px) {
         transform: scale(0.42);
-        margin-top: -250px;
+        margin-top: -100px;
     }
 }
 
@@ -147,30 +147,6 @@
     margin-top: 70px;
     gap: 30px;
 
-    @media screen and (max-width: 768px) {
-        transform: scale(0.8);
-    }
-
-    @media screen and (max-width: 560px) {
-        transform: scale(0.7);
-        margin-top: -30px;
-
-    }
-
-    @media screen and (max-width: 425px) {
-        transform: scale(0.65);
-        margin-top: -50px;
-    }
-
-    @media screen and (max-width: 375px) {
-        transform: scale(0.59);
-        margin-top: -100px;
-    }
-
-    @media screen and (max-width: 320px) {
-        transform: scale(0.5);
-        margin-top: -150px;
-    }
 
 
     .heading {
@@ -217,7 +193,7 @@
             height: 70px;
             border: 1px solid #0C3A53;
             font-size: 2.4rem;
-            padding: 19px 30px;
+            padding: 10px 30px;
             border-radius: 10px;
             background-color: #0C3A53;
             color: #fff;
@@ -230,7 +206,7 @@
                 font-size: 3rem;
             }
 
-            svg{
+            svg {
                 color: #fff;
             }
         }
@@ -286,6 +262,64 @@
             }
         }
     }
+
+    @media screen and (max-width: 1600px) {
+        margin-top: 30px;
+        height: 550px;
+        gap: 20px;
+
+        .heading {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin: 10px 0;
+
+            input {
+                height: 50px;
+                font-size: 2.2rem;
+                padding: 14px 20px;
+                border-radius: 10px;
+            }
+
+            button {
+               
+                height: 60px;
+            }
+        }
+
+        .checkbox {
+            margin-top: 10px;
+
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        transform: scale(0.8);
+    }
+
+    @media screen and (max-width: 560px) {
+        transform: scale(0.7);
+        margin-top: -30px;
+
+    }
+
+    @media screen and (max-width: 425px) {
+        transform: scale(0.65);
+        margin-top: -50px;
+    }
+
+    @media screen and (max-width: 375px) {
+        transform: scale(0.59);
+        margin-top: -100px;
+    }
+
+    @media screen and (max-width: 320px) {
+        transform: scale(0.5);
+        margin-top: -50px;
+    }
 }
 
 .error {
@@ -295,8 +329,9 @@
     }
 
 }
-.MuiAlert-message{
-    font-size: 2rem;
+
+.MuiAlert-message {
+    font-size: 1.7rem;
 }
 
 .css-1c3trtb-MuiPaper-root-MuiAlert-root {
@@ -304,6 +339,6 @@
     align-items: center;
 
     .css-1pxa9xg-MuiAlert-message {
-        font-size: 20px;
+        font-size: 16px;
     }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import HeaderDashboard from "../../../DashboardComponents/HeaderDashboard";
 import TextField from "@mui/material/TextField";
@@ -11,12 +12,11 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateCourseMutation,  } from "../../../Redux/api/courseSlice";
 import CircularProgress from '@mui/material/CircularProgress';
-import axios from 'axios'
 
 const UpdateCourse = () => {
     const navigate = useNavigate();
 
-    const [updateCourseDB, { data, isLoading, isSuccess, isError, error }] = useUpdateCourseMutation();
+    const [updateCourseDB, { isLoading, isSuccess, isError, error }] = useUpdateCourseMutation();
     const param = useParams()
     
     useEffect(() => {
@@ -356,7 +356,7 @@ const UpdateCourse = () => {
             <div className="course-div">
                 <form action="" onSubmit={handleSubmit}>
                     <div className="course-info">
-                        <h2>Create Course</h2>
+                        <h2>Update Course</h2>
 
                         {showAlert && (
                             <div

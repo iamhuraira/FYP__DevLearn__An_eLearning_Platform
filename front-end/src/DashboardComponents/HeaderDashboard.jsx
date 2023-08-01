@@ -64,7 +64,7 @@ const HeaderDashboard = (props) => {
     const stickNavbar = () => {
       if (window !== undefined) {
         let windowHeight = window.scrollY;
-        windowHeight > 100
+        windowHeight > 80
           ? setStickyClass('stickyClass')
           : setStickyClass('relative');
       }
@@ -80,7 +80,7 @@ const HeaderDashboard = (props) => {
   
   return (
     <>
-      {showDeletePopup && <div className="overLay"></div>}
+      {showDeletePopup && <div className="overLay adminOverlay"></div>}
       <div className={`header  ${stickyClass}`}>
         <div className="logo">
           <img src={logo} alt="logo" onClick={showDashboard} />

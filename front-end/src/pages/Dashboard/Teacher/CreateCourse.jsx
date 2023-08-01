@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import HeaderDashboard from "../../../DashboardComponents/HeaderDashboard";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
@@ -282,11 +282,11 @@ const CreateCourse = () => {
     console.log([...formData]);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 5000);
-  }, [showAlert]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShowAlert(false);
+  //   }, 5000);
+  // }, [showAlert]);
 
   return (
     <>
@@ -302,10 +302,10 @@ const CreateCourse = () => {
                 className="Error"
                 style={{
                   margin: "20px auto",
-                  position: "fixed",
-                  zIndex: "99",
-                  bottom: "-15rem",
-                  left: "-14rem",
+                  // position: "fixed",
+                  // zIndex: "99",
+                  // bottom: "-15rem",
+                  // left: "-14rem",
                 }}
               >
                 {" "}

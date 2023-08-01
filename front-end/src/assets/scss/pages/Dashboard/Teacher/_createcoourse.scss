@@ -4,9 +4,10 @@
     // justify-content: center;
     align-items: center;
     background: rgba(35, 186, 177, 0.05);
-    // height: calc(100vh - 100px);
-    min-height: calc(100dvh - 100px);
-    padding-bottom: 50px;
+    // height: calc(100dvh - 00px);
+    // min-height: calc(100vh - 100px);
+    padding-bottom: 80px;
+    // margin-bottom: 100px;
 
     h2 {
         font-size: 5rem;
@@ -14,6 +15,25 @@
         color: #0C3A53;
         margin: 20px 0;
     }
+
+    @media screen and (max-width: 980px) {
+        padding-bottom: 50px;
+
+        h2 {
+            font-size: 4rem;
+            margin: 15px 0;
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        padding-bottom: 30px;
+
+        h2 {
+            font-size: 3.5rem;
+            margin: 10px 0;
+        }
+    }
+
 }
 
 button {
@@ -36,6 +56,27 @@ svg {
     filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
     background-color: white;
     width: 900px;
+
+    @media screen and (max-width: 980px) {
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (max-width: 650px) {
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 }
 
 .course-basic-info {
@@ -54,6 +95,22 @@ svg {
         background-color: white;
         padding: 0 10px;
     }
+
+    @media screen and (max-width: 980px) {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+
+        input {
+            width: 250px;
+        }
+    }
+
+    @media screen and (max-width: 625px) {
+        flex-direction: column;
+    }
+
 
 }
 
@@ -96,6 +153,58 @@ svg {
             padding: 10px 20px 10px 0;
         }
     }
+
+    @media screen and (max-width: 980px) {
+        margin-top: 20px;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+
+
+        .courselogo {
+            width: 280px;
+            height: 80px;
+
+            button {
+                height: 40px;
+                font-size: 1.7rem;
+                padding: 0 15px;
+            }
+
+            .imgcourse {
+                padding: 10px 20px 10px 0;
+
+                img {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 625px) {
+        flex-direction: column;
+
+        .courselogo {
+            width: 264px;
+            height: 60px;
+
+            button {
+                height: 40px;
+                font-size: 1.7rem;
+                padding: 0 15px;
+            }
+
+            .imgcourse {
+                padding: 10px 20px 10px 0;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+    }
 }
 
 .course-content-info {
@@ -124,6 +233,30 @@ svg {
             font-size: 1.8rem;
             display: flex;
             align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 980px) {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        width: 100%;
+
+        input {
+            width: 100%;
+            font-size: 1.5rem;
+        }
+
+        .difficultylevel {
+            width: 100%;
+
+            .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+                padding-right: 32px;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+            }
         }
     }
 }
@@ -168,7 +301,7 @@ svg {
             font-weight: bolder;
             color: #fff !important;
 
-           
+
         }
 
 
@@ -181,6 +314,32 @@ svg {
             color: #0C3A53;
             border: 2px solid #0C3A53;
             transform: scale(1.3);
+        }
+    }
+
+    @media screen and (max-width: 980px) {
+        width: 95%;
+        margin-top: 30px;
+        justify-content: center;
+
+
+
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0C3A53;
+            text-align: center;
+        }
+
+
+    }
+
+    @media screen and (max-width: 625px) {
+        button {
+            background-color: #0C3A53;
+            color: white;
+            height: 40px;
+            width: 220px !important;
         }
     }
 }
@@ -258,12 +417,105 @@ svg {
 
 
     }
+
+    @media screen and (max-width: 980px) {
+        margin-top: 40px;
+        padding: 20px 35px;
+        position: relative;
+        width: 550px;
+
+        input {
+            width: 450px;
+            font-size: 1.8rem;
+        }
+
+        .course-btns {
+
+            display: flex;
+            justify-content: center;
+            // gap: 40px;
+
+            .delete {
+
+
+                svg {
+                    position: absolute;
+                    top: -45px;
+                    right: -15px;
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+
+
+        }
+
+
+    }
+
+    @media screen and (max-width: 650px) {
+        margin-top: 40px;
+        padding: 20px 35px;
+        position: relative;
+        // width: 400px;
+        width: 480px;
+
+        input {
+            width: 380px;
+            font-size: 1.8rem;
+        }
+
+        .course-btns {
+
+            display: flex;
+            justify-content: center;
+            // gap: 40px;
+
+            .delete {
+
+
+                svg {
+                    position: absolute;
+                    top: -45px;
+                    right: -15px;
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+
+
+        }
+    }
+
+    @media screen and (max-width: 625px) {
+
+        background-color: white;
+        border-radius: 5px;
+        filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.2));
+        margin-top: 40px;
+        padding: 20px 5px;
+        width: 260px;
+        position: relative;
+        justify-content: center;
+
+        input {
+            width: 200px;
+            font-size: 1.8rem;
+        }
+
+        .course-btns {
+            width: 100%;
+
+        }
+
+    }
 }
 
 .sectionVideo {
     margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15px;
     width: 100%;
 
     input {
@@ -295,6 +547,61 @@ svg {
 
     }
 
+    @media screen and (max-width: 980px) {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+
+        input {
+            width: 185px;
+        }
+
+        label {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #0C3A53;
+            background-color: white;
+            padding: 0 10px;
+        }
+    }
+
+    @media screen and (max-width: 625px) {
+        flex-direction: column;
+        border: 1px solid #0C3A53;
+        padding: 10px 10px;
+        position: relative;
+
+
+        .del {
+            font-size: 3rem;
+            height: 38px;
+            width: 38px;
+            justify-content: center;
+            position: absolute;
+            top: -17px;
+            right: -6px;
+            background: white;
+            border: 1px solid red;
+            border-radius: 50%;
+
+            &:hover {
+                transform: scale(1.4);
+            }
+
+
+
+        }
+
+        &:nth-of-type(1) {
+            .del {
+                display: none;
+            }
+        }
+
+    }
+
 
 
 }
@@ -310,10 +617,11 @@ svg {
     padding: 10px 10px;
 
 
+
     .question {
         display: flex;
         justify-content: space-between;
-        width: 100%;
+        width: 600px;
         margin-top: 20px;
 
         input {
@@ -364,6 +672,114 @@ svg {
 
     }
 
+    @media screen and (max-width: 980px) {
+        border-radius: 10px;
+        margin-top: 20px;
+        border: 2px solid #0C3A53;
+        padding: 10px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+
+        .question {
+            display: flex;
+            justify-content: center;
+
+            gap: 20px;
+
+
+            width: 80%;
+            margin-top: 20px;
+
+            input {
+                width: 450px;
+            }
+
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            margin-top: 20px;
+            gap: 20px;
+
+
+            input {
+                width: 300px;
+            }
+
+        }
+
+        .answer {
+            width: 320px;
+            margin-top: 20px;
+
+            input {
+                width: 295px;
+            }
+
+        }
+    }
+
+    @media screen and (max-width: 625px) {
+        border-radius: 10px;
+        margin-top: 20px;
+        border: 2px solid #0C3A53;
+        padding: 10px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+
+        .question {
+            display: flex;
+            justify-content: center;
+
+            gap: 20px;
+
+
+            width: 100%;
+            margin-top: 20px;
+
+            input {
+                width: 100%;
+            }
+
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 20px;
+            gap: 20px;
+
+
+            input {
+                width: 100%;
+            }
+
+        }
+
+        .answer {
+            width: 100%;
+            margin-top: 20px;
+
+            input {
+                width: 100%;
+            }
+
+        }
+    }
+
 
 }
 
@@ -392,17 +808,27 @@ svg {
         color: #0C3A53;
         border: 2px solid #0C3A53;
         transform: scale(1.2);
-        svg{
+
+        svg {
             color: #0C3A53 !important;
         }
 
     }
-         svg {
-    
-             color: #fff !important;
 
-           
-         }
+    svg {
+
+        color: #fff !important;
+
+
+    }
+
+    @media screen and (max-width: 625px) {
+        padding: 10px 15px;
+        gap: 20px;
+        margin-top: 30px;
+        width: 240px;
+        font-size: 20px;
+    }
 }
 
 

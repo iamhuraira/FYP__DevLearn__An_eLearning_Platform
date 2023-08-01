@@ -8,8 +8,12 @@
     align-items: center;
     justify-items: center;
     width: 100%;
-    z-index: 1;
+    z-index: 999;
     background-color: #fff;
+
+    @media screen and (max-width: 1600px) {
+        height: 70px;
+    }
 }
 
 .header {
@@ -20,6 +24,10 @@
     align-items: center;
     justify-items: center;
     transition: all 0.5s ease-in-out;
+
+    @media screen and (max-width: 1600px) {
+        height: 80px;
+    }
 
     @media screen and (max-width: 1450px) {
         padding: 0 75px;
@@ -58,6 +66,27 @@
 
         .btn-nav {
             display: none;
+        }
+
+        @media screen and (max-width: 1600px) {
+            gap: 40px;
+            align-items: center;
+            justify-items: center;
+
+            img {
+                height: 35px;
+            }
+
+            ul {
+                display: flex;
+                gap: 28px;
+                font-size: 2.6rem;
+                font-family: 'proxima nova';
+
+                li {
+                    cursor: pointer;
+                }
+            }
         }
 
         @media screen and (max-width: 1450px) {
@@ -236,6 +265,12 @@
         font-style: normal;
         font-family: 'proxima nova';
         cursor: pointer;
+
+        @media screen and (max-width: 1600px) {
+            height: 40px;
+            width: 110px;
+
+        }
 
         @media screen and (max-width: 770px) {
             background-color: #ffff;
