@@ -238,12 +238,14 @@
 
         gap: 20px;
 
-        @media screen and (max-width: 560px) {
-            justify-items: center;
+        @media screen and (max-width: 768px) {
             justify-content: center;
             align-items: center;
-            gap: 0px;
+        }
 
+        @media screen and (max-width: 560px) {
+            justify-items: center;
+            gap: 0px;
 
         }
 

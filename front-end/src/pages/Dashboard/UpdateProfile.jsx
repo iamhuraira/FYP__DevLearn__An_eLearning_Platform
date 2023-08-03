@@ -389,6 +389,7 @@ const UpdateProfile = () => {
                   label="Gender"
                   onChange={handleChange}
                   defaultValue={gender}
+                  style={{ fontSize: '1.9rem' }}
                 >
                   <MenuItem value={'Male'} style={{ fontSize: '1.9rem' }}>
                     Male
@@ -426,6 +427,7 @@ const UpdateProfile = () => {
                   label="Country"
                   onChange={handleChangeCountry}
                   defaultValue={country}
+                  style={{ fontSize: '1.9rem' }}
                 >
                   {country_list.map((item, index) => (
                     <MenuItem value={item} style={{ fontSize: '1.9rem' }}>

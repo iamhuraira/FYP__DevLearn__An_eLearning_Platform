@@ -198,23 +198,12 @@
         }
     }
 
-    .css-1nrlq1o-MuiFormControl-root {
-
+    .MuiFormControl-root {
         width: 348px !important;
-        // height: 58px;
-
-
     }
-
-    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-        width: 348px !important;
-        // height: 58px;
-    }
-
-
     .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
         padding-right: 32px;
-        font-size: 1.8rem;
+        font-size: 1.8rem !important;
         display: flex;
         align-items: center;
     }
@@ -256,48 +245,48 @@
         }
     }
 
+    // @media screen and (max-width: 980px) {
+    //     width: 600px !important;
+    //     margin-left: 30px;
+
+    //     input {
+    //         width: 600px !important;
+    //         font-size: 1.8rem;
+    //     }
+
+    //     .datainfo {
+    //         display: flex;
+    //         flex-direction: column;
+    //         justify-content: center;
+    //         align-items: center;
+    //         width: 600px !important;
+    //         gap: 20px;
+
+    //         .MuiFormControl-root {
+    //             width: 600px !important;
+    //         }
+    //     }
+
+    //     .css-1nrlq1o-MuiFormControl-root {
+
+    //         width: 600px !important;
+    //         // height: 58px;
+
+
+    //     }
+
+    //     .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+    //         width: 600px !important;
+    //         // height: 58px;
+    //     }
+
+    //     label[data-shrink=false]+.MuiInputBase-formControl .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    //         width: 303px !important;
+    //         // height: 28px;
+    //     }
+    // }
+
     @media screen and (max-width: 980px) {
-        width: 600px !important;
-        margin-left: 30px;
-
-        input {
-            width: 600px !important;
-            font-size: 1.8rem;
-        }
-
-        .datainfo {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 600px !important;
-            gap: 20px;
-
-            .MuiFormControl-root {
-                width: 600px !important;
-            }
-        }
-
-        .css-1nrlq1o-MuiFormControl-root {
-
-            width: 600px !important;
-            // height: 58px;
-
-
-        }
-
-        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-            width: 600px !important;
-            // height: 58px;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-            width: 303px !important;
-            // height: 28px;
-        }
-    }
-
-    @media screen and (max-width: 768px) {
         width: 95% !important;
         margin-left: auto;
         margin-right: auto;
